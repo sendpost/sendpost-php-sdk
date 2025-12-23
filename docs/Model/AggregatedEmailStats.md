@@ -5,8 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **processed** | **int** | Total number of emails accepted by SendPost API | [optional]
+**sent** | **int** | Total number of emails sent | [optional]
 **delivered** | **int** | Total number of emails successfully delivered to SMTP | [optional]
 **dropped** | **int** | Total number of emails dropped without delivery | [optional]
+**smtp_dropped** | **int** | Total number of emails dropped by SMTP | [optional]
 **hard_bounced** | **int** | Total number of hard bounce errors | [optional]
 **soft_bounced** | **int** | Total number of soft bounce errors | [optional]
 **opened** | **int** | Total number of emails opened by recipients | [optional]

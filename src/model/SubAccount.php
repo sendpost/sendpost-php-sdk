@@ -90,7 +90,7 @@ class SubAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'smtp_auths' => null,
         'type' => null,
         'is_plus' => null,
-        'created' => null,
+        'created' => 'int64',
         'created_by' => null,
         'updated_by' => null,
         'blocked' => null,

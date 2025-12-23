@@ -1,6 +1,6 @@
 <?php
 /**
- * StatStats
+ * CreateSubAccountRequest
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \sendpost\ObjectSerializer;
 
 /**
- * StatStats Class Doc Comment
+ * CreateSubAccountRequest Class Doc Comment
  *
  * @category Class
  * @package  sendpost
@@ -40,7 +40,7 @@ use \sendpost\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateSubAccountRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Stat_stats';
+    protected static $openAPIModelName = 'CreateSubAccountRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,17 +57,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'processed' => 'int',
-        'sent' => 'int',
-        'delivered' => 'int',
-        'dropped' => 'int',
-        'smtp_dropped' => 'int',
-        'hard_bounced' => 'int',
-        'soft_bounced' => 'int',
-        'opened' => 'int',
-        'clicked' => 'int',
-        'unsubscribed' => 'int',
-        'spam' => 'int'
+        'name' => 'string'
     ];
 
     /**
@@ -78,17 +68,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'processed' => null,
-        'sent' => null,
-        'delivered' => null,
-        'dropped' => null,
-        'smtp_dropped' => null,
-        'hard_bounced' => null,
-        'soft_bounced' => null,
-        'opened' => null,
-        'clicked' => null,
-        'unsubscribed' => null,
-        'spam' => null
+        'name' => null
     ];
 
     /**
@@ -97,17 +77,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'processed' => false,
-        'sent' => false,
-        'delivered' => false,
-        'dropped' => false,
-        'smtp_dropped' => false,
-        'hard_bounced' => false,
-        'soft_bounced' => false,
-        'opened' => false,
-        'clicked' => false,
-        'unsubscribed' => false,
-        'spam' => false
+        'name' => false
     ];
 
     /**
@@ -196,17 +166,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'processed' => 'processed',
-        'sent' => 'sent',
-        'delivered' => 'delivered',
-        'dropped' => 'dropped',
-        'smtp_dropped' => 'smtpDropped',
-        'hard_bounced' => 'hardBounced',
-        'soft_bounced' => 'softBounced',
-        'opened' => 'opened',
-        'clicked' => 'clicked',
-        'unsubscribed' => 'unsubscribed',
-        'spam' => 'spam'
+        'name' => 'name'
     ];
 
     /**
@@ -215,17 +175,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'processed' => 'setProcessed',
-        'sent' => 'setSent',
-        'delivered' => 'setDelivered',
-        'dropped' => 'setDropped',
-        'smtp_dropped' => 'setSmtpDropped',
-        'hard_bounced' => 'setHardBounced',
-        'soft_bounced' => 'setSoftBounced',
-        'opened' => 'setOpened',
-        'clicked' => 'setClicked',
-        'unsubscribed' => 'setUnsubscribed',
-        'spam' => 'setSpam'
+        'name' => 'setName'
     ];
 
     /**
@@ -234,17 +184,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'processed' => 'getProcessed',
-        'sent' => 'getSent',
-        'delivered' => 'getDelivered',
-        'dropped' => 'getDropped',
-        'smtp_dropped' => 'getSmtpDropped',
-        'hard_bounced' => 'getHardBounced',
-        'soft_bounced' => 'getSoftBounced',
-        'opened' => 'getOpened',
-        'clicked' => 'getClicked',
-        'unsubscribed' => 'getUnsubscribed',
-        'spam' => 'getSpam'
+        'name' => 'getName'
     ];
 
     /**
@@ -304,17 +244,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('processed', $data ?? [], null);
-        $this->setIfExists('sent', $data ?? [], null);
-        $this->setIfExists('delivered', $data ?? [], null);
-        $this->setIfExists('dropped', $data ?? [], null);
-        $this->setIfExists('smtp_dropped', $data ?? [], null);
-        $this->setIfExists('hard_bounced', $data ?? [], null);
-        $this->setIfExists('soft_bounced', $data ?? [], null);
-        $this->setIfExists('opened', $data ?? [], null);
-        $this->setIfExists('clicked', $data ?? [], null);
-        $this->setIfExists('unsubscribed', $data ?? [], null);
-        $this->setIfExists('spam', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
     }
 
     /**
@@ -360,298 +290,28 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets processed
+     * Gets name
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getProcessed()
+    public function getName()
     {
-        return $this->container['processed'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets processed
+     * Sets name
      *
-     * @param int|null $processed Number of emails accepted by SendPost API.
+     * @param string|null $name Name for the new sub-account.
      *
      * @return self
      */
-    public function setProcessed($processed)
+    public function setName($name)
     {
-        if (is_null($processed)) {
-            throw new \InvalidArgumentException('non-nullable processed cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['processed'] = $processed;
-
-        return $this;
-    }
-
-    /**
-     * Gets sent
-     *
-     * @return int|null
-     */
-    public function getSent()
-    {
-        return $this->container['sent'];
-    }
-
-    /**
-     * Sets sent
-     *
-     * @param int|null $sent Number of emails sent.
-     *
-     * @return self
-     */
-    public function setSent($sent)
-    {
-        if (is_null($sent)) {
-            throw new \InvalidArgumentException('non-nullable sent cannot be null');
-        }
-        $this->container['sent'] = $sent;
-
-        return $this;
-    }
-
-    /**
-     * Gets delivered
-     *
-     * @return int|null
-     */
-    public function getDelivered()
-    {
-        return $this->container['delivered'];
-    }
-
-    /**
-     * Sets delivered
-     *
-     * @param int|null $delivered Number of emails we were able to successfully deliver at SMTP without encountering any error
-     *
-     * @return self
-     */
-    public function setDelivered($delivered)
-    {
-        if (is_null($delivered)) {
-            throw new \InvalidArgumentException('non-nullable delivered cannot be null');
-        }
-        $this->container['delivered'] = $delivered;
-
-        return $this;
-    }
-
-    /**
-     * Gets dropped
-     *
-     * @return int|null
-     */
-    public function getDropped()
-    {
-        return $this->container['dropped'];
-    }
-
-    /**
-     * Sets dropped
-     *
-     * @param int|null $dropped Number of emails drop without attempting to deliver either because the email is invalid or email in in existing suppression list
-     *
-     * @return self
-     */
-    public function setDropped($dropped)
-    {
-        if (is_null($dropped)) {
-            throw new \InvalidArgumentException('non-nullable dropped cannot be null');
-        }
-        $this->container['dropped'] = $dropped;
-
-        return $this;
-    }
-
-    /**
-     * Gets smtp_dropped
-     *
-     * @return int|null
-     */
-    public function getSmtpDropped()
-    {
-        return $this->container['smtp_dropped'];
-    }
-
-    /**
-     * Sets smtp_dropped
-     *
-     * @param int|null $smtp_dropped Number of emails dropped by SMTP.
-     *
-     * @return self
-     */
-    public function setSmtpDropped($smtp_dropped)
-    {
-        if (is_null($smtp_dropped)) {
-            throw new \InvalidArgumentException('non-nullable smtp_dropped cannot be null');
-        }
-        $this->container['smtp_dropped'] = $smtp_dropped;
-
-        return $this;
-    }
-
-    /**
-     * Gets hard_bounced
-     *
-     * @return int|null
-     */
-    public function getHardBounced()
-    {
-        return $this->container['hard_bounced'];
-    }
-
-    /**
-     * Sets hard_bounced
-     *
-     * @param int|null $hard_bounced Number of emails where we got SMTP hard bounce error code by the recipient mail provider
-     *
-     * @return self
-     */
-    public function setHardBounced($hard_bounced)
-    {
-        if (is_null($hard_bounced)) {
-            throw new \InvalidArgumentException('non-nullable hard_bounced cannot be null');
-        }
-        $this->container['hard_bounced'] = $hard_bounced;
-
-        return $this;
-    }
-
-    /**
-     * Gets soft_bounced
-     *
-     * @return int|null
-     */
-    public function getSoftBounced()
-    {
-        return $this->container['soft_bounced'];
-    }
-
-    /**
-     * Sets soft_bounced
-     *
-     * @param int|null $soft_bounced Number of emails where we got temporary soft bounce error by the recipent mail provider. Soft bounced emails are retried upto 5 times over 24 hour period before marking them as hardBounced.
-     *
-     * @return self
-     */
-    public function setSoftBounced($soft_bounced)
-    {
-        if (is_null($soft_bounced)) {
-            throw new \InvalidArgumentException('non-nullable soft_bounced cannot be null');
-        }
-        $this->container['soft_bounced'] = $soft_bounced;
-
-        return $this;
-    }
-
-    /**
-     * Gets opened
-     *
-     * @return int|null
-     */
-    public function getOpened()
-    {
-        return $this->container['opened'];
-    }
-
-    /**
-     * Sets opened
-     *
-     * @param int|null $opened Number of emails opened by recipients
-     *
-     * @return self
-     */
-    public function setOpened($opened)
-    {
-        if (is_null($opened)) {
-            throw new \InvalidArgumentException('non-nullable opened cannot be null');
-        }
-        $this->container['opened'] = $opened;
-
-        return $this;
-    }
-
-    /**
-     * Gets clicked
-     *
-     * @return int|null
-     */
-    public function getClicked()
-    {
-        return $this->container['clicked'];
-    }
-
-    /**
-     * Sets clicked
-     *
-     * @param int|null $clicked Number of email links clicked by recipients
-     *
-     * @return self
-     */
-    public function setClicked($clicked)
-    {
-        if (is_null($clicked)) {
-            throw new \InvalidArgumentException('non-nullable clicked cannot be null');
-        }
-        $this->container['clicked'] = $clicked;
-
-        return $this;
-    }
-
-    /**
-     * Gets unsubscribed
-     *
-     * @return int|null
-     */
-    public function getUnsubscribed()
-    {
-        return $this->container['unsubscribed'];
-    }
-
-    /**
-     * Sets unsubscribed
-     *
-     * @param int|null $unsubscribed Number of email recipients who unsubscribed from receiving further emails
-     *
-     * @return self
-     */
-    public function setUnsubscribed($unsubscribed)
-    {
-        if (is_null($unsubscribed)) {
-            throw new \InvalidArgumentException('non-nullable unsubscribed cannot be null');
-        }
-        $this->container['unsubscribed'] = $unsubscribed;
-
-        return $this;
-    }
-
-    /**
-     * Gets spam
-     *
-     * @return int|null
-     */
-    public function getSpam()
-    {
-        return $this->container['spam'];
-    }
-
-    /**
-     * Sets spam
-     *
-     * @param int|null $spam Number of email recipients who marked emails as spam
-     *
-     * @return self
-     */
-    public function setSpam($spam)
-    {
-        if (is_null($spam)) {
-            throw new \InvalidArgumentException('non-nullable spam cannot be null');
-        }
-        $this->container['spam'] = $spam;
+        $this->container['name'] = $name;
 
         return $this;
     }

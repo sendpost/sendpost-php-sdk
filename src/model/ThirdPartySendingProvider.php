@@ -88,7 +88,7 @@ class ThirdPartySendingProvider implements ModelInterface, ArrayAccess, \JsonSer
         'port' => null,
         'oauth_token' => null,
         'retry_time' => null,
-        'created' => null
+        'created' => 'int64'
     ];
 
     /**

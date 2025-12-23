@@ -14,7 +14,7 @@ All URIs are relative to https://api.sendpost.io/api/v1, except if the operation
 ## `createSubAccount()`
 
 ```php
-createSubAccount($new_sub_account): \sendpost\model\SubAccount
+createSubAccount($create_sub_account_request): \sendpost\model\SubAccount
 ```
 
 Create Sub-Account
@@ -40,10 +40,10 @@ $apiInstance = new sendpost\Api\SubAccountApi(
     new GuzzleHttp\Client(),
     $config
 );
-$new_sub_account = new \sendpost\model\NewSubAccount(); // \sendpost\model\NewSubAccount
+$create_sub_account_request = new \sendpost\model\CreateSubAccountRequest(); // \sendpost\model\CreateSubAccountRequest
 
 try {
-    $result = $apiInstance->createSubAccount($new_sub_account);
+    $result = $apiInstance->createSubAccount($create_sub_account_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubAccountApi->createSubAccount: ', $e->getMessage(), PHP_EOL;
@@ -54,7 +54,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **new_sub_account** | [**\sendpost\model\NewSubAccount**](../Model/NewSubAccount.md)|  | |
+| **create_sub_account_request** | [**\sendpost\model\CreateSubAccountRequest**](../Model/CreateSubAccountRequest.md)|  | |
 
 ### Return type
 

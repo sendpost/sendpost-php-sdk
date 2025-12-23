@@ -142,16 +142,16 @@ class SubAccountApi
      *
      * Create Sub-Account
      *
-     * @param  \sendpost\model\NewSubAccount $new_sub_account new_sub_account (required)
+     * @param  \sendpost\model\CreateSubAccountRequest $create_sub_account_request create_sub_account_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSubAccount'] to see the possible values for this operation
      *
      * @throws \sendpost\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \sendpost\model\SubAccount
      */
-    public function createSubAccount($new_sub_account, string $contentType = self::contentTypes['createSubAccount'][0])
+    public function createSubAccount($create_sub_account_request, string $contentType = self::contentTypes['createSubAccount'][0])
     {
-        list($response) = $this->createSubAccountWithHttpInfo($new_sub_account, $contentType);
+        list($response) = $this->createSubAccountWithHttpInfo($create_sub_account_request, $contentType);
         return $response;
     }
 
@@ -160,16 +160,16 @@ class SubAccountApi
      *
      * Create Sub-Account
      *
-     * @param  \sendpost\model\NewSubAccount $new_sub_account (required)
+     * @param  \sendpost\model\CreateSubAccountRequest $create_sub_account_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSubAccount'] to see the possible values for this operation
      *
      * @throws \sendpost\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \sendpost\model\SubAccount, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createSubAccountWithHttpInfo($new_sub_account, string $contentType = self::contentTypes['createSubAccount'][0])
+    public function createSubAccountWithHttpInfo($create_sub_account_request, string $contentType = self::contentTypes['createSubAccount'][0])
     {
-        $request = $this->createSubAccountRequest($new_sub_account, $contentType);
+        $request = $this->createSubAccountRequest($create_sub_account_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -245,15 +245,15 @@ class SubAccountApi
      *
      * Create Sub-Account
      *
-     * @param  \sendpost\model\NewSubAccount $new_sub_account (required)
+     * @param  \sendpost\model\CreateSubAccountRequest $create_sub_account_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSubAccount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createSubAccountAsync($new_sub_account, string $contentType = self::contentTypes['createSubAccount'][0])
+    public function createSubAccountAsync($create_sub_account_request, string $contentType = self::contentTypes['createSubAccount'][0])
     {
-        return $this->createSubAccountAsyncWithHttpInfo($new_sub_account, $contentType)
+        return $this->createSubAccountAsyncWithHttpInfo($create_sub_account_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -266,16 +266,16 @@ class SubAccountApi
      *
      * Create Sub-Account
      *
-     * @param  \sendpost\model\NewSubAccount $new_sub_account (required)
+     * @param  \sendpost\model\CreateSubAccountRequest $create_sub_account_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSubAccount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createSubAccountAsyncWithHttpInfo($new_sub_account, string $contentType = self::contentTypes['createSubAccount'][0])
+    public function createSubAccountAsyncWithHttpInfo($create_sub_account_request, string $contentType = self::contentTypes['createSubAccount'][0])
     {
         $returnType = '\sendpost\model\SubAccount';
-        $request = $this->createSubAccountRequest($new_sub_account, $contentType);
+        $request = $this->createSubAccountRequest($create_sub_account_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -316,19 +316,19 @@ class SubAccountApi
     /**
      * Create request for operation 'createSubAccount'
      *
-     * @param  \sendpost\model\NewSubAccount $new_sub_account (required)
+     * @param  \sendpost\model\CreateSubAccountRequest $create_sub_account_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSubAccount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createSubAccountRequest($new_sub_account, string $contentType = self::contentTypes['createSubAccount'][0])
+    public function createSubAccountRequest($create_sub_account_request, string $contentType = self::contentTypes['createSubAccount'][0])
     {
 
-        // verify the required parameter 'new_sub_account' is set
-        if ($new_sub_account === null || (is_array($new_sub_account) && count($new_sub_account) === 0)) {
+        // verify the required parameter 'create_sub_account_request' is set
+        if ($create_sub_account_request === null || (is_array($create_sub_account_request) && count($create_sub_account_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $new_sub_account when calling createSubAccount'
+                'Missing the required parameter $create_sub_account_request when calling createSubAccount'
             );
         }
 
@@ -351,12 +351,12 @@ class SubAccountApi
         );
 
         // for model (json/xml)
-        if (isset($new_sub_account)) {
+        if (isset($create_sub_account_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($new_sub_account));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_sub_account_request));
             } else {
-                $httpBody = $new_sub_account;
+                $httpBody = $create_sub_account_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

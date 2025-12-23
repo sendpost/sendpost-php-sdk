@@ -58,8 +58,10 @@ class AggregatedEmailStats implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'processed' => 'int',
+        'sent' => 'int',
         'delivered' => 'int',
         'dropped' => 'int',
+        'smtp_dropped' => 'int',
         'hard_bounced' => 'int',
         'soft_bounced' => 'int',
         'opened' => 'int',
@@ -77,8 +79,10 @@ class AggregatedEmailStats implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'processed' => null,
+        'sent' => null,
         'delivered' => null,
         'dropped' => null,
+        'smtp_dropped' => null,
         'hard_bounced' => null,
         'soft_bounced' => null,
         'opened' => null,
@@ -94,8 +98,10 @@ class AggregatedEmailStats implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPINullables = [
         'processed' => false,
+        'sent' => false,
         'delivered' => false,
         'dropped' => false,
+        'smtp_dropped' => false,
         'hard_bounced' => false,
         'soft_bounced' => false,
         'opened' => false,
@@ -191,8 +197,10 @@ class AggregatedEmailStats implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'processed' => 'processed',
+        'sent' => 'sent',
         'delivered' => 'delivered',
         'dropped' => 'dropped',
+        'smtp_dropped' => 'smtpDropped',
         'hard_bounced' => 'hardBounced',
         'soft_bounced' => 'softBounced',
         'opened' => 'opened',
@@ -208,8 +216,10 @@ class AggregatedEmailStats implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'processed' => 'setProcessed',
+        'sent' => 'setSent',
         'delivered' => 'setDelivered',
         'dropped' => 'setDropped',
+        'smtp_dropped' => 'setSmtpDropped',
         'hard_bounced' => 'setHardBounced',
         'soft_bounced' => 'setSoftBounced',
         'opened' => 'setOpened',
@@ -225,8 +235,10 @@ class AggregatedEmailStats implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'processed' => 'getProcessed',
+        'sent' => 'getSent',
         'delivered' => 'getDelivered',
         'dropped' => 'getDropped',
+        'smtp_dropped' => 'getSmtpDropped',
         'hard_bounced' => 'getHardBounced',
         'soft_bounced' => 'getSoftBounced',
         'opened' => 'getOpened',
@@ -293,8 +305,10 @@ class AggregatedEmailStats implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(?array $data = null)
     {
         $this->setIfExists('processed', $data ?? [], null);
+        $this->setIfExists('sent', $data ?? [], null);
         $this->setIfExists('delivered', $data ?? [], null);
         $this->setIfExists('dropped', $data ?? [], null);
+        $this->setIfExists('smtp_dropped', $data ?? [], null);
         $this->setIfExists('hard_bounced', $data ?? [], null);
         $this->setIfExists('soft_bounced', $data ?? [], null);
         $this->setIfExists('opened', $data ?? [], null);
@@ -373,6 +387,33 @@ class AggregatedEmailStats implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets sent
+     *
+     * @return int|null
+     */
+    public function getSent()
+    {
+        return $this->container['sent'];
+    }
+
+    /**
+     * Sets sent
+     *
+     * @param int|null $sent Total number of emails sent
+     *
+     * @return self
+     */
+    public function setSent($sent)
+    {
+        if (is_null($sent)) {
+            throw new \InvalidArgumentException('non-nullable sent cannot be null');
+        }
+        $this->container['sent'] = $sent;
+
+        return $this;
+    }
+
+    /**
      * Gets delivered
      *
      * @return int|null
@@ -422,6 +463,33 @@ class AggregatedEmailStats implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable dropped cannot be null');
         }
         $this->container['dropped'] = $dropped;
+
+        return $this;
+    }
+
+    /**
+     * Gets smtp_dropped
+     *
+     * @return int|null
+     */
+    public function getSmtpDropped()
+    {
+        return $this->container['smtp_dropped'];
+    }
+
+    /**
+     * Sets smtp_dropped
+     *
+     * @param int|null $smtp_dropped Total number of emails dropped by SMTP
+     *
+     * @return self
+     */
+    public function setSmtpDropped($smtp_dropped)
+    {
+        if (is_null($smtp_dropped)) {
+            throw new \InvalidArgumentException('non-nullable smtp_dropped cannot be null');
+        }
+        $this->container['smtp_dropped'] = $smtp_dropped;
 
         return $this;
     }

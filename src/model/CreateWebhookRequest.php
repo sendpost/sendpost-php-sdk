@@ -1,6 +1,6 @@
 <?php
 /**
- * StatStats
+ * CreateWebhookRequest
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \sendpost\ObjectSerializer;
 
 /**
- * StatStats Class Doc Comment
+ * CreateWebhookRequest Class Doc Comment
  *
  * @category Class
  * @package  sendpost
@@ -40,7 +40,7 @@ use \sendpost\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateWebhookRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Stat_stats';
+    protected static $openAPIModelName = 'CreateWebhookRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,17 +57,21 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'processed' => 'int',
-        'sent' => 'int',
-        'delivered' => 'int',
-        'dropped' => 'int',
-        'smtp_dropped' => 'int',
-        'hard_bounced' => 'int',
-        'soft_bounced' => 'int',
-        'opened' => 'int',
-        'clicked' => 'int',
-        'unsubscribed' => 'int',
-        'spam' => 'int'
+        'enabled' => 'bool',
+        'url' => 'string',
+        'processed' => 'bool',
+        'delivered' => 'bool',
+        'dropped' => 'bool',
+        'soft_bounced' => 'bool',
+        'hard_bounced' => 'bool',
+        'opened' => 'bool',
+        'clicked' => 'bool',
+        'unsubscribed' => 'bool',
+        'spam' => 'bool',
+        'sent' => 'bool',
+        'smtp_dropped' => 'bool',
+        'unique_open' => 'bool',
+        'unique_click' => 'bool'
     ];
 
     /**
@@ -78,17 +82,21 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'enabled' => null,
+        'url' => null,
         'processed' => null,
-        'sent' => null,
         'delivered' => null,
         'dropped' => null,
-        'smtp_dropped' => null,
-        'hard_bounced' => null,
         'soft_bounced' => null,
+        'hard_bounced' => null,
         'opened' => null,
         'clicked' => null,
         'unsubscribed' => null,
-        'spam' => null
+        'spam' => null,
+        'sent' => null,
+        'smtp_dropped' => null,
+        'unique_open' => null,
+        'unique_click' => null
     ];
 
     /**
@@ -97,17 +105,21 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'enabled' => false,
+        'url' => false,
         'processed' => false,
-        'sent' => false,
         'delivered' => false,
         'dropped' => false,
-        'smtp_dropped' => false,
-        'hard_bounced' => false,
         'soft_bounced' => false,
+        'hard_bounced' => false,
         'opened' => false,
         'clicked' => false,
         'unsubscribed' => false,
-        'spam' => false
+        'spam' => false,
+        'sent' => false,
+        'smtp_dropped' => false,
+        'unique_open' => false,
+        'unique_click' => false
     ];
 
     /**
@@ -196,17 +208,21 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'enabled' => 'enabled',
+        'url' => 'url',
         'processed' => 'processed',
-        'sent' => 'sent',
         'delivered' => 'delivered',
         'dropped' => 'dropped',
-        'smtp_dropped' => 'smtpDropped',
-        'hard_bounced' => 'hardBounced',
         'soft_bounced' => 'softBounced',
+        'hard_bounced' => 'hardBounced',
         'opened' => 'opened',
         'clicked' => 'clicked',
         'unsubscribed' => 'unsubscribed',
-        'spam' => 'spam'
+        'spam' => 'spam',
+        'sent' => 'sent',
+        'smtp_dropped' => 'smtpDropped',
+        'unique_open' => 'uniqueOpen',
+        'unique_click' => 'uniqueClick'
     ];
 
     /**
@@ -215,17 +231,21 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'enabled' => 'setEnabled',
+        'url' => 'setUrl',
         'processed' => 'setProcessed',
-        'sent' => 'setSent',
         'delivered' => 'setDelivered',
         'dropped' => 'setDropped',
-        'smtp_dropped' => 'setSmtpDropped',
-        'hard_bounced' => 'setHardBounced',
         'soft_bounced' => 'setSoftBounced',
+        'hard_bounced' => 'setHardBounced',
         'opened' => 'setOpened',
         'clicked' => 'setClicked',
         'unsubscribed' => 'setUnsubscribed',
-        'spam' => 'setSpam'
+        'spam' => 'setSpam',
+        'sent' => 'setSent',
+        'smtp_dropped' => 'setSmtpDropped',
+        'unique_open' => 'setUniqueOpen',
+        'unique_click' => 'setUniqueClick'
     ];
 
     /**
@@ -234,17 +254,21 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'enabled' => 'getEnabled',
+        'url' => 'getUrl',
         'processed' => 'getProcessed',
-        'sent' => 'getSent',
         'delivered' => 'getDelivered',
         'dropped' => 'getDropped',
-        'smtp_dropped' => 'getSmtpDropped',
-        'hard_bounced' => 'getHardBounced',
         'soft_bounced' => 'getSoftBounced',
+        'hard_bounced' => 'getHardBounced',
         'opened' => 'getOpened',
         'clicked' => 'getClicked',
         'unsubscribed' => 'getUnsubscribed',
-        'spam' => 'getSpam'
+        'spam' => 'getSpam',
+        'sent' => 'getSent',
+        'smtp_dropped' => 'getSmtpDropped',
+        'unique_open' => 'getUniqueOpen',
+        'unique_click' => 'getUniqueClick'
     ];
 
     /**
@@ -304,17 +328,21 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('enabled', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('processed', $data ?? [], null);
-        $this->setIfExists('sent', $data ?? [], null);
         $this->setIfExists('delivered', $data ?? [], null);
         $this->setIfExists('dropped', $data ?? [], null);
-        $this->setIfExists('smtp_dropped', $data ?? [], null);
-        $this->setIfExists('hard_bounced', $data ?? [], null);
         $this->setIfExists('soft_bounced', $data ?? [], null);
+        $this->setIfExists('hard_bounced', $data ?? [], null);
         $this->setIfExists('opened', $data ?? [], null);
         $this->setIfExists('clicked', $data ?? [], null);
         $this->setIfExists('unsubscribed', $data ?? [], null);
         $this->setIfExists('spam', $data ?? [], null);
+        $this->setIfExists('sent', $data ?? [], null);
+        $this->setIfExists('smtp_dropped', $data ?? [], null);
+        $this->setIfExists('unique_open', $data ?? [], null);
+        $this->setIfExists('unique_click', $data ?? [], null);
     }
 
     /**
@@ -360,9 +388,63 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets enabled
+     *
+     * @return bool|null
+     */
+    public function getEnabled()
+    {
+        return $this->container['enabled'];
+    }
+
+    /**
+     * Sets enabled
+     *
+     * @param bool|null $enabled Is the webhook active or in a paused state?
+     *
+     * @return self
+     */
+    public function setEnabled($enabled)
+    {
+        if (is_null($enabled)) {
+            throw new \InvalidArgumentException('non-nullable enabled cannot be null');
+        }
+        $this->container['enabled'] = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string|null
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string|null $url URL endpoint to which webhook calls are sent.
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        }
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
      * Gets processed
      *
-     * @return int|null
+     * @return bool|null
      */
     public function getProcessed()
     {
@@ -372,7 +454,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets processed
      *
-     * @param int|null $processed Number of emails accepted by SendPost API.
+     * @param bool|null $processed Trigger webhook on email message being processed.
      *
      * @return self
      */
@@ -387,36 +469,9 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets sent
-     *
-     * @return int|null
-     */
-    public function getSent()
-    {
-        return $this->container['sent'];
-    }
-
-    /**
-     * Sets sent
-     *
-     * @param int|null $sent Number of emails sent.
-     *
-     * @return self
-     */
-    public function setSent($sent)
-    {
-        if (is_null($sent)) {
-            throw new \InvalidArgumentException('non-nullable sent cannot be null');
-        }
-        $this->container['sent'] = $sent;
-
-        return $this;
-    }
-
-    /**
      * Gets delivered
      *
-     * @return int|null
+     * @return bool|null
      */
     public function getDelivered()
     {
@@ -426,7 +481,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets delivered
      *
-     * @param int|null $delivered Number of emails we were able to successfully deliver at SMTP without encountering any error
+     * @param bool|null $delivered Trigger webhook on email message being delivered.
      *
      * @return self
      */
@@ -443,7 +498,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dropped
      *
-     * @return int|null
+     * @return bool|null
      */
     public function getDropped()
     {
@@ -453,7 +508,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dropped
      *
-     * @param int|null $dropped Number of emails drop without attempting to deliver either because the email is invalid or email in in existing suppression list
+     * @param bool|null $dropped Trigger webhook on email message being dropped.
      *
      * @return self
      */
@@ -468,63 +523,9 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets smtp_dropped
-     *
-     * @return int|null
-     */
-    public function getSmtpDropped()
-    {
-        return $this->container['smtp_dropped'];
-    }
-
-    /**
-     * Sets smtp_dropped
-     *
-     * @param int|null $smtp_dropped Number of emails dropped by SMTP.
-     *
-     * @return self
-     */
-    public function setSmtpDropped($smtp_dropped)
-    {
-        if (is_null($smtp_dropped)) {
-            throw new \InvalidArgumentException('non-nullable smtp_dropped cannot be null');
-        }
-        $this->container['smtp_dropped'] = $smtp_dropped;
-
-        return $this;
-    }
-
-    /**
-     * Gets hard_bounced
-     *
-     * @return int|null
-     */
-    public function getHardBounced()
-    {
-        return $this->container['hard_bounced'];
-    }
-
-    /**
-     * Sets hard_bounced
-     *
-     * @param int|null $hard_bounced Number of emails where we got SMTP hard bounce error code by the recipient mail provider
-     *
-     * @return self
-     */
-    public function setHardBounced($hard_bounced)
-    {
-        if (is_null($hard_bounced)) {
-            throw new \InvalidArgumentException('non-nullable hard_bounced cannot be null');
-        }
-        $this->container['hard_bounced'] = $hard_bounced;
-
-        return $this;
-    }
-
-    /**
      * Gets soft_bounced
      *
-     * @return int|null
+     * @return bool|null
      */
     public function getSoftBounced()
     {
@@ -534,7 +535,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets soft_bounced
      *
-     * @param int|null $soft_bounced Number of emails where we got temporary soft bounce error by the recipent mail provider. Soft bounced emails are retried upto 5 times over 24 hour period before marking them as hardBounced.
+     * @param bool|null $soft_bounced Trigger webhook on email message being soft bounced.
      *
      * @return self
      */
@@ -549,9 +550,36 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets hard_bounced
+     *
+     * @return bool|null
+     */
+    public function getHardBounced()
+    {
+        return $this->container['hard_bounced'];
+    }
+
+    /**
+     * Sets hard_bounced
+     *
+     * @param bool|null $hard_bounced Trigger webhook on email message being hard bounced.
+     *
+     * @return self
+     */
+    public function setHardBounced($hard_bounced)
+    {
+        if (is_null($hard_bounced)) {
+            throw new \InvalidArgumentException('non-nullable hard_bounced cannot be null');
+        }
+        $this->container['hard_bounced'] = $hard_bounced;
+
+        return $this;
+    }
+
+    /**
      * Gets opened
      *
-     * @return int|null
+     * @return bool|null
      */
     public function getOpened()
     {
@@ -561,7 +589,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets opened
      *
-     * @param int|null $opened Number of emails opened by recipients
+     * @param bool|null $opened Trigger webhook on email message being opened.
      *
      * @return self
      */
@@ -578,7 +606,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets clicked
      *
-     * @return int|null
+     * @return bool|null
      */
     public function getClicked()
     {
@@ -588,7 +616,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets clicked
      *
-     * @param int|null $clicked Number of email links clicked by recipients
+     * @param bool|null $clicked Trigger webhook on email message link being clicked.
      *
      * @return self
      */
@@ -605,7 +633,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets unsubscribed
      *
-     * @return int|null
+     * @return bool|null
      */
     public function getUnsubscribed()
     {
@@ -615,7 +643,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets unsubscribed
      *
-     * @param int|null $unsubscribed Number of email recipients who unsubscribed from receiving further emails
+     * @param bool|null $unsubscribed Trigger webhook on email message being unsubscribed.
      *
      * @return self
      */
@@ -632,7 +660,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets spam
      *
-     * @return int|null
+     * @return bool|null
      */
     public function getSpam()
     {
@@ -642,7 +670,7 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets spam
      *
-     * @param int|null $spam Number of email recipients who marked emails as spam
+     * @param bool|null $spam Trigger webhook on email message being marked as spam.
      *
      * @return self
      */
@@ -652,6 +680,114 @@ class StatStats implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable spam cannot be null');
         }
         $this->container['spam'] = $spam;
+
+        return $this;
+    }
+
+    /**
+     * Gets sent
+     *
+     * @return bool|null
+     */
+    public function getSent()
+    {
+        return $this->container['sent'];
+    }
+
+    /**
+     * Sets sent
+     *
+     * @param bool|null $sent Trigger webhook on email message being sent.
+     *
+     * @return self
+     */
+    public function setSent($sent)
+    {
+        if (is_null($sent)) {
+            throw new \InvalidArgumentException('non-nullable sent cannot be null');
+        }
+        $this->container['sent'] = $sent;
+
+        return $this;
+    }
+
+    /**
+     * Gets smtp_dropped
+     *
+     * @return bool|null
+     */
+    public function getSmtpDropped()
+    {
+        return $this->container['smtp_dropped'];
+    }
+
+    /**
+     * Sets smtp_dropped
+     *
+     * @param bool|null $smtp_dropped Trigger webhook on email message being dropped by SMTP.
+     *
+     * @return self
+     */
+    public function setSmtpDropped($smtp_dropped)
+    {
+        if (is_null($smtp_dropped)) {
+            throw new \InvalidArgumentException('non-nullable smtp_dropped cannot be null');
+        }
+        $this->container['smtp_dropped'] = $smtp_dropped;
+
+        return $this;
+    }
+
+    /**
+     * Gets unique_open
+     *
+     * @return bool|null
+     */
+    public function getUniqueOpen()
+    {
+        return $this->container['unique_open'];
+    }
+
+    /**
+     * Sets unique_open
+     *
+     * @param bool|null $unique_open Trigger webhook on unique email opens.
+     *
+     * @return self
+     */
+    public function setUniqueOpen($unique_open)
+    {
+        if (is_null($unique_open)) {
+            throw new \InvalidArgumentException('non-nullable unique_open cannot be null');
+        }
+        $this->container['unique_open'] = $unique_open;
+
+        return $this;
+    }
+
+    /**
+     * Gets unique_click
+     *
+     * @return bool|null
+     */
+    public function getUniqueClick()
+    {
+        return $this->container['unique_click'];
+    }
+
+    /**
+     * Sets unique_click
+     *
+     * @param bool|null $unique_click Trigger webhook on unique email clicks.
+     *
+     * @return self
+     */
+    public function setUniqueClick($unique_click)
+    {
+        if (is_null($unique_click)) {
+            throw new \InvalidArgumentException('non-nullable unique_click cannot be null');
+        }
+        $this->container['unique_click'] = $unique_click;
 
         return $this;
     }

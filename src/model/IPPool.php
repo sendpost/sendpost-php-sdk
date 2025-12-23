@@ -82,7 +82,7 @@ class IPPool implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'id' => null,
         'name' => null,
-        'created' => null,
+        'created' => 'int64',
         'ips' => null,
         'third_party_sending_providers' => null,
         'routing_strategy' => null,

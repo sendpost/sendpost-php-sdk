@@ -75,8 +75,8 @@ class SMTPAuth implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => null,
         'username' => null,
         'password' => null,
-        'created' => null,
-        'updated' => null
+        'created' => 'int64',
+        'updated' => 'int64'
     ];
 
     /**

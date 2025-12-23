@@ -58,12 +58,14 @@ class AggregateStats implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'processed' => 'int',
+        'sent' => 'int',
         'delivered' => 'int',
         'dropped' => 'int',
+        'smtp_dropped' => 'int',
         'hard_bounced' => 'int',
         'soft_bounced' => 'int',
-        'opens' => 'int',
-        'clicks' => 'int',
+        'opened' => 'int',
+        'clicked' => 'int',
         'unsubscribed' => 'int',
         'spams' => 'int'
     ];
@@ -77,12 +79,14 @@ class AggregateStats implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'processed' => null,
+        'sent' => null,
         'delivered' => null,
         'dropped' => null,
+        'smtp_dropped' => null,
         'hard_bounced' => null,
         'soft_bounced' => null,
-        'opens' => null,
-        'clicks' => null,
+        'opened' => null,
+        'clicked' => null,
         'unsubscribed' => null,
         'spams' => null
     ];
@@ -94,12 +98,14 @@ class AggregateStats implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'processed' => false,
+        'sent' => false,
         'delivered' => false,
         'dropped' => false,
+        'smtp_dropped' => false,
         'hard_bounced' => false,
         'soft_bounced' => false,
-        'opens' => false,
-        'clicks' => false,
+        'opened' => false,
+        'clicked' => false,
         'unsubscribed' => false,
         'spams' => false
     ];
@@ -191,12 +197,14 @@ class AggregateStats implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'processed' => 'processed',
+        'sent' => 'sent',
         'delivered' => 'delivered',
         'dropped' => 'dropped',
+        'smtp_dropped' => 'smtpDropped',
         'hard_bounced' => 'hardBounced',
         'soft_bounced' => 'softBounced',
-        'opens' => 'opens',
-        'clicks' => 'clicks',
+        'opened' => 'opened',
+        'clicked' => 'clicked',
         'unsubscribed' => 'unsubscribed',
         'spams' => 'spams'
     ];
@@ -208,12 +216,14 @@ class AggregateStats implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'processed' => 'setProcessed',
+        'sent' => 'setSent',
         'delivered' => 'setDelivered',
         'dropped' => 'setDropped',
+        'smtp_dropped' => 'setSmtpDropped',
         'hard_bounced' => 'setHardBounced',
         'soft_bounced' => 'setSoftBounced',
-        'opens' => 'setOpens',
-        'clicks' => 'setClicks',
+        'opened' => 'setOpened',
+        'clicked' => 'setClicked',
         'unsubscribed' => 'setUnsubscribed',
         'spams' => 'setSpams'
     ];
@@ -225,12 +235,14 @@ class AggregateStats implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'processed' => 'getProcessed',
+        'sent' => 'getSent',
         'delivered' => 'getDelivered',
         'dropped' => 'getDropped',
+        'smtp_dropped' => 'getSmtpDropped',
         'hard_bounced' => 'getHardBounced',
         'soft_bounced' => 'getSoftBounced',
-        'opens' => 'getOpens',
-        'clicks' => 'getClicks',
+        'opened' => 'getOpened',
+        'clicked' => 'getClicked',
         'unsubscribed' => 'getUnsubscribed',
         'spams' => 'getSpams'
     ];
@@ -293,12 +305,14 @@ class AggregateStats implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('processed', $data ?? [], null);
+        $this->setIfExists('sent', $data ?? [], null);
         $this->setIfExists('delivered', $data ?? [], null);
         $this->setIfExists('dropped', $data ?? [], null);
+        $this->setIfExists('smtp_dropped', $data ?? [], null);
         $this->setIfExists('hard_bounced', $data ?? [], null);
         $this->setIfExists('soft_bounced', $data ?? [], null);
-        $this->setIfExists('opens', $data ?? [], null);
-        $this->setIfExists('clicks', $data ?? [], null);
+        $this->setIfExists('opened', $data ?? [], null);
+        $this->setIfExists('clicked', $data ?? [], null);
         $this->setIfExists('unsubscribed', $data ?? [], null);
         $this->setIfExists('spams', $data ?? [], null);
     }
@@ -373,6 +387,33 @@ class AggregateStats implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets sent
+     *
+     * @return int|null
+     */
+    public function getSent()
+    {
+        return $this->container['sent'];
+    }
+
+    /**
+     * Sets sent
+     *
+     * @param int|null $sent sent
+     *
+     * @return self
+     */
+    public function setSent($sent)
+    {
+        if (is_null($sent)) {
+            throw new \InvalidArgumentException('non-nullable sent cannot be null');
+        }
+        $this->container['sent'] = $sent;
+
+        return $this;
+    }
+
+    /**
      * Gets delivered
      *
      * @return int|null
@@ -422,6 +463,33 @@ class AggregateStats implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable dropped cannot be null');
         }
         $this->container['dropped'] = $dropped;
+
+        return $this;
+    }
+
+    /**
+     * Gets smtp_dropped
+     *
+     * @return int|null
+     */
+    public function getSmtpDropped()
+    {
+        return $this->container['smtp_dropped'];
+    }
+
+    /**
+     * Sets smtp_dropped
+     *
+     * @param int|null $smtp_dropped smtp_dropped
+     *
+     * @return self
+     */
+    public function setSmtpDropped($smtp_dropped)
+    {
+        if (is_null($smtp_dropped)) {
+            throw new \InvalidArgumentException('non-nullable smtp_dropped cannot be null');
+        }
+        $this->container['smtp_dropped'] = $smtp_dropped;
 
         return $this;
     }
@@ -481,55 +549,55 @@ class AggregateStats implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets opens
+     * Gets opened
      *
      * @return int|null
      */
-    public function getOpens()
+    public function getOpened()
     {
-        return $this->container['opens'];
+        return $this->container['opened'];
     }
 
     /**
-     * Sets opens
+     * Sets opened
      *
-     * @param int|null $opens opens
+     * @param int|null $opened opened
      *
      * @return self
      */
-    public function setOpens($opens)
+    public function setOpened($opened)
     {
-        if (is_null($opens)) {
-            throw new \InvalidArgumentException('non-nullable opens cannot be null');
+        if (is_null($opened)) {
+            throw new \InvalidArgumentException('non-nullable opened cannot be null');
         }
-        $this->container['opens'] = $opens;
+        $this->container['opened'] = $opened;
 
         return $this;
     }
 
     /**
-     * Gets clicks
+     * Gets clicked
      *
      * @return int|null
      */
-    public function getClicks()
+    public function getClicked()
     {
-        return $this->container['clicks'];
+        return $this->container['clicked'];
     }
 
     /**
-     * Sets clicks
+     * Sets clicked
      *
-     * @param int|null $clicks clicks
+     * @param int|null $clicked clicked
      *
      * @return self
      */
-    public function setClicks($clicks)
+    public function setClicked($clicked)
     {
-        if (is_null($clicks)) {
-            throw new \InvalidArgumentException('non-nullable clicks cannot be null');
+        if (is_null($clicked)) {
+            throw new \InvalidArgumentException('non-nullable clicked cannot be null');
         }
-        $this->container['clicks'] = $clicks;
+        $this->container['clicked'] = $clicked;
 
         return $this;
     }

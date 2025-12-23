@@ -108,7 +108,7 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
         'qq_settings' => null,
         'default_settings' => null,
         'att_settings' => null,
-        'created' => null,
+        'created' => 'int64',
         'infra_classification' => null,
         'infra_monitor' => null,
         'state' => null,

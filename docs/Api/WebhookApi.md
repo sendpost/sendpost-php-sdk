@@ -14,7 +14,7 @@ All URIs are relative to https://api.sendpost.io/api/v1, except if the operation
 ## `createWebhook()`
 
 ```php
-createWebhook($new_webhook): \sendpost\model\Webhook
+createWebhook($create_webhook_request): \sendpost\model\Webhook
 ```
 
 Create Webhook
@@ -40,10 +40,10 @@ $apiInstance = new sendpost\Api\WebhookApi(
     new GuzzleHttp\Client(),
     $config
 );
-$new_webhook = new \sendpost\model\NewWebhook(); // \sendpost\model\NewWebhook
+$create_webhook_request = new \sendpost\model\CreateWebhookRequest(); // \sendpost\model\CreateWebhookRequest
 
 try {
-    $result = $apiInstance->createWebhook($new_webhook);
+    $result = $apiInstance->createWebhook($create_webhook_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhookApi->createWebhook: ', $e->getMessage(), PHP_EOL;
@@ -54,7 +54,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **new_webhook** | [**\sendpost\model\NewWebhook**](../Model/NewWebhook.md)|  | |
+| **create_webhook_request** | [**\sendpost\model\CreateWebhookRequest**](../Model/CreateWebhookRequest.md)|  | |
 
 ### Return type
 

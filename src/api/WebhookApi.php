@@ -142,16 +142,16 @@ class WebhookApi
      *
      * Create Webhook
      *
-     * @param  \sendpost\model\NewWebhook $new_webhook new_webhook (required)
+     * @param  \sendpost\model\CreateWebhookRequest $create_webhook_request create_webhook_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhook'] to see the possible values for this operation
      *
      * @throws \sendpost\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \sendpost\model\Webhook
      */
-    public function createWebhook($new_webhook, string $contentType = self::contentTypes['createWebhook'][0])
+    public function createWebhook($create_webhook_request, string $contentType = self::contentTypes['createWebhook'][0])
     {
-        list($response) = $this->createWebhookWithHttpInfo($new_webhook, $contentType);
+        list($response) = $this->createWebhookWithHttpInfo($create_webhook_request, $contentType);
         return $response;
     }
 
@@ -160,16 +160,16 @@ class WebhookApi
      *
      * Create Webhook
      *
-     * @param  \sendpost\model\NewWebhook $new_webhook (required)
+     * @param  \sendpost\model\CreateWebhookRequest $create_webhook_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhook'] to see the possible values for this operation
      *
      * @throws \sendpost\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \sendpost\model\Webhook, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWebhookWithHttpInfo($new_webhook, string $contentType = self::contentTypes['createWebhook'][0])
+    public function createWebhookWithHttpInfo($create_webhook_request, string $contentType = self::contentTypes['createWebhook'][0])
     {
-        $request = $this->createWebhookRequest($new_webhook, $contentType);
+        $request = $this->createWebhookRequest($create_webhook_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -245,15 +245,15 @@ class WebhookApi
      *
      * Create Webhook
      *
-     * @param  \sendpost\model\NewWebhook $new_webhook (required)
+     * @param  \sendpost\model\CreateWebhookRequest $create_webhook_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createWebhookAsync($new_webhook, string $contentType = self::contentTypes['createWebhook'][0])
+    public function createWebhookAsync($create_webhook_request, string $contentType = self::contentTypes['createWebhook'][0])
     {
-        return $this->createWebhookAsyncWithHttpInfo($new_webhook, $contentType)
+        return $this->createWebhookAsyncWithHttpInfo($create_webhook_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -266,16 +266,16 @@ class WebhookApi
      *
      * Create Webhook
      *
-     * @param  \sendpost\model\NewWebhook $new_webhook (required)
+     * @param  \sendpost\model\CreateWebhookRequest $create_webhook_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createWebhookAsyncWithHttpInfo($new_webhook, string $contentType = self::contentTypes['createWebhook'][0])
+    public function createWebhookAsyncWithHttpInfo($create_webhook_request, string $contentType = self::contentTypes['createWebhook'][0])
     {
         $returnType = '\sendpost\model\Webhook';
-        $request = $this->createWebhookRequest($new_webhook, $contentType);
+        $request = $this->createWebhookRequest($create_webhook_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -316,19 +316,19 @@ class WebhookApi
     /**
      * Create request for operation 'createWebhook'
      *
-     * @param  \sendpost\model\NewWebhook $new_webhook (required)
+     * @param  \sendpost\model\CreateWebhookRequest $create_webhook_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createWebhookRequest($new_webhook, string $contentType = self::contentTypes['createWebhook'][0])
+    public function createWebhookRequest($create_webhook_request, string $contentType = self::contentTypes['createWebhook'][0])
     {
 
-        // verify the required parameter 'new_webhook' is set
-        if ($new_webhook === null || (is_array($new_webhook) && count($new_webhook) === 0)) {
+        // verify the required parameter 'create_webhook_request' is set
+        if ($create_webhook_request === null || (is_array($create_webhook_request) && count($create_webhook_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $new_webhook when calling createWebhook'
+                'Missing the required parameter $create_webhook_request when calling createWebhook'
             );
         }
 
@@ -351,12 +351,12 @@ class WebhookApi
         );
 
         // for model (json/xml)
-        if (isset($new_webhook)) {
+        if (isset($create_webhook_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($new_webhook));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_webhook_request));
             } else {
-                $httpBody = $new_webhook;
+                $httpBody = $create_webhook_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

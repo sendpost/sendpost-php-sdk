@@ -90,7 +90,7 @@ class Member implements ModelInterface, ArrayAccess, \JsonSerializable
         'onboard_q_answered' => null,
         'phone_number' => null,
         'notes_color' => null,
-        'created' => null
+        'created' => 'int64'
     ];
 
     /**
