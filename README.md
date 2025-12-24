@@ -375,7 +375,7 @@ The SDK provides classes for different operations:
 
 ## Complete Example
 
-See the [example project](../example-sdk-php/) for a complete working example that demonstrates:
+See the [example project](https://github.com/sendpost/php-esp-example) for a complete working example that demonstrates:
 - Creating sub-accounts
 - Setting up webhooks
 - Adding domains
