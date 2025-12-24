@@ -2,6 +2,9 @@
 
 The official PHP SDK for SendPost - a powerful email API service for sending transactional and marketing emails with advanced tracking and analytics.
 
+[![Packagist](https://img.shields.io/packagist/v/sendpost/sendpost-php-sdk)](https://packagist.org/packages/sendpost/sendpost-php-sdk)
+[![Packagist](https://img.shields.io/packagist/dt/sendpost/sendpost-php-sdk)](https://packagist.org/packages/sendpost/sendpost-php-sdk)
+
 ## What is SendPost?
 
 SendPost is an email delivery service that helps you:
@@ -21,6 +24,8 @@ SendPost is an email delivery service that helps you:
 
 ## Installation
 
+The SendPost PHP SDK is available on [Packagist](https://packagist.org/packages/sendpost/sendpost-php-sdk), making installation quick and easy.
+
 ### Method 1: Install via Composer (Recommended)
 
 Composer is the recommended way to install the SendPost PHP SDK.
@@ -29,7 +34,30 @@ Composer is the recommended way to install the SendPost PHP SDK.
 
 If you don't have Composer installed, download it from [getcomposer.org](https://getcomposer.org/download/).
 
-#### Step 2: Add the SDK to your project
+#### Step 2: Install the SDK
+
+Run the following command in your project directory:
+
+```bash
+composer require sendpost/sendpost-php-sdk
+```
+
+This will automatically download the SendPost PHP SDK and all its dependencies from [Packagist](https://packagist.org/packages/sendpost/sendpost-php-sdk).
+
+#### Step 3: Include the autoloader
+
+In your PHP file, include the Composer autoloader:
+
+```php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+```
+
+That's it! You're ready to use the SDK.
+
+### Method 2: Install from GitHub Repository
+
+If you need to install directly from the GitHub repository (for example, to use a specific branch or version):
 
 Create or edit your `composer.json` file and add the SendPost SDK repository:
 
@@ -47,26 +75,13 @@ Create or edit your `composer.json` file and add the SendPost SDK repository:
 }
 ```
 
-#### Step 3: Install dependencies
-
-Run the following command in your project directory:
+Then run:
 
 ```bash
 composer install
 ```
 
-This will download the SendPost PHP SDK and all its dependencies.
-
-#### Step 4: Include the autoloader
-
-In your PHP file, include the Composer autoloader:
-
-```php
-<?php
-require_once __DIR__ . '/vendor/autoload.php';
-```
-
-### Method 2: Manual Installation
+### Method 3: Manual Installation
 
 If you prefer not to use Composer:
 
@@ -392,6 +407,7 @@ Need help?
 - **Documentation:** https://docs.sendpost.io
 - **Website:** https://sendpost.io
 - **Dashboard:** https://app.sendpost.io
+- **Packagist:** https://packagist.org/packages/sendpost/sendpost-php-sdk
 
 ## License
 
