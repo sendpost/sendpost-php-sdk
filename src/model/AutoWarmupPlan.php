@@ -1,6 +1,6 @@
 <?php
 /**
- * IP
+ * AutoWarmupPlan
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \sendpost\ObjectSerializer;
 
 /**
- * IP Class Doc Comment
+ * AutoWarmupPlan Class Doc Comment
  *
  * @category Class
  * @package  sendpost
@@ -40,7 +40,7 @@ use \sendpost\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class IP implements ModelInterface, ArrayAccess, \JsonSerializable
+class AutoWarmupPlan implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'IP';
+    protected static $openAPIModelName = 'AutoWarmupPlan';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,28 +58,37 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'id' => 'int',
-        'public_ip' => 'string',
-        'system_domain' => '\sendpost\model\Domain',
-        'reverse_dns_hostname' => 'string',
-        'type' => 'int',
-        'gmail_settings' => 'string',
-        'yahoo_settings' => 'string',
-        'aol_settings' => 'string',
-        'microsoft_settings' => 'string',
-        'comcast_settings' => 'string',
-        'yandex_settings' => 'string',
-        'gmx_settings' => 'string',
-        'mailru_settings' => 'string',
-        'icloud_settings' => 'string',
-        'zoho_settings' => 'string',
-        'qq_settings' => 'string',
-        'default_settings' => 'string',
-        'att_settings' => 'string',
+        'name' => 'string',
+        'gmail_warmup_plan' => 'string',
+        'yahoo_warmup_plan' => 'string',
+        'aol_warmup_plan' => 'string',
+        'microsoft_warmup_plan' => 'string',
+        'comcast_warmup_plan' => 'string',
+        'yandex_warmup_plan' => 'string',
+        'gmx_warmup_plan' => 'string',
+        'mailru_warmup_plan' => 'string',
+        'icloud_warmup_plan' => 'string',
+        'zoho_warmup_plan' => 'string',
+        'qq_warmup_plan' => 'string',
+        'default_warmup_plan' => 'string',
+        'att_warmup_plan' => 'string',
+        'office365_warmup_plan' => 'string',
+        'googleworkspace_warmup_plan' => 'string',
+        'proofpoint_warmup_plan' => 'string',
+        'mimecast_warmup_plan' => 'string',
+        'barracuda_warmup_plan' => 'string',
+        'ciscoironport_warmup_plan' => 'string',
+        'rackspace_warmup_plan' => 'string',
+        'zohobusiness_warmup_plan' => 'string',
+        'amazonworkmail_warmup_plan' => 'string',
+        'symantec_warmup_plan' => 'string',
+        'fortinet_warmup_plan' => 'string',
+        'sophos_warmup_plan' => 'string',
+        'trendmicro_warmup_plan' => 'string',
+        'checkpoint_warmup_plan' => 'string',
         'created' => 'int',
-        'infra_classification' => 'string',
-        'infra_monitor' => 'bool',
-        'state' => 'int',
-        'auto_warmup_plan' => '\sendpost\model\AutoWarmupPlan'
+        'updated' => 'int',
+        'warmup_interval' => 'int'
     ];
 
     /**
@@ -91,28 +100,37 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'public_ip' => null,
-        'system_domain' => null,
-        'reverse_dns_hostname' => null,
-        'type' => null,
-        'gmail_settings' => null,
-        'yahoo_settings' => null,
-        'aol_settings' => null,
-        'microsoft_settings' => null,
-        'comcast_settings' => null,
-        'yandex_settings' => null,
-        'gmx_settings' => null,
-        'mailru_settings' => null,
-        'icloud_settings' => null,
-        'zoho_settings' => null,
-        'qq_settings' => null,
-        'default_settings' => null,
-        'att_settings' => null,
+        'name' => null,
+        'gmail_warmup_plan' => null,
+        'yahoo_warmup_plan' => null,
+        'aol_warmup_plan' => null,
+        'microsoft_warmup_plan' => null,
+        'comcast_warmup_plan' => null,
+        'yandex_warmup_plan' => null,
+        'gmx_warmup_plan' => null,
+        'mailru_warmup_plan' => null,
+        'icloud_warmup_plan' => null,
+        'zoho_warmup_plan' => null,
+        'qq_warmup_plan' => null,
+        'default_warmup_plan' => null,
+        'att_warmup_plan' => null,
+        'office365_warmup_plan' => null,
+        'googleworkspace_warmup_plan' => null,
+        'proofpoint_warmup_plan' => null,
+        'mimecast_warmup_plan' => null,
+        'barracuda_warmup_plan' => null,
+        'ciscoironport_warmup_plan' => null,
+        'rackspace_warmup_plan' => null,
+        'zohobusiness_warmup_plan' => null,
+        'amazonworkmail_warmup_plan' => null,
+        'symantec_warmup_plan' => null,
+        'fortinet_warmup_plan' => null,
+        'sophos_warmup_plan' => null,
+        'trendmicro_warmup_plan' => null,
+        'checkpoint_warmup_plan' => null,
         'created' => 'int64',
-        'infra_classification' => null,
-        'infra_monitor' => null,
-        'state' => null,
-        'auto_warmup_plan' => null
+        'updated' => 'int64',
+        'warmup_interval' => null
     ];
 
     /**
@@ -122,28 +140,37 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'public_ip' => false,
-        'system_domain' => false,
-        'reverse_dns_hostname' => false,
-        'type' => false,
-        'gmail_settings' => false,
-        'yahoo_settings' => false,
-        'aol_settings' => false,
-        'microsoft_settings' => false,
-        'comcast_settings' => false,
-        'yandex_settings' => false,
-        'gmx_settings' => false,
-        'mailru_settings' => false,
-        'icloud_settings' => false,
-        'zoho_settings' => false,
-        'qq_settings' => false,
-        'default_settings' => false,
-        'att_settings' => false,
+        'name' => false,
+        'gmail_warmup_plan' => false,
+        'yahoo_warmup_plan' => false,
+        'aol_warmup_plan' => false,
+        'microsoft_warmup_plan' => false,
+        'comcast_warmup_plan' => false,
+        'yandex_warmup_plan' => false,
+        'gmx_warmup_plan' => false,
+        'mailru_warmup_plan' => false,
+        'icloud_warmup_plan' => false,
+        'zoho_warmup_plan' => false,
+        'qq_warmup_plan' => false,
+        'default_warmup_plan' => false,
+        'att_warmup_plan' => false,
+        'office365_warmup_plan' => false,
+        'googleworkspace_warmup_plan' => false,
+        'proofpoint_warmup_plan' => false,
+        'mimecast_warmup_plan' => false,
+        'barracuda_warmup_plan' => false,
+        'ciscoironport_warmup_plan' => false,
+        'rackspace_warmup_plan' => false,
+        'zohobusiness_warmup_plan' => false,
+        'amazonworkmail_warmup_plan' => false,
+        'symantec_warmup_plan' => false,
+        'fortinet_warmup_plan' => false,
+        'sophos_warmup_plan' => false,
+        'trendmicro_warmup_plan' => false,
+        'checkpoint_warmup_plan' => false,
         'created' => false,
-        'infra_classification' => false,
-        'infra_monitor' => false,
-        'state' => false,
-        'auto_warmup_plan' => false
+        'updated' => false,
+        'warmup_interval' => false
     ];
 
     /**
@@ -233,28 +260,37 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'public_ip' => 'publicIP',
-        'system_domain' => 'systemDomain',
-        'reverse_dns_hostname' => 'reverseDNSHostname',
-        'type' => 'type',
-        'gmail_settings' => 'gmailSettings',
-        'yahoo_settings' => 'yahooSettings',
-        'aol_settings' => 'aolSettings',
-        'microsoft_settings' => 'microsoftSettings',
-        'comcast_settings' => 'comcastSettings',
-        'yandex_settings' => 'yandexSettings',
-        'gmx_settings' => 'gmxSettings',
-        'mailru_settings' => 'mailruSettings',
-        'icloud_settings' => 'icloudSettings',
-        'zoho_settings' => 'zohoSettings',
-        'qq_settings' => 'qqSettings',
-        'default_settings' => 'defaultSettings',
-        'att_settings' => 'attSettings',
+        'name' => 'name',
+        'gmail_warmup_plan' => 'gmailWarmupPlan',
+        'yahoo_warmup_plan' => 'yahooWarmupPlan',
+        'aol_warmup_plan' => 'aolWarmupPlan',
+        'microsoft_warmup_plan' => 'microsoftWarmupPlan',
+        'comcast_warmup_plan' => 'comcastWarmupPlan',
+        'yandex_warmup_plan' => 'yandexWarmupPlan',
+        'gmx_warmup_plan' => 'gmxWarmupPlan',
+        'mailru_warmup_plan' => 'mailruWarmupPlan',
+        'icloud_warmup_plan' => 'icloudWarmupPlan',
+        'zoho_warmup_plan' => 'zohoWarmupPlan',
+        'qq_warmup_plan' => 'qqWarmupPlan',
+        'default_warmup_plan' => 'defaultWarmupPlan',
+        'att_warmup_plan' => 'attWarmupPlan',
+        'office365_warmup_plan' => 'office365WarmupPlan',
+        'googleworkspace_warmup_plan' => 'googleworkspaceWarmupPlan',
+        'proofpoint_warmup_plan' => 'proofpointWarmupPlan',
+        'mimecast_warmup_plan' => 'mimecastWarmupPlan',
+        'barracuda_warmup_plan' => 'barracudaWarmupPlan',
+        'ciscoironport_warmup_plan' => 'ciscoironportWarmupPlan',
+        'rackspace_warmup_plan' => 'rackspaceWarmupPlan',
+        'zohobusiness_warmup_plan' => 'zohobusinessWarmupPlan',
+        'amazonworkmail_warmup_plan' => 'amazonworkmailWarmupPlan',
+        'symantec_warmup_plan' => 'symantecWarmupPlan',
+        'fortinet_warmup_plan' => 'fortinetWarmupPlan',
+        'sophos_warmup_plan' => 'sophosWarmupPlan',
+        'trendmicro_warmup_plan' => 'trendmicroWarmupPlan',
+        'checkpoint_warmup_plan' => 'checkpointWarmupPlan',
         'created' => 'created',
-        'infra_classification' => 'infraClassification',
-        'infra_monitor' => 'infraMonitor',
-        'state' => 'state',
-        'auto_warmup_plan' => 'autoWarmupPlan'
+        'updated' => 'updated',
+        'warmup_interval' => 'warmupInterval'
     ];
 
     /**
@@ -264,28 +300,37 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'id' => 'setId',
-        'public_ip' => 'setPublicIp',
-        'system_domain' => 'setSystemDomain',
-        'reverse_dns_hostname' => 'setReverseDnsHostname',
-        'type' => 'setType',
-        'gmail_settings' => 'setGmailSettings',
-        'yahoo_settings' => 'setYahooSettings',
-        'aol_settings' => 'setAolSettings',
-        'microsoft_settings' => 'setMicrosoftSettings',
-        'comcast_settings' => 'setComcastSettings',
-        'yandex_settings' => 'setYandexSettings',
-        'gmx_settings' => 'setGmxSettings',
-        'mailru_settings' => 'setMailruSettings',
-        'icloud_settings' => 'setIcloudSettings',
-        'zoho_settings' => 'setZohoSettings',
-        'qq_settings' => 'setQqSettings',
-        'default_settings' => 'setDefaultSettings',
-        'att_settings' => 'setAttSettings',
+        'name' => 'setName',
+        'gmail_warmup_plan' => 'setGmailWarmupPlan',
+        'yahoo_warmup_plan' => 'setYahooWarmupPlan',
+        'aol_warmup_plan' => 'setAolWarmupPlan',
+        'microsoft_warmup_plan' => 'setMicrosoftWarmupPlan',
+        'comcast_warmup_plan' => 'setComcastWarmupPlan',
+        'yandex_warmup_plan' => 'setYandexWarmupPlan',
+        'gmx_warmup_plan' => 'setGmxWarmupPlan',
+        'mailru_warmup_plan' => 'setMailruWarmupPlan',
+        'icloud_warmup_plan' => 'setIcloudWarmupPlan',
+        'zoho_warmup_plan' => 'setZohoWarmupPlan',
+        'qq_warmup_plan' => 'setQqWarmupPlan',
+        'default_warmup_plan' => 'setDefaultWarmupPlan',
+        'att_warmup_plan' => 'setAttWarmupPlan',
+        'office365_warmup_plan' => 'setOffice365WarmupPlan',
+        'googleworkspace_warmup_plan' => 'setGoogleworkspaceWarmupPlan',
+        'proofpoint_warmup_plan' => 'setProofpointWarmupPlan',
+        'mimecast_warmup_plan' => 'setMimecastWarmupPlan',
+        'barracuda_warmup_plan' => 'setBarracudaWarmupPlan',
+        'ciscoironport_warmup_plan' => 'setCiscoironportWarmupPlan',
+        'rackspace_warmup_plan' => 'setRackspaceWarmupPlan',
+        'zohobusiness_warmup_plan' => 'setZohobusinessWarmupPlan',
+        'amazonworkmail_warmup_plan' => 'setAmazonworkmailWarmupPlan',
+        'symantec_warmup_plan' => 'setSymantecWarmupPlan',
+        'fortinet_warmup_plan' => 'setFortinetWarmupPlan',
+        'sophos_warmup_plan' => 'setSophosWarmupPlan',
+        'trendmicro_warmup_plan' => 'setTrendmicroWarmupPlan',
+        'checkpoint_warmup_plan' => 'setCheckpointWarmupPlan',
         'created' => 'setCreated',
-        'infra_classification' => 'setInfraClassification',
-        'infra_monitor' => 'setInfraMonitor',
-        'state' => 'setState',
-        'auto_warmup_plan' => 'setAutoWarmupPlan'
+        'updated' => 'setUpdated',
+        'warmup_interval' => 'setWarmupInterval'
     ];
 
     /**
@@ -295,28 +340,37 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'id' => 'getId',
-        'public_ip' => 'getPublicIp',
-        'system_domain' => 'getSystemDomain',
-        'reverse_dns_hostname' => 'getReverseDnsHostname',
-        'type' => 'getType',
-        'gmail_settings' => 'getGmailSettings',
-        'yahoo_settings' => 'getYahooSettings',
-        'aol_settings' => 'getAolSettings',
-        'microsoft_settings' => 'getMicrosoftSettings',
-        'comcast_settings' => 'getComcastSettings',
-        'yandex_settings' => 'getYandexSettings',
-        'gmx_settings' => 'getGmxSettings',
-        'mailru_settings' => 'getMailruSettings',
-        'icloud_settings' => 'getIcloudSettings',
-        'zoho_settings' => 'getZohoSettings',
-        'qq_settings' => 'getQqSettings',
-        'default_settings' => 'getDefaultSettings',
-        'att_settings' => 'getAttSettings',
+        'name' => 'getName',
+        'gmail_warmup_plan' => 'getGmailWarmupPlan',
+        'yahoo_warmup_plan' => 'getYahooWarmupPlan',
+        'aol_warmup_plan' => 'getAolWarmupPlan',
+        'microsoft_warmup_plan' => 'getMicrosoftWarmupPlan',
+        'comcast_warmup_plan' => 'getComcastWarmupPlan',
+        'yandex_warmup_plan' => 'getYandexWarmupPlan',
+        'gmx_warmup_plan' => 'getGmxWarmupPlan',
+        'mailru_warmup_plan' => 'getMailruWarmupPlan',
+        'icloud_warmup_plan' => 'getIcloudWarmupPlan',
+        'zoho_warmup_plan' => 'getZohoWarmupPlan',
+        'qq_warmup_plan' => 'getQqWarmupPlan',
+        'default_warmup_plan' => 'getDefaultWarmupPlan',
+        'att_warmup_plan' => 'getAttWarmupPlan',
+        'office365_warmup_plan' => 'getOffice365WarmupPlan',
+        'googleworkspace_warmup_plan' => 'getGoogleworkspaceWarmupPlan',
+        'proofpoint_warmup_plan' => 'getProofpointWarmupPlan',
+        'mimecast_warmup_plan' => 'getMimecastWarmupPlan',
+        'barracuda_warmup_plan' => 'getBarracudaWarmupPlan',
+        'ciscoironport_warmup_plan' => 'getCiscoironportWarmupPlan',
+        'rackspace_warmup_plan' => 'getRackspaceWarmupPlan',
+        'zohobusiness_warmup_plan' => 'getZohobusinessWarmupPlan',
+        'amazonworkmail_warmup_plan' => 'getAmazonworkmailWarmupPlan',
+        'symantec_warmup_plan' => 'getSymantecWarmupPlan',
+        'fortinet_warmup_plan' => 'getFortinetWarmupPlan',
+        'sophos_warmup_plan' => 'getSophosWarmupPlan',
+        'trendmicro_warmup_plan' => 'getTrendmicroWarmupPlan',
+        'checkpoint_warmup_plan' => 'getCheckpointWarmupPlan',
         'created' => 'getCreated',
-        'infra_classification' => 'getInfraClassification',
-        'infra_monitor' => 'getInfraMonitor',
-        'state' => 'getState',
-        'auto_warmup_plan' => 'getAutoWarmupPlan'
+        'updated' => 'getUpdated',
+        'warmup_interval' => 'getWarmupInterval'
     ];
 
     /**
@@ -377,28 +431,37 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('public_ip', $data ?? [], null);
-        $this->setIfExists('system_domain', $data ?? [], null);
-        $this->setIfExists('reverse_dns_hostname', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('gmail_settings', $data ?? [], null);
-        $this->setIfExists('yahoo_settings', $data ?? [], null);
-        $this->setIfExists('aol_settings', $data ?? [], null);
-        $this->setIfExists('microsoft_settings', $data ?? [], null);
-        $this->setIfExists('comcast_settings', $data ?? [], null);
-        $this->setIfExists('yandex_settings', $data ?? [], null);
-        $this->setIfExists('gmx_settings', $data ?? [], null);
-        $this->setIfExists('mailru_settings', $data ?? [], null);
-        $this->setIfExists('icloud_settings', $data ?? [], null);
-        $this->setIfExists('zoho_settings', $data ?? [], null);
-        $this->setIfExists('qq_settings', $data ?? [], null);
-        $this->setIfExists('default_settings', $data ?? [], null);
-        $this->setIfExists('att_settings', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('gmail_warmup_plan', $data ?? [], null);
+        $this->setIfExists('yahoo_warmup_plan', $data ?? [], null);
+        $this->setIfExists('aol_warmup_plan', $data ?? [], null);
+        $this->setIfExists('microsoft_warmup_plan', $data ?? [], null);
+        $this->setIfExists('comcast_warmup_plan', $data ?? [], null);
+        $this->setIfExists('yandex_warmup_plan', $data ?? [], null);
+        $this->setIfExists('gmx_warmup_plan', $data ?? [], null);
+        $this->setIfExists('mailru_warmup_plan', $data ?? [], null);
+        $this->setIfExists('icloud_warmup_plan', $data ?? [], null);
+        $this->setIfExists('zoho_warmup_plan', $data ?? [], null);
+        $this->setIfExists('qq_warmup_plan', $data ?? [], null);
+        $this->setIfExists('default_warmup_plan', $data ?? [], null);
+        $this->setIfExists('att_warmup_plan', $data ?? [], null);
+        $this->setIfExists('office365_warmup_plan', $data ?? [], null);
+        $this->setIfExists('googleworkspace_warmup_plan', $data ?? [], null);
+        $this->setIfExists('proofpoint_warmup_plan', $data ?? [], null);
+        $this->setIfExists('mimecast_warmup_plan', $data ?? [], null);
+        $this->setIfExists('barracuda_warmup_plan', $data ?? [], null);
+        $this->setIfExists('ciscoironport_warmup_plan', $data ?? [], null);
+        $this->setIfExists('rackspace_warmup_plan', $data ?? [], null);
+        $this->setIfExists('zohobusiness_warmup_plan', $data ?? [], null);
+        $this->setIfExists('amazonworkmail_warmup_plan', $data ?? [], null);
+        $this->setIfExists('symantec_warmup_plan', $data ?? [], null);
+        $this->setIfExists('fortinet_warmup_plan', $data ?? [], null);
+        $this->setIfExists('sophos_warmup_plan', $data ?? [], null);
+        $this->setIfExists('trendmicro_warmup_plan', $data ?? [], null);
+        $this->setIfExists('checkpoint_warmup_plan', $data ?? [], null);
         $this->setIfExists('created', $data ?? [], null);
-        $this->setIfExists('infra_classification', $data ?? [], null);
-        $this->setIfExists('infra_monitor', $data ?? [], null);
-        $this->setIfExists('state', $data ?? [], null);
-        $this->setIfExists('auto_warmup_plan', $data ?? [], null);
+        $this->setIfExists('updated', $data ?? [], null);
+        $this->setIfExists('warmup_interval', $data ?? [], null);
     }
 
     /**
@@ -428,15 +491,6 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['public_ip'] === null) {
-            $invalidProperties[] = "'public_ip' can't be null";
-        }
-        if ($this->container['created'] === null) {
-            $invalidProperties[] = "'created' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -455,7 +509,7 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets id
      *
-     * @return int
+     * @return int|null
      */
     public function getId()
     {
@@ -465,7 +519,7 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param int $id Unique ID for the IP
+     * @param int|null $id Unique ID for the auto-warmup plan
      *
      * @return self
      */
@@ -480,460 +534,757 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets public_ip
-     *
-     * @return string
-     */
-    public function getPublicIp()
-    {
-        return $this->container['public_ip'];
-    }
-
-    /**
-     * Sets public_ip
-     *
-     * @param string $public_ip The public IP address associated with the resource
-     *
-     * @return self
-     */
-    public function setPublicIp($public_ip)
-    {
-        if (is_null($public_ip)) {
-            throw new \InvalidArgumentException('non-nullable public_ip cannot be null');
-        }
-        $this->container['public_ip'] = $public_ip;
-
-        return $this;
-    }
-
-    /**
-     * Gets system_domain
-     *
-     * @return \sendpost\model\Domain|null
-     */
-    public function getSystemDomain()
-    {
-        return $this->container['system_domain'];
-    }
-
-    /**
-     * Sets system_domain
-     *
-     * @param \sendpost\model\Domain|null $system_domain system_domain
-     *
-     * @return self
-     */
-    public function setSystemDomain($system_domain)
-    {
-        if (is_null($system_domain)) {
-            throw new \InvalidArgumentException('non-nullable system_domain cannot be null');
-        }
-        $this->container['system_domain'] = $system_domain;
-
-        return $this;
-    }
-
-    /**
-     * Gets reverse_dns_hostname
+     * Gets name
      *
      * @return string|null
      */
-    public function getReverseDnsHostname()
+    public function getName()
     {
-        return $this->container['reverse_dns_hostname'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets reverse_dns_hostname
+     * Sets name
      *
-     * @param string|null $reverse_dns_hostname The reverse DNS hostname for the IP
+     * @param string|null $name Name of the auto-warmup plan
      *
      * @return self
      */
-    public function setReverseDnsHostname($reverse_dns_hostname)
+    public function setName($name)
     {
-        if (is_null($reverse_dns_hostname)) {
-            throw new \InvalidArgumentException('non-nullable reverse_dns_hostname cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['reverse_dns_hostname'] = $reverse_dns_hostname;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets type
-     *
-     * @return int|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param int|null $type Type of the IP
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets gmail_settings
+     * Gets gmail_warmup_plan
      *
      * @return string|null
      */
-    public function getGmailSettings()
+    public function getGmailWarmupPlan()
     {
-        return $this->container['gmail_settings'];
+        return $this->container['gmail_warmup_plan'];
     }
 
     /**
-     * Sets gmail_settings
+     * Sets gmail_warmup_plan
      *
-     * @param string|null $gmail_settings Configuration for Gmail delivery settings in JSON format
+     * @param string|null $gmail_warmup_plan Gmail warmup plan configuration in JSON format
      *
      * @return self
      */
-    public function setGmailSettings($gmail_settings)
+    public function setGmailWarmupPlan($gmail_warmup_plan)
     {
-        if (is_null($gmail_settings)) {
-            throw new \InvalidArgumentException('non-nullable gmail_settings cannot be null');
+        if (is_null($gmail_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable gmail_warmup_plan cannot be null');
         }
-        $this->container['gmail_settings'] = $gmail_settings;
+        $this->container['gmail_warmup_plan'] = $gmail_warmup_plan;
 
         return $this;
     }
 
     /**
-     * Gets yahoo_settings
+     * Gets yahoo_warmup_plan
      *
      * @return string|null
      */
-    public function getYahooSettings()
+    public function getYahooWarmupPlan()
     {
-        return $this->container['yahoo_settings'];
+        return $this->container['yahoo_warmup_plan'];
     }
 
     /**
-     * Sets yahoo_settings
+     * Sets yahoo_warmup_plan
      *
-     * @param string|null $yahoo_settings Configuration for Yahoo delivery settings in JSON format
+     * @param string|null $yahoo_warmup_plan Yahoo warmup plan configuration in JSON format
      *
      * @return self
      */
-    public function setYahooSettings($yahoo_settings)
+    public function setYahooWarmupPlan($yahoo_warmup_plan)
     {
-        if (is_null($yahoo_settings)) {
-            throw new \InvalidArgumentException('non-nullable yahoo_settings cannot be null');
+        if (is_null($yahoo_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable yahoo_warmup_plan cannot be null');
         }
-        $this->container['yahoo_settings'] = $yahoo_settings;
+        $this->container['yahoo_warmup_plan'] = $yahoo_warmup_plan;
 
         return $this;
     }
 
     /**
-     * Gets aol_settings
+     * Gets aol_warmup_plan
      *
      * @return string|null
      */
-    public function getAolSettings()
+    public function getAolWarmupPlan()
     {
-        return $this->container['aol_settings'];
+        return $this->container['aol_warmup_plan'];
     }
 
     /**
-     * Sets aol_settings
+     * Sets aol_warmup_plan
      *
-     * @param string|null $aol_settings Configuration for AOL delivery settings in JSON format
+     * @param string|null $aol_warmup_plan AOL warmup plan configuration in JSON format
      *
      * @return self
      */
-    public function setAolSettings($aol_settings)
+    public function setAolWarmupPlan($aol_warmup_plan)
     {
-        if (is_null($aol_settings)) {
-            throw new \InvalidArgumentException('non-nullable aol_settings cannot be null');
+        if (is_null($aol_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable aol_warmup_plan cannot be null');
         }
-        $this->container['aol_settings'] = $aol_settings;
+        $this->container['aol_warmup_plan'] = $aol_warmup_plan;
 
         return $this;
     }
 
     /**
-     * Gets microsoft_settings
+     * Gets microsoft_warmup_plan
      *
      * @return string|null
      */
-    public function getMicrosoftSettings()
+    public function getMicrosoftWarmupPlan()
     {
-        return $this->container['microsoft_settings'];
+        return $this->container['microsoft_warmup_plan'];
     }
 
     /**
-     * Sets microsoft_settings
+     * Sets microsoft_warmup_plan
      *
-     * @param string|null $microsoft_settings Configuration for Microsoft delivery settings in JSON format
+     * @param string|null $microsoft_warmup_plan Microsoft warmup plan configuration in JSON format
      *
      * @return self
      */
-    public function setMicrosoftSettings($microsoft_settings)
+    public function setMicrosoftWarmupPlan($microsoft_warmup_plan)
     {
-        if (is_null($microsoft_settings)) {
-            throw new \InvalidArgumentException('non-nullable microsoft_settings cannot be null');
+        if (is_null($microsoft_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable microsoft_warmup_plan cannot be null');
         }
-        $this->container['microsoft_settings'] = $microsoft_settings;
+        $this->container['microsoft_warmup_plan'] = $microsoft_warmup_plan;
 
         return $this;
     }
 
     /**
-     * Gets comcast_settings
+     * Gets comcast_warmup_plan
      *
      * @return string|null
      */
-    public function getComcastSettings()
+    public function getComcastWarmupPlan()
     {
-        return $this->container['comcast_settings'];
+        return $this->container['comcast_warmup_plan'];
     }
 
     /**
-     * Sets comcast_settings
+     * Sets comcast_warmup_plan
      *
-     * @param string|null $comcast_settings Configuration for Comcast delivery settings in JSON format
+     * @param string|null $comcast_warmup_plan Comcast warmup plan configuration in JSON format
      *
      * @return self
      */
-    public function setComcastSettings($comcast_settings)
+    public function setComcastWarmupPlan($comcast_warmup_plan)
     {
-        if (is_null($comcast_settings)) {
-            throw new \InvalidArgumentException('non-nullable comcast_settings cannot be null');
+        if (is_null($comcast_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable comcast_warmup_plan cannot be null');
         }
-        $this->container['comcast_settings'] = $comcast_settings;
+        $this->container['comcast_warmup_plan'] = $comcast_warmup_plan;
 
         return $this;
     }
 
     /**
-     * Gets yandex_settings
+     * Gets yandex_warmup_plan
      *
      * @return string|null
      */
-    public function getYandexSettings()
+    public function getYandexWarmupPlan()
     {
-        return $this->container['yandex_settings'];
+        return $this->container['yandex_warmup_plan'];
     }
 
     /**
-     * Sets yandex_settings
+     * Sets yandex_warmup_plan
      *
-     * @param string|null $yandex_settings Configuration for Yandex delivery settings in JSON format
+     * @param string|null $yandex_warmup_plan Yandex warmup plan configuration in JSON format
      *
      * @return self
      */
-    public function setYandexSettings($yandex_settings)
+    public function setYandexWarmupPlan($yandex_warmup_plan)
     {
-        if (is_null($yandex_settings)) {
-            throw new \InvalidArgumentException('non-nullable yandex_settings cannot be null');
+        if (is_null($yandex_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable yandex_warmup_plan cannot be null');
         }
-        $this->container['yandex_settings'] = $yandex_settings;
+        $this->container['yandex_warmup_plan'] = $yandex_warmup_plan;
 
         return $this;
     }
 
     /**
-     * Gets gmx_settings
+     * Gets gmx_warmup_plan
      *
      * @return string|null
      */
-    public function getGmxSettings()
+    public function getGmxWarmupPlan()
     {
-        return $this->container['gmx_settings'];
+        return $this->container['gmx_warmup_plan'];
     }
 
     /**
-     * Sets gmx_settings
+     * Sets gmx_warmup_plan
      *
-     * @param string|null $gmx_settings Configuration for GMX delivery settings in JSON format
+     * @param string|null $gmx_warmup_plan GMX warmup plan configuration in JSON format
      *
      * @return self
      */
-    public function setGmxSettings($gmx_settings)
+    public function setGmxWarmupPlan($gmx_warmup_plan)
     {
-        if (is_null($gmx_settings)) {
-            throw new \InvalidArgumentException('non-nullable gmx_settings cannot be null');
+        if (is_null($gmx_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable gmx_warmup_plan cannot be null');
         }
-        $this->container['gmx_settings'] = $gmx_settings;
+        $this->container['gmx_warmup_plan'] = $gmx_warmup_plan;
 
         return $this;
     }
 
     /**
-     * Gets mailru_settings
+     * Gets mailru_warmup_plan
      *
      * @return string|null
      */
-    public function getMailruSettings()
+    public function getMailruWarmupPlan()
     {
-        return $this->container['mailru_settings'];
+        return $this->container['mailru_warmup_plan'];
     }
 
     /**
-     * Sets mailru_settings
+     * Sets mailru_warmup_plan
      *
-     * @param string|null $mailru_settings Configuration for Mail.ru delivery settings in JSON format
+     * @param string|null $mailru_warmup_plan Mail.ru warmup plan configuration in JSON format
      *
      * @return self
      */
-    public function setMailruSettings($mailru_settings)
+    public function setMailruWarmupPlan($mailru_warmup_plan)
     {
-        if (is_null($mailru_settings)) {
-            throw new \InvalidArgumentException('non-nullable mailru_settings cannot be null');
+        if (is_null($mailru_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable mailru_warmup_plan cannot be null');
         }
-        $this->container['mailru_settings'] = $mailru_settings;
+        $this->container['mailru_warmup_plan'] = $mailru_warmup_plan;
 
         return $this;
     }
 
     /**
-     * Gets icloud_settings
+     * Gets icloud_warmup_plan
      *
      * @return string|null
      */
-    public function getIcloudSettings()
+    public function getIcloudWarmupPlan()
     {
-        return $this->container['icloud_settings'];
+        return $this->container['icloud_warmup_plan'];
     }
 
     /**
-     * Sets icloud_settings
+     * Sets icloud_warmup_plan
      *
-     * @param string|null $icloud_settings Configuration for iCloud delivery settings in JSON format
+     * @param string|null $icloud_warmup_plan iCloud warmup plan configuration in JSON format
      *
      * @return self
      */
-    public function setIcloudSettings($icloud_settings)
+    public function setIcloudWarmupPlan($icloud_warmup_plan)
     {
-        if (is_null($icloud_settings)) {
-            throw new \InvalidArgumentException('non-nullable icloud_settings cannot be null');
+        if (is_null($icloud_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable icloud_warmup_plan cannot be null');
         }
-        $this->container['icloud_settings'] = $icloud_settings;
+        $this->container['icloud_warmup_plan'] = $icloud_warmup_plan;
 
         return $this;
     }
 
     /**
-     * Gets zoho_settings
+     * Gets zoho_warmup_plan
      *
      * @return string|null
      */
-    public function getZohoSettings()
+    public function getZohoWarmupPlan()
     {
-        return $this->container['zoho_settings'];
+        return $this->container['zoho_warmup_plan'];
     }
 
     /**
-     * Sets zoho_settings
+     * Sets zoho_warmup_plan
      *
-     * @param string|null $zoho_settings Configuration for Zoho delivery settings in JSON format
+     * @param string|null $zoho_warmup_plan Zoho warmup plan configuration in JSON format
      *
      * @return self
      */
-    public function setZohoSettings($zoho_settings)
+    public function setZohoWarmupPlan($zoho_warmup_plan)
     {
-        if (is_null($zoho_settings)) {
-            throw new \InvalidArgumentException('non-nullable zoho_settings cannot be null');
+        if (is_null($zoho_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable zoho_warmup_plan cannot be null');
         }
-        $this->container['zoho_settings'] = $zoho_settings;
+        $this->container['zoho_warmup_plan'] = $zoho_warmup_plan;
 
         return $this;
     }
 
     /**
-     * Gets qq_settings
+     * Gets qq_warmup_plan
      *
      * @return string|null
      */
-    public function getQqSettings()
+    public function getQqWarmupPlan()
     {
-        return $this->container['qq_settings'];
+        return $this->container['qq_warmup_plan'];
     }
 
     /**
-     * Sets qq_settings
+     * Sets qq_warmup_plan
      *
-     * @param string|null $qq_settings Configuration for QQ delivery settings in JSON format
+     * @param string|null $qq_warmup_plan QQ warmup plan configuration in JSON format
      *
      * @return self
      */
-    public function setQqSettings($qq_settings)
+    public function setQqWarmupPlan($qq_warmup_plan)
     {
-        if (is_null($qq_settings)) {
-            throw new \InvalidArgumentException('non-nullable qq_settings cannot be null');
+        if (is_null($qq_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable qq_warmup_plan cannot be null');
         }
-        $this->container['qq_settings'] = $qq_settings;
+        $this->container['qq_warmup_plan'] = $qq_warmup_plan;
 
         return $this;
     }
 
     /**
-     * Gets default_settings
+     * Gets default_warmup_plan
      *
      * @return string|null
      */
-    public function getDefaultSettings()
+    public function getDefaultWarmupPlan()
     {
-        return $this->container['default_settings'];
+        return $this->container['default_warmup_plan'];
     }
 
     /**
-     * Sets default_settings
+     * Sets default_warmup_plan
      *
-     * @param string|null $default_settings Default delivery settings in JSON format
+     * @param string|null $default_warmup_plan Default warmup plan configuration in JSON format
      *
      * @return self
      */
-    public function setDefaultSettings($default_settings)
+    public function setDefaultWarmupPlan($default_warmup_plan)
     {
-        if (is_null($default_settings)) {
-            throw new \InvalidArgumentException('non-nullable default_settings cannot be null');
+        if (is_null($default_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable default_warmup_plan cannot be null');
         }
-        $this->container['default_settings'] = $default_settings;
+        $this->container['default_warmup_plan'] = $default_warmup_plan;
 
         return $this;
     }
 
     /**
-     * Gets att_settings
+     * Gets att_warmup_plan
      *
      * @return string|null
      */
-    public function getAttSettings()
+    public function getAttWarmupPlan()
     {
-        return $this->container['att_settings'];
+        return $this->container['att_warmup_plan'];
     }
 
     /**
-     * Sets att_settings
+     * Sets att_warmup_plan
      *
-     * @param string|null $att_settings Configuration for AT&T delivery settings in JSON format
+     * @param string|null $att_warmup_plan AT&T warmup plan configuration in JSON format
      *
      * @return self
      */
-    public function setAttSettings($att_settings)
+    public function setAttWarmupPlan($att_warmup_plan)
     {
-        if (is_null($att_settings)) {
-            throw new \InvalidArgumentException('non-nullable att_settings cannot be null');
+        if (is_null($att_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable att_warmup_plan cannot be null');
         }
-        $this->container['att_settings'] = $att_settings;
+        $this->container['att_warmup_plan'] = $att_warmup_plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets office365_warmup_plan
+     *
+     * @return string|null
+     */
+    public function getOffice365WarmupPlan()
+    {
+        return $this->container['office365_warmup_plan'];
+    }
+
+    /**
+     * Sets office365_warmup_plan
+     *
+     * @param string|null $office365_warmup_plan Office365 warmup plan configuration in JSON format
+     *
+     * @return self
+     */
+    public function setOffice365WarmupPlan($office365_warmup_plan)
+    {
+        if (is_null($office365_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable office365_warmup_plan cannot be null');
+        }
+        $this->container['office365_warmup_plan'] = $office365_warmup_plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets googleworkspace_warmup_plan
+     *
+     * @return string|null
+     */
+    public function getGoogleworkspaceWarmupPlan()
+    {
+        return $this->container['googleworkspace_warmup_plan'];
+    }
+
+    /**
+     * Sets googleworkspace_warmup_plan
+     *
+     * @param string|null $googleworkspace_warmup_plan Google Workspace warmup plan configuration in JSON format
+     *
+     * @return self
+     */
+    public function setGoogleworkspaceWarmupPlan($googleworkspace_warmup_plan)
+    {
+        if (is_null($googleworkspace_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable googleworkspace_warmup_plan cannot be null');
+        }
+        $this->container['googleworkspace_warmup_plan'] = $googleworkspace_warmup_plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets proofpoint_warmup_plan
+     *
+     * @return string|null
+     */
+    public function getProofpointWarmupPlan()
+    {
+        return $this->container['proofpoint_warmup_plan'];
+    }
+
+    /**
+     * Sets proofpoint_warmup_plan
+     *
+     * @param string|null $proofpoint_warmup_plan Proofpoint warmup plan configuration in JSON format
+     *
+     * @return self
+     */
+    public function setProofpointWarmupPlan($proofpoint_warmup_plan)
+    {
+        if (is_null($proofpoint_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable proofpoint_warmup_plan cannot be null');
+        }
+        $this->container['proofpoint_warmup_plan'] = $proofpoint_warmup_plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets mimecast_warmup_plan
+     *
+     * @return string|null
+     */
+    public function getMimecastWarmupPlan()
+    {
+        return $this->container['mimecast_warmup_plan'];
+    }
+
+    /**
+     * Sets mimecast_warmup_plan
+     *
+     * @param string|null $mimecast_warmup_plan Mimecast warmup plan configuration in JSON format
+     *
+     * @return self
+     */
+    public function setMimecastWarmupPlan($mimecast_warmup_plan)
+    {
+        if (is_null($mimecast_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable mimecast_warmup_plan cannot be null');
+        }
+        $this->container['mimecast_warmup_plan'] = $mimecast_warmup_plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets barracuda_warmup_plan
+     *
+     * @return string|null
+     */
+    public function getBarracudaWarmupPlan()
+    {
+        return $this->container['barracuda_warmup_plan'];
+    }
+
+    /**
+     * Sets barracuda_warmup_plan
+     *
+     * @param string|null $barracuda_warmup_plan Barracuda warmup plan configuration in JSON format
+     *
+     * @return self
+     */
+    public function setBarracudaWarmupPlan($barracuda_warmup_plan)
+    {
+        if (is_null($barracuda_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable barracuda_warmup_plan cannot be null');
+        }
+        $this->container['barracuda_warmup_plan'] = $barracuda_warmup_plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets ciscoironport_warmup_plan
+     *
+     * @return string|null
+     */
+    public function getCiscoironportWarmupPlan()
+    {
+        return $this->container['ciscoironport_warmup_plan'];
+    }
+
+    /**
+     * Sets ciscoironport_warmup_plan
+     *
+     * @param string|null $ciscoironport_warmup_plan Cisco IronPort warmup plan configuration in JSON format
+     *
+     * @return self
+     */
+    public function setCiscoironportWarmupPlan($ciscoironport_warmup_plan)
+    {
+        if (is_null($ciscoironport_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable ciscoironport_warmup_plan cannot be null');
+        }
+        $this->container['ciscoironport_warmup_plan'] = $ciscoironport_warmup_plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets rackspace_warmup_plan
+     *
+     * @return string|null
+     */
+    public function getRackspaceWarmupPlan()
+    {
+        return $this->container['rackspace_warmup_plan'];
+    }
+
+    /**
+     * Sets rackspace_warmup_plan
+     *
+     * @param string|null $rackspace_warmup_plan Rackspace warmup plan configuration in JSON format
+     *
+     * @return self
+     */
+    public function setRackspaceWarmupPlan($rackspace_warmup_plan)
+    {
+        if (is_null($rackspace_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable rackspace_warmup_plan cannot be null');
+        }
+        $this->container['rackspace_warmup_plan'] = $rackspace_warmup_plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets zohobusiness_warmup_plan
+     *
+     * @return string|null
+     */
+    public function getZohobusinessWarmupPlan()
+    {
+        return $this->container['zohobusiness_warmup_plan'];
+    }
+
+    /**
+     * Sets zohobusiness_warmup_plan
+     *
+     * @param string|null $zohobusiness_warmup_plan Zoho Business warmup plan configuration in JSON format
+     *
+     * @return self
+     */
+    public function setZohobusinessWarmupPlan($zohobusiness_warmup_plan)
+    {
+        if (is_null($zohobusiness_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable zohobusiness_warmup_plan cannot be null');
+        }
+        $this->container['zohobusiness_warmup_plan'] = $zohobusiness_warmup_plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets amazonworkmail_warmup_plan
+     *
+     * @return string|null
+     */
+    public function getAmazonworkmailWarmupPlan()
+    {
+        return $this->container['amazonworkmail_warmup_plan'];
+    }
+
+    /**
+     * Sets amazonworkmail_warmup_plan
+     *
+     * @param string|null $amazonworkmail_warmup_plan Amazon WorkMail warmup plan configuration in JSON format
+     *
+     * @return self
+     */
+    public function setAmazonworkmailWarmupPlan($amazonworkmail_warmup_plan)
+    {
+        if (is_null($amazonworkmail_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable amazonworkmail_warmup_plan cannot be null');
+        }
+        $this->container['amazonworkmail_warmup_plan'] = $amazonworkmail_warmup_plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets symantec_warmup_plan
+     *
+     * @return string|null
+     */
+    public function getSymantecWarmupPlan()
+    {
+        return $this->container['symantec_warmup_plan'];
+    }
+
+    /**
+     * Sets symantec_warmup_plan
+     *
+     * @param string|null $symantec_warmup_plan Symantec warmup plan configuration in JSON format
+     *
+     * @return self
+     */
+    public function setSymantecWarmupPlan($symantec_warmup_plan)
+    {
+        if (is_null($symantec_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable symantec_warmup_plan cannot be null');
+        }
+        $this->container['symantec_warmup_plan'] = $symantec_warmup_plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets fortinet_warmup_plan
+     *
+     * @return string|null
+     */
+    public function getFortinetWarmupPlan()
+    {
+        return $this->container['fortinet_warmup_plan'];
+    }
+
+    /**
+     * Sets fortinet_warmup_plan
+     *
+     * @param string|null $fortinet_warmup_plan Fortinet warmup plan configuration in JSON format
+     *
+     * @return self
+     */
+    public function setFortinetWarmupPlan($fortinet_warmup_plan)
+    {
+        if (is_null($fortinet_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable fortinet_warmup_plan cannot be null');
+        }
+        $this->container['fortinet_warmup_plan'] = $fortinet_warmup_plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets sophos_warmup_plan
+     *
+     * @return string|null
+     */
+    public function getSophosWarmupPlan()
+    {
+        return $this->container['sophos_warmup_plan'];
+    }
+
+    /**
+     * Sets sophos_warmup_plan
+     *
+     * @param string|null $sophos_warmup_plan Sophos warmup plan configuration in JSON format
+     *
+     * @return self
+     */
+    public function setSophosWarmupPlan($sophos_warmup_plan)
+    {
+        if (is_null($sophos_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable sophos_warmup_plan cannot be null');
+        }
+        $this->container['sophos_warmup_plan'] = $sophos_warmup_plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets trendmicro_warmup_plan
+     *
+     * @return string|null
+     */
+    public function getTrendmicroWarmupPlan()
+    {
+        return $this->container['trendmicro_warmup_plan'];
+    }
+
+    /**
+     * Sets trendmicro_warmup_plan
+     *
+     * @param string|null $trendmicro_warmup_plan Trend Micro warmup plan configuration in JSON format
+     *
+     * @return self
+     */
+    public function setTrendmicroWarmupPlan($trendmicro_warmup_plan)
+    {
+        if (is_null($trendmicro_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable trendmicro_warmup_plan cannot be null');
+        }
+        $this->container['trendmicro_warmup_plan'] = $trendmicro_warmup_plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets checkpoint_warmup_plan
+     *
+     * @return string|null
+     */
+    public function getCheckpointWarmupPlan()
+    {
+        return $this->container['checkpoint_warmup_plan'];
+    }
+
+    /**
+     * Sets checkpoint_warmup_plan
+     *
+     * @param string|null $checkpoint_warmup_plan Checkpoint warmup plan configuration in JSON format
+     *
+     * @return self
+     */
+    public function setCheckpointWarmupPlan($checkpoint_warmup_plan)
+    {
+        if (is_null($checkpoint_warmup_plan)) {
+            throw new \InvalidArgumentException('non-nullable checkpoint_warmup_plan cannot be null');
+        }
+        $this->container['checkpoint_warmup_plan'] = $checkpoint_warmup_plan;
 
         return $this;
     }
@@ -941,7 +1292,7 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets created
      *
-     * @return int
+     * @return int|null
      */
     public function getCreated()
     {
@@ -951,7 +1302,7 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created
      *
-     * @param int $created The timestamp (UNIX epoch) when the IP was created
+     * @param int|null $created UNIX epoch nano timestamp when the warmup plan was created
      *
      * @return self
      */
@@ -966,109 +1317,55 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets infra_classification
-     *
-     * @return string|null
-     */
-    public function getInfraClassification()
-    {
-        return $this->container['infra_classification'];
-    }
-
-    /**
-     * Sets infra_classification
-     *
-     * @param string|null $infra_classification Classification of the infrastructure
-     *
-     * @return self
-     */
-    public function setInfraClassification($infra_classification)
-    {
-        if (is_null($infra_classification)) {
-            throw new \InvalidArgumentException('non-nullable infra_classification cannot be null');
-        }
-        $this->container['infra_classification'] = $infra_classification;
-
-        return $this;
-    }
-
-    /**
-     * Gets infra_monitor
-     *
-     * @return bool|null
-     */
-    public function getInfraMonitor()
-    {
-        return $this->container['infra_monitor'];
-    }
-
-    /**
-     * Sets infra_monitor
-     *
-     * @param bool|null $infra_monitor Indicates whether infrastructure monitoring is enabled
-     *
-     * @return self
-     */
-    public function setInfraMonitor($infra_monitor)
-    {
-        if (is_null($infra_monitor)) {
-            throw new \InvalidArgumentException('non-nullable infra_monitor cannot be null');
-        }
-        $this->container['infra_monitor'] = $infra_monitor;
-
-        return $this;
-    }
-
-    /**
-     * Gets state
+     * Gets updated
      *
      * @return int|null
      */
-    public function getState()
+    public function getUpdated()
     {
-        return $this->container['state'];
+        return $this->container['updated'];
     }
 
     /**
-     * Sets state
+     * Sets updated
      *
-     * @param int|null $state The state of the IP
+     * @param int|null $updated UNIX epoch nano timestamp when the warmup plan was last updated
      *
      * @return self
      */
-    public function setState($state)
+    public function setUpdated($updated)
     {
-        if (is_null($state)) {
-            throw new \InvalidArgumentException('non-nullable state cannot be null');
+        if (is_null($updated)) {
+            throw new \InvalidArgumentException('non-nullable updated cannot be null');
         }
-        $this->container['state'] = $state;
+        $this->container['updated'] = $updated;
 
         return $this;
     }
 
     /**
-     * Gets auto_warmup_plan
+     * Gets warmup_interval
      *
-     * @return \sendpost\model\AutoWarmupPlan|null
+     * @return int|null
      */
-    public function getAutoWarmupPlan()
+    public function getWarmupInterval()
     {
-        return $this->container['auto_warmup_plan'];
+        return $this->container['warmup_interval'];
     }
 
     /**
-     * Sets auto_warmup_plan
+     * Sets warmup_interval
      *
-     * @param \sendpost\model\AutoWarmupPlan|null $auto_warmup_plan The auto-warmup plan associated with the IP. Can be null if no warmup plan is assigned.
+     * @param int|null $warmup_interval Warmup interval in hours
      *
      * @return self
      */
-    public function setAutoWarmupPlan($auto_warmup_plan)
+    public function setWarmupInterval($warmup_interval)
     {
-        if (is_null($auto_warmup_plan)) {
-            throw new \InvalidArgumentException('non-nullable auto_warmup_plan cannot be null');
+        if (is_null($warmup_interval)) {
+            throw new \InvalidArgumentException('non-nullable warmup_interval cannot be null');
         }
-        $this->container['auto_warmup_plan'] = $auto_warmup_plan;
+        $this->container['warmup_interval'] = $warmup_interval;
 
         return $this;
     }

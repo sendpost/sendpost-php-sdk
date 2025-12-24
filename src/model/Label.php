@@ -1,6 +1,6 @@
 <?php
 /**
- * IP
+ * Label
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \sendpost\ObjectSerializer;
 
 /**
- * IP Class Doc Comment
+ * Label Class Doc Comment
  *
  * @category Class
  * @package  sendpost
@@ -40,7 +40,7 @@ use \sendpost\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class IP implements ModelInterface, ArrayAccess, \JsonSerializable
+class Label implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'IP';
+    protected static $openAPIModelName = 'Label';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,28 +58,8 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'id' => 'int',
-        'public_ip' => 'string',
-        'system_domain' => '\sendpost\model\Domain',
-        'reverse_dns_hostname' => 'string',
-        'type' => 'int',
-        'gmail_settings' => 'string',
-        'yahoo_settings' => 'string',
-        'aol_settings' => 'string',
-        'microsoft_settings' => 'string',
-        'comcast_settings' => 'string',
-        'yandex_settings' => 'string',
-        'gmx_settings' => 'string',
-        'mailru_settings' => 'string',
-        'icloud_settings' => 'string',
-        'zoho_settings' => 'string',
-        'qq_settings' => 'string',
-        'default_settings' => 'string',
-        'att_settings' => 'string',
-        'created' => 'int',
-        'infra_classification' => 'string',
-        'infra_monitor' => 'bool',
-        'state' => 'int',
-        'auto_warmup_plan' => '\sendpost\model\AutoWarmupPlan'
+        'name' => 'string',
+        'created' => 'int'
     ];
 
     /**
@@ -91,28 +71,8 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'public_ip' => null,
-        'system_domain' => null,
-        'reverse_dns_hostname' => null,
-        'type' => null,
-        'gmail_settings' => null,
-        'yahoo_settings' => null,
-        'aol_settings' => null,
-        'microsoft_settings' => null,
-        'comcast_settings' => null,
-        'yandex_settings' => null,
-        'gmx_settings' => null,
-        'mailru_settings' => null,
-        'icloud_settings' => null,
-        'zoho_settings' => null,
-        'qq_settings' => null,
-        'default_settings' => null,
-        'att_settings' => null,
-        'created' => 'int64',
-        'infra_classification' => null,
-        'infra_monitor' => null,
-        'state' => null,
-        'auto_warmup_plan' => null
+        'name' => null,
+        'created' => 'int64'
     ];
 
     /**
@@ -122,28 +82,8 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'public_ip' => false,
-        'system_domain' => false,
-        'reverse_dns_hostname' => false,
-        'type' => false,
-        'gmail_settings' => false,
-        'yahoo_settings' => false,
-        'aol_settings' => false,
-        'microsoft_settings' => false,
-        'comcast_settings' => false,
-        'yandex_settings' => false,
-        'gmx_settings' => false,
-        'mailru_settings' => false,
-        'icloud_settings' => false,
-        'zoho_settings' => false,
-        'qq_settings' => false,
-        'default_settings' => false,
-        'att_settings' => false,
-        'created' => false,
-        'infra_classification' => false,
-        'infra_monitor' => false,
-        'state' => false,
-        'auto_warmup_plan' => false
+        'name' => false,
+        'created' => false
     ];
 
     /**
@@ -233,28 +173,8 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'public_ip' => 'publicIP',
-        'system_domain' => 'systemDomain',
-        'reverse_dns_hostname' => 'reverseDNSHostname',
-        'type' => 'type',
-        'gmail_settings' => 'gmailSettings',
-        'yahoo_settings' => 'yahooSettings',
-        'aol_settings' => 'aolSettings',
-        'microsoft_settings' => 'microsoftSettings',
-        'comcast_settings' => 'comcastSettings',
-        'yandex_settings' => 'yandexSettings',
-        'gmx_settings' => 'gmxSettings',
-        'mailru_settings' => 'mailruSettings',
-        'icloud_settings' => 'icloudSettings',
-        'zoho_settings' => 'zohoSettings',
-        'qq_settings' => 'qqSettings',
-        'default_settings' => 'defaultSettings',
-        'att_settings' => 'attSettings',
-        'created' => 'created',
-        'infra_classification' => 'infraClassification',
-        'infra_monitor' => 'infraMonitor',
-        'state' => 'state',
-        'auto_warmup_plan' => 'autoWarmupPlan'
+        'name' => 'name',
+        'created' => 'created'
     ];
 
     /**
@@ -264,28 +184,8 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'id' => 'setId',
-        'public_ip' => 'setPublicIp',
-        'system_domain' => 'setSystemDomain',
-        'reverse_dns_hostname' => 'setReverseDnsHostname',
-        'type' => 'setType',
-        'gmail_settings' => 'setGmailSettings',
-        'yahoo_settings' => 'setYahooSettings',
-        'aol_settings' => 'setAolSettings',
-        'microsoft_settings' => 'setMicrosoftSettings',
-        'comcast_settings' => 'setComcastSettings',
-        'yandex_settings' => 'setYandexSettings',
-        'gmx_settings' => 'setGmxSettings',
-        'mailru_settings' => 'setMailruSettings',
-        'icloud_settings' => 'setIcloudSettings',
-        'zoho_settings' => 'setZohoSettings',
-        'qq_settings' => 'setQqSettings',
-        'default_settings' => 'setDefaultSettings',
-        'att_settings' => 'setAttSettings',
-        'created' => 'setCreated',
-        'infra_classification' => 'setInfraClassification',
-        'infra_monitor' => 'setInfraMonitor',
-        'state' => 'setState',
-        'auto_warmup_plan' => 'setAutoWarmupPlan'
+        'name' => 'setName',
+        'created' => 'setCreated'
     ];
 
     /**
@@ -295,28 +195,8 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'id' => 'getId',
-        'public_ip' => 'getPublicIp',
-        'system_domain' => 'getSystemDomain',
-        'reverse_dns_hostname' => 'getReverseDnsHostname',
-        'type' => 'getType',
-        'gmail_settings' => 'getGmailSettings',
-        'yahoo_settings' => 'getYahooSettings',
-        'aol_settings' => 'getAolSettings',
-        'microsoft_settings' => 'getMicrosoftSettings',
-        'comcast_settings' => 'getComcastSettings',
-        'yandex_settings' => 'getYandexSettings',
-        'gmx_settings' => 'getGmxSettings',
-        'mailru_settings' => 'getMailruSettings',
-        'icloud_settings' => 'getIcloudSettings',
-        'zoho_settings' => 'getZohoSettings',
-        'qq_settings' => 'getQqSettings',
-        'default_settings' => 'getDefaultSettings',
-        'att_settings' => 'getAttSettings',
-        'created' => 'getCreated',
-        'infra_classification' => 'getInfraClassification',
-        'infra_monitor' => 'getInfraMonitor',
-        'state' => 'getState',
-        'auto_warmup_plan' => 'getAutoWarmupPlan'
+        'name' => 'getName',
+        'created' => 'getCreated'
     ];
 
     /**
@@ -377,28 +257,8 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('public_ip', $data ?? [], null);
-        $this->setIfExists('system_domain', $data ?? [], null);
-        $this->setIfExists('reverse_dns_hostname', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('gmail_settings', $data ?? [], null);
-        $this->setIfExists('yahoo_settings', $data ?? [], null);
-        $this->setIfExists('aol_settings', $data ?? [], null);
-        $this->setIfExists('microsoft_settings', $data ?? [], null);
-        $this->setIfExists('comcast_settings', $data ?? [], null);
-        $this->setIfExists('yandex_settings', $data ?? [], null);
-        $this->setIfExists('gmx_settings', $data ?? [], null);
-        $this->setIfExists('mailru_settings', $data ?? [], null);
-        $this->setIfExists('icloud_settings', $data ?? [], null);
-        $this->setIfExists('zoho_settings', $data ?? [], null);
-        $this->setIfExists('qq_settings', $data ?? [], null);
-        $this->setIfExists('default_settings', $data ?? [], null);
-        $this->setIfExists('att_settings', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('created', $data ?? [], null);
-        $this->setIfExists('infra_classification', $data ?? [], null);
-        $this->setIfExists('infra_monitor', $data ?? [], null);
-        $this->setIfExists('state', $data ?? [], null);
-        $this->setIfExists('auto_warmup_plan', $data ?? [], null);
     }
 
     /**
@@ -428,15 +288,6 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['public_ip'] === null) {
-            $invalidProperties[] = "'public_ip' can't be null";
-        }
-        if ($this->container['created'] === null) {
-            $invalidProperties[] = "'created' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -455,7 +306,7 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets id
      *
-     * @return int
+     * @return int|null
      */
     public function getId()
     {
@@ -465,7 +316,7 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param int $id Unique ID for the IP
+     * @param int|null $id Unique ID for the label
      *
      * @return self
      */
@@ -480,460 +331,28 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets public_ip
-     *
-     * @return string
-     */
-    public function getPublicIp()
-    {
-        return $this->container['public_ip'];
-    }
-
-    /**
-     * Sets public_ip
-     *
-     * @param string $public_ip The public IP address associated with the resource
-     *
-     * @return self
-     */
-    public function setPublicIp($public_ip)
-    {
-        if (is_null($public_ip)) {
-            throw new \InvalidArgumentException('non-nullable public_ip cannot be null');
-        }
-        $this->container['public_ip'] = $public_ip;
-
-        return $this;
-    }
-
-    /**
-     * Gets system_domain
-     *
-     * @return \sendpost\model\Domain|null
-     */
-    public function getSystemDomain()
-    {
-        return $this->container['system_domain'];
-    }
-
-    /**
-     * Sets system_domain
-     *
-     * @param \sendpost\model\Domain|null $system_domain system_domain
-     *
-     * @return self
-     */
-    public function setSystemDomain($system_domain)
-    {
-        if (is_null($system_domain)) {
-            throw new \InvalidArgumentException('non-nullable system_domain cannot be null');
-        }
-        $this->container['system_domain'] = $system_domain;
-
-        return $this;
-    }
-
-    /**
-     * Gets reverse_dns_hostname
+     * Gets name
      *
      * @return string|null
      */
-    public function getReverseDnsHostname()
+    public function getName()
     {
-        return $this->container['reverse_dns_hostname'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets reverse_dns_hostname
+     * Sets name
      *
-     * @param string|null $reverse_dns_hostname The reverse DNS hostname for the IP
+     * @param string|null $name Name of the label
      *
      * @return self
      */
-    public function setReverseDnsHostname($reverse_dns_hostname)
+    public function setName($name)
     {
-        if (is_null($reverse_dns_hostname)) {
-            throw new \InvalidArgumentException('non-nullable reverse_dns_hostname cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['reverse_dns_hostname'] = $reverse_dns_hostname;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return int|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param int|null $type Type of the IP
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets gmail_settings
-     *
-     * @return string|null
-     */
-    public function getGmailSettings()
-    {
-        return $this->container['gmail_settings'];
-    }
-
-    /**
-     * Sets gmail_settings
-     *
-     * @param string|null $gmail_settings Configuration for Gmail delivery settings in JSON format
-     *
-     * @return self
-     */
-    public function setGmailSettings($gmail_settings)
-    {
-        if (is_null($gmail_settings)) {
-            throw new \InvalidArgumentException('non-nullable gmail_settings cannot be null');
-        }
-        $this->container['gmail_settings'] = $gmail_settings;
-
-        return $this;
-    }
-
-    /**
-     * Gets yahoo_settings
-     *
-     * @return string|null
-     */
-    public function getYahooSettings()
-    {
-        return $this->container['yahoo_settings'];
-    }
-
-    /**
-     * Sets yahoo_settings
-     *
-     * @param string|null $yahoo_settings Configuration for Yahoo delivery settings in JSON format
-     *
-     * @return self
-     */
-    public function setYahooSettings($yahoo_settings)
-    {
-        if (is_null($yahoo_settings)) {
-            throw new \InvalidArgumentException('non-nullable yahoo_settings cannot be null');
-        }
-        $this->container['yahoo_settings'] = $yahoo_settings;
-
-        return $this;
-    }
-
-    /**
-     * Gets aol_settings
-     *
-     * @return string|null
-     */
-    public function getAolSettings()
-    {
-        return $this->container['aol_settings'];
-    }
-
-    /**
-     * Sets aol_settings
-     *
-     * @param string|null $aol_settings Configuration for AOL delivery settings in JSON format
-     *
-     * @return self
-     */
-    public function setAolSettings($aol_settings)
-    {
-        if (is_null($aol_settings)) {
-            throw new \InvalidArgumentException('non-nullable aol_settings cannot be null');
-        }
-        $this->container['aol_settings'] = $aol_settings;
-
-        return $this;
-    }
-
-    /**
-     * Gets microsoft_settings
-     *
-     * @return string|null
-     */
-    public function getMicrosoftSettings()
-    {
-        return $this->container['microsoft_settings'];
-    }
-
-    /**
-     * Sets microsoft_settings
-     *
-     * @param string|null $microsoft_settings Configuration for Microsoft delivery settings in JSON format
-     *
-     * @return self
-     */
-    public function setMicrosoftSettings($microsoft_settings)
-    {
-        if (is_null($microsoft_settings)) {
-            throw new \InvalidArgumentException('non-nullable microsoft_settings cannot be null');
-        }
-        $this->container['microsoft_settings'] = $microsoft_settings;
-
-        return $this;
-    }
-
-    /**
-     * Gets comcast_settings
-     *
-     * @return string|null
-     */
-    public function getComcastSettings()
-    {
-        return $this->container['comcast_settings'];
-    }
-
-    /**
-     * Sets comcast_settings
-     *
-     * @param string|null $comcast_settings Configuration for Comcast delivery settings in JSON format
-     *
-     * @return self
-     */
-    public function setComcastSettings($comcast_settings)
-    {
-        if (is_null($comcast_settings)) {
-            throw new \InvalidArgumentException('non-nullable comcast_settings cannot be null');
-        }
-        $this->container['comcast_settings'] = $comcast_settings;
-
-        return $this;
-    }
-
-    /**
-     * Gets yandex_settings
-     *
-     * @return string|null
-     */
-    public function getYandexSettings()
-    {
-        return $this->container['yandex_settings'];
-    }
-
-    /**
-     * Sets yandex_settings
-     *
-     * @param string|null $yandex_settings Configuration for Yandex delivery settings in JSON format
-     *
-     * @return self
-     */
-    public function setYandexSettings($yandex_settings)
-    {
-        if (is_null($yandex_settings)) {
-            throw new \InvalidArgumentException('non-nullable yandex_settings cannot be null');
-        }
-        $this->container['yandex_settings'] = $yandex_settings;
-
-        return $this;
-    }
-
-    /**
-     * Gets gmx_settings
-     *
-     * @return string|null
-     */
-    public function getGmxSettings()
-    {
-        return $this->container['gmx_settings'];
-    }
-
-    /**
-     * Sets gmx_settings
-     *
-     * @param string|null $gmx_settings Configuration for GMX delivery settings in JSON format
-     *
-     * @return self
-     */
-    public function setGmxSettings($gmx_settings)
-    {
-        if (is_null($gmx_settings)) {
-            throw new \InvalidArgumentException('non-nullable gmx_settings cannot be null');
-        }
-        $this->container['gmx_settings'] = $gmx_settings;
-
-        return $this;
-    }
-
-    /**
-     * Gets mailru_settings
-     *
-     * @return string|null
-     */
-    public function getMailruSettings()
-    {
-        return $this->container['mailru_settings'];
-    }
-
-    /**
-     * Sets mailru_settings
-     *
-     * @param string|null $mailru_settings Configuration for Mail.ru delivery settings in JSON format
-     *
-     * @return self
-     */
-    public function setMailruSettings($mailru_settings)
-    {
-        if (is_null($mailru_settings)) {
-            throw new \InvalidArgumentException('non-nullable mailru_settings cannot be null');
-        }
-        $this->container['mailru_settings'] = $mailru_settings;
-
-        return $this;
-    }
-
-    /**
-     * Gets icloud_settings
-     *
-     * @return string|null
-     */
-    public function getIcloudSettings()
-    {
-        return $this->container['icloud_settings'];
-    }
-
-    /**
-     * Sets icloud_settings
-     *
-     * @param string|null $icloud_settings Configuration for iCloud delivery settings in JSON format
-     *
-     * @return self
-     */
-    public function setIcloudSettings($icloud_settings)
-    {
-        if (is_null($icloud_settings)) {
-            throw new \InvalidArgumentException('non-nullable icloud_settings cannot be null');
-        }
-        $this->container['icloud_settings'] = $icloud_settings;
-
-        return $this;
-    }
-
-    /**
-     * Gets zoho_settings
-     *
-     * @return string|null
-     */
-    public function getZohoSettings()
-    {
-        return $this->container['zoho_settings'];
-    }
-
-    /**
-     * Sets zoho_settings
-     *
-     * @param string|null $zoho_settings Configuration for Zoho delivery settings in JSON format
-     *
-     * @return self
-     */
-    public function setZohoSettings($zoho_settings)
-    {
-        if (is_null($zoho_settings)) {
-            throw new \InvalidArgumentException('non-nullable zoho_settings cannot be null');
-        }
-        $this->container['zoho_settings'] = $zoho_settings;
-
-        return $this;
-    }
-
-    /**
-     * Gets qq_settings
-     *
-     * @return string|null
-     */
-    public function getQqSettings()
-    {
-        return $this->container['qq_settings'];
-    }
-
-    /**
-     * Sets qq_settings
-     *
-     * @param string|null $qq_settings Configuration for QQ delivery settings in JSON format
-     *
-     * @return self
-     */
-    public function setQqSettings($qq_settings)
-    {
-        if (is_null($qq_settings)) {
-            throw new \InvalidArgumentException('non-nullable qq_settings cannot be null');
-        }
-        $this->container['qq_settings'] = $qq_settings;
-
-        return $this;
-    }
-
-    /**
-     * Gets default_settings
-     *
-     * @return string|null
-     */
-    public function getDefaultSettings()
-    {
-        return $this->container['default_settings'];
-    }
-
-    /**
-     * Sets default_settings
-     *
-     * @param string|null $default_settings Default delivery settings in JSON format
-     *
-     * @return self
-     */
-    public function setDefaultSettings($default_settings)
-    {
-        if (is_null($default_settings)) {
-            throw new \InvalidArgumentException('non-nullable default_settings cannot be null');
-        }
-        $this->container['default_settings'] = $default_settings;
-
-        return $this;
-    }
-
-    /**
-     * Gets att_settings
-     *
-     * @return string|null
-     */
-    public function getAttSettings()
-    {
-        return $this->container['att_settings'];
-    }
-
-    /**
-     * Sets att_settings
-     *
-     * @param string|null $att_settings Configuration for AT&T delivery settings in JSON format
-     *
-     * @return self
-     */
-    public function setAttSettings($att_settings)
-    {
-        if (is_null($att_settings)) {
-            throw new \InvalidArgumentException('non-nullable att_settings cannot be null');
-        }
-        $this->container['att_settings'] = $att_settings;
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -941,7 +360,7 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets created
      *
-     * @return int
+     * @return int|null
      */
     public function getCreated()
     {
@@ -951,7 +370,7 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created
      *
-     * @param int $created The timestamp (UNIX epoch) when the IP was created
+     * @param int|null $created UNIX epoch nano timestamp when the label was created
      *
      * @return self
      */
@@ -961,114 +380,6 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable created cannot be null');
         }
         $this->container['created'] = $created;
-
-        return $this;
-    }
-
-    /**
-     * Gets infra_classification
-     *
-     * @return string|null
-     */
-    public function getInfraClassification()
-    {
-        return $this->container['infra_classification'];
-    }
-
-    /**
-     * Sets infra_classification
-     *
-     * @param string|null $infra_classification Classification of the infrastructure
-     *
-     * @return self
-     */
-    public function setInfraClassification($infra_classification)
-    {
-        if (is_null($infra_classification)) {
-            throw new \InvalidArgumentException('non-nullable infra_classification cannot be null');
-        }
-        $this->container['infra_classification'] = $infra_classification;
-
-        return $this;
-    }
-
-    /**
-     * Gets infra_monitor
-     *
-     * @return bool|null
-     */
-    public function getInfraMonitor()
-    {
-        return $this->container['infra_monitor'];
-    }
-
-    /**
-     * Sets infra_monitor
-     *
-     * @param bool|null $infra_monitor Indicates whether infrastructure monitoring is enabled
-     *
-     * @return self
-     */
-    public function setInfraMonitor($infra_monitor)
-    {
-        if (is_null($infra_monitor)) {
-            throw new \InvalidArgumentException('non-nullable infra_monitor cannot be null');
-        }
-        $this->container['infra_monitor'] = $infra_monitor;
-
-        return $this;
-    }
-
-    /**
-     * Gets state
-     *
-     * @return int|null
-     */
-    public function getState()
-    {
-        return $this->container['state'];
-    }
-
-    /**
-     * Sets state
-     *
-     * @param int|null $state The state of the IP
-     *
-     * @return self
-     */
-    public function setState($state)
-    {
-        if (is_null($state)) {
-            throw new \InvalidArgumentException('non-nullable state cannot be null');
-        }
-        $this->container['state'] = $state;
-
-        return $this;
-    }
-
-    /**
-     * Gets auto_warmup_plan
-     *
-     * @return \sendpost\model\AutoWarmupPlan|null
-     */
-    public function getAutoWarmupPlan()
-    {
-        return $this->container['auto_warmup_plan'];
-    }
-
-    /**
-     * Sets auto_warmup_plan
-     *
-     * @param \sendpost\model\AutoWarmupPlan|null $auto_warmup_plan The auto-warmup plan associated with the IP. Can be null if no warmup plan is assigned.
-     *
-     * @return self
-     */
-    public function setAutoWarmupPlan($auto_warmup_plan)
-    {
-        if (is_null($auto_warmup_plan)) {
-            throw new \InvalidArgumentException('non-nullable auto_warmup_plan cannot be null');
-        }
-        $this->container['auto_warmup_plan'] = $auto_warmup_plan;
 
         return $this;
     }

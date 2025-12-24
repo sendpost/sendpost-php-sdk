@@ -13,13 +13,13 @@ docs/Api/StatsApi.md
 docs/Api/SubAccountApi.md
 docs/Api/SuppressionApi.md
 docs/Api/WebhookApi.md
-docs/Api/WebhookReferenceApi.md
 docs/Model/AccountStats.md
 docs/Model/AccountStatsStat.md
 docs/Model/AggregateStat.md
 docs/Model/AggregateStats.md
 docs/Model/AggregatedEmailStats.md
 docs/Model/Attachment.md
+docs/Model/AutoWarmupPlan.md
 docs/Model/CopyTo.md
 docs/Model/CreateDomainRequest.md
 docs/Model/CreateSubAccountRequest.md
@@ -65,6 +65,7 @@ docs/Model/IPPoolCreateRequest.md
 docs/Model/IPPoolDeleteResponse.md
 docs/Model/IPPoolUpdateRequest.md
 docs/Model/IPUpdateRequest.md
+docs/Model/Label.md
 docs/Model/Member.md
 docs/Model/Message.md
 docs/Model/MessageHeaderTo.md
@@ -82,7 +83,6 @@ docs/Model/UpdateSubAccount.md
 docs/Model/UpdateWebhook.md
 docs/Model/UserAgent.md
 docs/Model/Webhook.md
-docs/Model/WebhookObject.md
 git_push.sh
 phpunit.xml.dist
 src/ApiException.php
@@ -100,13 +100,13 @@ src/api/StatsApi.php
 src/api/SubAccountApi.php
 src/api/SuppressionApi.php
 src/api/WebhookApi.php
-src/api/WebhookReferenceApi.php
 src/model/AccountStats.php
 src/model/AccountStatsStat.php
 src/model/AggregateStat.php
 src/model/AggregateStats.php
 src/model/AggregatedEmailStats.php
 src/model/Attachment.php
+src/model/AutoWarmupPlan.php
 src/model/CopyTo.php
 src/model/CreateDomainRequest.php
 src/model/CreateSubAccountRequest.php
@@ -152,6 +152,7 @@ src/model/IPPoolCreateRequest.php
 src/model/IPPoolDeleteResponse.php
 src/model/IPPoolUpdateRequest.php
 src/model/IPUpdateRequest.php
+src/model/Label.php
 src/model/Member.php
 src/model/Message.php
 src/model/MessageHeaderTo.php
@@ -170,4 +171,5 @@ src/model/UpdateSubAccount.php
 src/model/UpdateWebhook.php
 src/model/UserAgent.php
 src/model/Webhook.php
-src/model/WebhookObject.php
+test/Model/AutoWarmupPlanTest.php
+test/Model/LabelTest.php

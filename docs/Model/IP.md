@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Unique ID for the IP |
 **public_ip** | **string** | The public IP address associated with the resource |
-**system_domain** | [**\sendpost\model\Domain**](.md) | Details of the system domain associated with the IP | [optional]
+**system_domain** | [**\sendpost\model\Domain**](Domain.md) |  | [optional]
 **reverse_dns_hostname** | **string** | The reverse DNS hostname for the IP | [optional]
 **type** | **int** | Type of the IP | [optional]
 **gmail_settings** | **string** | Configuration for Gmail delivery settings in JSON format | [optional]
@@ -26,6 +26,6 @@ Name | Type | Description | Notes
 **infra_classification** | **string** | Classification of the infrastructure | [optional]
 **infra_monitor** | **bool** | Indicates whether infrastructure monitoring is enabled | [optional]
 **state** | **int** | The state of the IP | [optional]
-**auto_warmup_plan** | **string** | The auto-warmup plan associated with the IP | [optional]
+**auto_warmup_plan** | [**\sendpost\model\AutoWarmupPlan**](AutoWarmupPlan.md) | The auto-warmup plan associated with the IP. Can be null if no warmup plan is assigned. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

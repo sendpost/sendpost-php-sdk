@@ -1,507 +1,37 @@
-# sendpost
+# SendPost PHP SDK
 
-# Introduction
+The official PHP SDK for SendPost - a powerful email API service for sending transactional and marketing emails with advanced tracking and analytics.
 
-SendPost provides email API and SMTP relay which can be used not just to send & measure but also alert & optimised email sending.
+## What is SendPost?
 
-You can use SendPost to:
+SendPost is an email delivery service that helps you:
+- Send personalized emails to multiple recipients
+- Track email opens and link clicks
+- Monitor email performance (delivery rates, bounces, spam complaints)
+- Manage sending domains and IP addresses
+- Organize email sending with sub-accounts
 
-* Send personalised emails to multiple recipients using email API 
+## Requirements
 
-* Track opens and clicks
+- PHP 8.1 or higher
+- Composer (for installation)
+- cURL extension
+- JSON extension
+- mbstring extension
 
-* Analyse statistics around open, clicks, bounce, unsubscribe and spam 
+## Installation
 
+### Method 1: Install via Composer (Recommended)
 
-At and advanced level you can use it to:
+Composer is the recommended way to install the SendPost PHP SDK.
 
-* Manage multiple sub-accounts which may map to your promotional or transactional sending, multiple product lines or multiple customers 
+#### Step 1: Install Composer
 
-* Classify your emails using groups for better analysis
+If you don't have Composer installed, download it from [getcomposer.org](https://getcomposer.org/download/).
 
-* Analyse and fix email sending at sub-account level, IP Pool level or group level
+#### Step 2: Add the SDK to your project
 
-* Have automated alerts to notify disruptions regarding email sending
-
-* Manage different dedicated IP Pools so to better control your email sending
-
-* Automatically know when IP or domain is blacklisted or sender score is down
-
-* Leverage pro deliverability tools to get significantly better email deliverability & inboxing
-
-
-[<img src=\"https://run.pstmn.io/button.svg\" alt=\"Run In Postman\" style=\"width: 128px; height: 32px;\">](https://god.gw.postman.com/run-collection/33476323-e6dbd27f-c4a7-4d49-bcac-94b0611b938b?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D33476323-e6dbd27f-c4a7-4d49-bcac-94b0611b938b%26entityType%3Dcollection%26workspaceId%3D6b1e4f65-96a9-4136-9512-6266c852517e) 
-
-# Overview
-
-## REST API
-
-SendPost API is built on REST API principles. Authenticated users can interact with any of the API endpoints to perform:
-
-* **GET**- to get a resource
-
-* **POST** - to create a resource
-
-* **PUT** - to update an existing resource
-
-* **DELETE** - to delete a resource
-
-
-The API endpoint for all API calls is:
-<code>https://api.sendpost.io/api/v1</code>
-
-
-Some conventions that have been followed in the API design overall are following:
-
-
-* All resources have either <code>/api/v1/subaccount</code> or <code>/api/v1/account</code> in their API call resource path based on who is authorised for the resource. All API calls with path <code>/api/v1/subaccount</code> use <code>X-SubAccount-ApiKey</code> in their request header. Likewise all API calls with path <code>/api/v1/account</code> use <code>X-Account-ApiKey</code> in their request header.
-
-* All resource endpoints end with singular name and not plural. So we have <code>domain</code> instead of domains for domain resource endpoint. Likewise we have <code>sender</code> instead of senders for sender resource endpoint.
-
-* Body submitted for POST / PUT API calls as well as JSON response from SendPost API follow camelcase convention
-
-* All timestamps returned in response (created or submittedAt response fields) are UNIX nano epoch timestamp.
-
-
-<aside class=\"success\">
-All resources have either <code>/api/v1/subaccount</code> or <code>/api/v1/account</code> in their API call resource path based on who is authorised for the resource. All API calls with path <code>/api/v1/subaccount</code> use <code>X-SubAccount-ApiKey</code> in their request header. Likewise all API calls with path <code>/api/v1/account</code> use <code>X-Account-ApiKey</code> in their request header.
-</aside>
-
-
-SendPost uses conventional HTTP response codes to indicate the success or failure of an API request. 
-
-
-* Codes in the <code>2xx</code> range indicate success. 
-
-* Codes in the <code>4xx</code> range indicate an error owing due to unauthorize access, incorrect request parameters or body etc.
-
-* Code in the <code>5xx</code> range indicate an eror with SendPost's servers ( internal service issue or maintenance )
-
-
-<aside class=\"info\">
-SendPost all responses return <code>created</code> in UNIX nano epoch timestamp. 
-</aside>
-
-
-## Authentication
-
-SendPost uses API keys for authentication. You can register a new SendPost API key at our [developer portal](https://app.sendpost.io/register).
-
-
-SendPost expects the API key to be included in all API requests to the server in a header that looks like the following:
-
-
-`X-SubAccount-ApiKey: AHEZEP8192SEGH`
-
-
-This API key is used for all Sub-Account level operations such as:
-
-* Sending emails
-
-* Retrieving stats regarding open, click, bounce, unsubscribe and spam
-
-* Uploading suppressions list
-
-* Verifying sending domains
-and more
-
-In addition to <code>X-SubAccount-ApiKey</code> you also have another API Key <code>X-Account-APIKey</code> which is used for Account level operations such as :
-
-* Creating and managing sub-accounts
-
-* Allocating IPs for your account
-
-* Getting overall billing and usage information
-
-* Email List validation
-
-* Creating and managing alerts
-and more
-
-
-<aside class=\"notice\">
-You must look at individual API reference page to look at whether <code>X-SubAccount-ApiKey</code> is required or <code>X-Account-ApiKey</code>
-</aside>
-
-
-In case an incorrect API Key header is specified or if it is missed you will get HTTP Response 401 ( Unauthorized ) response from SendPost.
-
-
-## HTTP Response Headers
-
-
-Code           | Reason                 | Details
----------------| -----------------------| -----------
-200            | Success                | Everything went well
-401            | Unauthorized           | Incorrect or missing API header either <code>X-SubAccount-ApiKey</code> or <code>X-Account-ApiKey</code>
-403            | Forbidden              | Typically sent when resource with same name or details already exist
-406            | Missing resource id    | Resource id specified is either missing or doesn't exist
-422            | Unprocessable entity   | Request body is not in proper format
-500            | Internal server error  | Some error happened at SendPost while processing API request
-503            | Service Unavailable    | SendPost is offline for maintenance. Please try again later
-
-# API SDKs
-
-We have native SendPost SDKs in the following programming languages. You can integrate with them or create your own SDK with our API specification. In case you need any assistance with respect to API then do reachout to our team from website chat or email us at **hello@sendpost.io**
-
-
-* [PHP](https://github.com/sendpost/sendpost_php_sdk)
-
-* [Javascript](https://github.com/sendpost/sendpost_javascript_sdk)
-
-* [Ruby](https://github.com/sendpost/sendpost_ruby_sdk)
-
-* [Python](https://github.com/sendpost/sendpost_python_sdk)
-
-* [Golang](https://github.com/sendpost/sendpost_go_sdk)
-
-
-# API Reference
-
-SendX REST API can be broken down into two major sub-sections:
-
-
-* Sub-Account
-
-* Account 
-
-
-Sub-Account API operations enable common email sending API use-cases like sending bulk email, adding new domains or senders for email sending programmatically, retrieving stats, adding suppressions etc. All Sub-Account API operations need to pass <code>X-SubAccount-ApiKey</code> header with every API call.
-
-
-The Account API operations allow users to manage multiple sub-accounts and manage IPs. A single parent SendPost account can have 100's of sub-accounts. You may want to create sub-accounts for different products your company is running or to segregate types of emails or for managing email sending across multiple customers of yours.
-
-
-# SMTP Reference
-
-Simple Mail Transfer Protocol (SMTP) is a quick and easy way to send email from one server to another. SendPost provides an SMTP service that allows you to deliver your email via our servers instead of your own client or server. 
-This means you can count on SendPost's delivery at scale for your SMTP needs. 
-
-
-## Integrating SMTP 
-
-
-1. Get the SMTP `username` and `password` from your SendPost account.
-
-2. Set the server host in your email client or application to `smtp.sendpost.io`. This setting is sometimes referred to as the external SMTP server or the SMTP relay.
-
-3. Set the `username` and `password`.
-
-4. Set the port to `587` (or as specified below).
-
-## SMTP Ports
-
-
-- For an unencrypted or a TLS connection, use port `25`, `2525` or `587`.
-
-- For a SSL connection, use port `465`
-
-- Check your firewall and network to ensure they're not blocking any of our SMTP Endpoints.
-
-
-SendPost supports STARTTLS for establishing a TLS-encrypted connection. STARTTLS is a means of upgrading an unencrypted connection to an encrypted connection. There are versions of STARTTLS for a variety of protocols; the SMTP version is defined in [RFC 3207](https://www.ietf.org/rfc/rfc3207.txt).
-
-
-To set up a STARTTLS connection, the SMTP client connects to the SendPost SMTP endpoint `smtp.sendpost.io` on port 25, 587, or 2525, issues an EHLO command, and waits for the server to announce that it supports the STARTTLS SMTP extension. The client then issues the STARTTLS command, initiating TLS negotiation. When negotiation is complete, the client issues an EHLO command over the new encrypted connection, and the SMTP session proceeds normally.
-
-
-<aside class=\"success\">
-If you are unsure which port to use, a TLS connection on port 587 is typically recommended.
-</aside>
-
-
-## Sending email from your application
-
-
-```javascript
-\"use strict\";
-
-const nodemailer = require(\"nodemailer\");
-
-async function main() {
-// create reusable transporter object using the default SMTP transport
-let transporter = nodemailer.createTransport({
-host: \"smtp.sendpost.io\",
-port: 587,
-secure: false, // true for 465, false for other ports
-auth: {
-user:  \"<username>\" , // generated ethereal user
-pass: \"<password>\", // generated ethereal password
-},
-requireTLS: true,
-debug: true,
-logger: true,
-});
-
-// send mail with defined transport object
-try {
-let info = await transporter.sendMail({
-from: 'erlich@piedpiper.com',
-to: 'gilfoyle@piedpiper.com',
-subject: 'Test Email Subject',
-html: '<h1>Hello Geeks!!!</h1>',
-});
-console.log(\"Message sent: %s\", info.messageId);
-} catch (e) {
-console.log(e)
-}
-}
-
-main().catch(console.error);
-```
-
-For PHP
-
-
-```php
-<?php
-// Import PHPMailer classes into the global namespace
-use PHPMailer\\PHPMailer\\PHPMailer;
-use PHPMailer\\PHPMailer\\SMTP;
-use PHPMailer\\PHPMailer\\Exception;
-
-// Load Composer's autoloader
-require 'vendor/autoload.php';
-
-$mail = new PHPMailer(true);
-
-// Settings
-try {
-$mail->SMTPDebug = SMTP::DEBUG_CONNECTION;                  // Enable verbose debug output
-$mail->isSMTP();                                            // Send using SMTP
-$mail->Host       = 'smtp.sendpost.io';                     // Set the SMTP server to send through
-$mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-$mail->Username   = '<username>';                           // SMTP username
-$mail->Password   = '<password>';                           // SMTP password
-$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable implicit TLS encryption
-$mail->Port       = 587;                                    // TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
-//Recipients
-$mail->setFrom('erlich@piedpiper.com', 'Erlich');
-$mail->addAddress('gilfoyle@piedpiper.com', 'Gilfoyle');
-
-//Content
-$mail->isHTML(true);                                  //Set email format to HTML
-$mail->Subject = 'Here is the subject';
-$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-$mail->send();
-echo 'Message has been sent';
-
-} catch (Exception $e) {
-echo \"Message could not be sent. Mailer Error: {$mail->ErrorInfo}\";
-}
-```
-For Python
-```python
-#!/usr/bin/python3
-
-import sys
-import os
-import re
-
-from smtplib import SMTP
-import ssl
-
-from email.mime.text import MIMEText
-
-SMTPserver = 'smtp.sendpost.io'
-PORT = 587
-sender =     'erlich@piedpiper.com'
-destination = ['gilfoyle@piedpiper.com']
-
-USERNAME = \"<username>\"
-PASSWORD = \"<password>\"
-
-# typical values for text_subtype are plain, html, xml
-text_subtype = 'plain'
-
-content=\"\"\"\\
-Test message
-\"\"\"
-
-subject=\"Sent from Python\"
-
-try:
-msg = MIMEText(content, text_subtype)
-msg['Subject']= subject
-msg['From']   = sender
-
-conn = SMTP(SMTPserver, PORT)
-conn.ehlo()
-context = ssl.create_default_context()
-conn.starttls(context=context)  # upgrade to tls
-conn.ehlo()
-conn.set_debuglevel(True)
-conn.login(USERNAME, PASSWORD)
-
-try:
-resp = conn.sendmail(sender, destination, msg.as_string())
-print(\"Send Mail Response: \", resp)
-except Exception as e:
-print(\"Send Email Error: \", e)
-finally:
-conn.quit()
-
-except Exception as e:
-print(\"Error:\", e)
-```
-For Golang
-```go
-package main
-
-import (
-\"fmt\"
-\"net/smtp\"
-\"os\"
-)
-
-// Sending Email Using Smtp in Golang
-
-func main() {
-
-username := \"<username>\"
-password := \"<password>\"
-
-from := \"erlich@piedpiper.com\"
-toList := []string{\"gilfoyle@piedpiper.com\"}
-host := \"smtp.sendpost.io\"
-port := \"587\" // recommended
-
-// This is the message to send in the mail
-msg := \"Hello geeks!!!\"
-
-// We can't send strings directly in mail,
-// strings need to be converted into slice bytes
-body := []byte(msg)
-
-// PlainAuth uses the given username and password to
-// authenticate to host and act as identity.
-// Usually identity should be the empty string,
-// to act as username.
-auth := smtp.PlainAuth(\"\", username, password, host)
-
-// SendMail uses TLS connection to send the mail
-// The email is sent to all address in the toList,
-// the body should be of type bytes, not strings
-// This returns error if any occured.
-err := smtp.SendMail(host+\":\"+port, auth, from, toList, body)
-
-// handling the errors
-if err != nil {
-fmt.Println(err)
-os.Exit(1)
-}
-
-fmt.Println(\"Successfully sent mail to all user in toList\")
-}
-
-```
-For Java
-```java
-// implementation 'com.sun.mail:javax.mail:1.6.2'
-
-import java.util.Properties;
-
-import javax.mail.Message;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-
-public class SMTPConnect {
-
-// This address must be verified.
-static final String FROM = \"erlich@piedpiper.com\";
-static final String FROMNAME = \"Erlich Bachman\";
-
-// Replace recipient@example.com with a \"To\" address. If your account
-// is still in the sandbox, this address must be verified.
-static final String TO = \"gilfoyle@piedpiper.com\";
-
-// Replace smtp_username with your SendPost SMTP user name.
-static final String SMTP_USERNAME = \"<username>\";
-
-// Replace smtp_password with your SendPost SMTP password.
-static final String SMTP_PASSWORD = \"<password>\";
-
-// SMTP Host Name
-static final String HOST = \"smtp.sendpost.io\";
-
-// The port you will connect to on SendPost SMTP Endpoint.
-static final int PORT = 587;
-
-static final String SUBJECT = \"SendPost SMTP Test (SMTP interface accessed using Java)\";
-
-static final String BODY = String.join(
-System.getProperty(\"line.separator\"),
-\"<h1>SendPost SMTP Test</h1>\",
-\"<p>This email was sent with SendPost using the \",
-\"<a href='https://github.com/eclipse-ee4j/mail'>Javamail Package</a>\",
-\" for <a href='https://www.java.com'>Java</a>.\"
-);
-
-public static void main(String[] args) throws Exception {
-
-// Create a Properties object to contain connection configuration information.
-Properties props = System.getProperties();
-props.put(\"mail.transport.protocol\", \"smtp\");
-props.put(\"mail.smtp.port\", PORT);
-props.put(\"mail.smtp.starttls.enable\", \"true\");
-props.put(\"mail.smtp.debug\", \"true\");
-props.put(\"mail.smtp.auth\", \"true\");
-
-// Create a Session object to represent a mail session with the specified properties.
-Session session = Session.getDefaultInstance(props);
-
-// Create a message with the specified information.
-MimeMessage msg = new MimeMessage(session);
-msg.setFrom(new InternetAddress(FROM,FROMNAME));
-msg.setRecipient(Message.RecipientType.TO, new InternetAddress(TO));
-msg.setSubject(SUBJECT);
-msg.setContent(BODY,\"text/html\");
-
-// Create a transport.
-Transport transport = session.getTransport();
-
-// Send the message.
-try {
-System.out.println(\"Sending...\");
-
-// Connect to SendPost SMTP using the SMTP username and password you specified above.
-transport.connect(HOST, SMTP_USERNAME, SMTP_PASSWORD);
-
-// Send the email.
-transport.sendMessage(msg, msg.getAllRecipients());
-System.out.println(\"Email sent!\");
-
-} catch (Exception ex) {
-
-System.out.println(\"The email was not sent.\");
-System.out.println(\"Error message: \" + ex.getMessage());
-System.out.println(ex);
-}
-// Close and terminate the connection.
-}
-}
-```
-
-Many programming languages support sending email using SMTP. This capability might be built into the programming language itself, or it might be available as an add-on, plug-in, or library. You can take advantage of this capability by sending email through SendPost from within application programs that you write.
-
-We have provided examples in Python3, Golang, Java, PHP, JS.
-
-
-
-## Installation & Usage
-
-### Requirements
-
-PHP 8.1 and later.
-
-### Composer
-
-To install the bindings via [Composer](https://getcomposer.org/), add the following to `composer.json`:
+Create or edit your `composer.json` file and add the SendPost SDK repository:
 
 ```json
 {
@@ -517,203 +47,358 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
 }
 ```
 
-Then run `composer install`
+#### Step 3: Install dependencies
 
-### Manual Installation
+Run the following command in your project directory:
 
-Download the files and include `autoload.php`:
-
-```php
-<?php
-require_once('/path/to/sendpost/vendor/autoload.php');
+```bash
+composer install
 ```
 
-## Getting Started
+This will download the SendPost PHP SDK and all its dependencies.
 
-Please follow the [installation procedure](#installation--usage) and then run the following:
+#### Step 4: Include the autoloader
+
+In your PHP file, include the Composer autoloader:
 
 ```php
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
+require_once __DIR__ . '/vendor/autoload.php';
+```
 
+### Method 2: Manual Installation
 
+If you prefer not to use Composer:
 
-// Configure API key authorization: subAccountAuth
-$config = sendpost\Configuration::getDefaultConfiguration()->setApiKey('X-SubAccount-ApiKey', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = sendpost\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-SubAccount-ApiKey', 'Bearer');
+1. Download the SDK files from the repository
+2. Place them in your project directory
+3. Include the autoloader:
 
+```php
+<?php
+require_once '/path/to/sendpost-php-sdk/vendor/autoload.php';
+```
 
-$apiInstance = new sendpost\Api\DomainApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$limit = 56; // int | Number of records to return per request
-$offset = 56; // int | Number of initial records to skip
-$search = 'search_example'; // string | Case insensitive search against domain names
+**Note:** Manual installation requires you to manage dependencies yourself. We strongly recommend using Composer.
+
+## Quick Start
+
+Here's a simple example to send your first email:
+
+```php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+
+use sendpost\Configuration;
+use sendpost\api\EmailApi;
+use sendpost\model\EmailMessageObject;
+use sendpost\model\EmailAddress;
+use sendpost\model\Recipient;
+
+// Configure your API key
+$config = Configuration::getDefaultConfiguration();
+$config->setApiKey('X-SubAccount-ApiKey', 'YOUR_API_KEY_HERE');
+
+// Create the email API client
+$emailApi = new EmailApi(null, $config);
+
+// Build your email message
+$emailMessage = new EmailMessageObject();
+
+// Set the sender
+$from = new EmailAddress();
+$from->setEmail('sender@yourdomain.com');
+$from->setName('Your Name');
+$emailMessage->setFrom($from);
+
+// Set the recipient
+$recipient = new Recipient();
+$recipient->setEmail('recipient@example.com');
+$recipient->setName('Recipient Name');
+$emailMessage->setTo([$recipient]);
+
+// Set email content
+$emailMessage->setSubject('Hello from SendPost!');
+$emailMessage->setHtmlBody('<h1>Welcome!</h1><p>This is your first email sent with SendPost.</p>');
+$emailMessage->setTextBody('Welcome! This is your first email sent with SendPost.');
+
+// Enable tracking
+$emailMessage->setTrackOpens(true);
+$emailMessage->setTrackClicks(true);
+
+// Send the email
+try {
+    $responses = $emailApi->sendEmail($emailMessage);
+    
+    if (!empty($responses)) {
+        $response = $responses[0];
+        echo "Email sent successfully! Message ID: " . $response->getMessageId() . "\n";
+    }
+} catch (Exception $e) {
+    echo "Error sending email: " . $e->getMessage() . "\n";
+}
+```
+
+## Getting Your API Key
+
+Before you can send emails, you need an API key:
+
+1. Sign up for a SendPost account at [app.sendpost.io/register](https://app.sendpost.io/register)
+2. Log in to your account
+3. Navigate to the API Keys section
+4. Copy your Sub-Account API Key
+
+**Important:** Keep your API key secure and never commit it to version control. Use environment variables or a configuration file that's excluded from git.
+
+## Common Use Cases
+
+### Sending a Transactional Email
+
+Transactional emails are triggered by user actions (order confirmations, password resets, etc.):
+
+```php
+use sendpost\api\EmailApi;
+use sendpost\model\EmailMessageObject;
+use sendpost\model\EmailAddress;
+use sendpost\model\Recipient;
+
+$emailApi = new EmailApi(null, $config);
+
+$emailMessage = new EmailMessageObject();
+
+// Set sender
+$from = new EmailAddress();
+$from->setEmail('orders@yourdomain.com');
+$from->setName('Your Store');
+$emailMessage->setFrom($from);
+
+// Set recipient
+$recipient = new Recipient();
+$recipient->setEmail('customer@example.com');
+$recipient->setName('John Doe');
+
+// Add custom data for personalization
+$recipient->setCustomFields([
+    'order_id' => '12345',
+    'order_total' => '99.99'
+]);
+$emailMessage->setTo([$recipient]);
+
+// Set content
+$emailMessage->setSubject('Order Confirmation #12345');
+$emailMessage->setHtmlBody('<h1>Thank you for your order!</h1><p>Order #12345 has been confirmed.</p>');
+
+// Enable tracking
+$emailMessage->setTrackOpens(true);
+$emailMessage->setTrackClicks(true);
+
+// Send
+$responses = $emailApi->sendEmail($emailMessage);
+```
+
+### Sending a Marketing Email
+
+Marketing emails are sent to multiple recipients for campaigns and newsletters:
+
+```php
+$emailMessage = new EmailMessageObject();
+
+$from = new EmailAddress();
+$from->setEmail('marketing@yourdomain.com');
+$from->setName('Marketing Team');
+$emailMessage->setFrom($from);
+
+// Add multiple recipients
+$recipients = [
+    (new Recipient())->setEmail('customer1@example.com')->setName('Customer 1'),
+    (new Recipient())->setEmail('customer2@example.com')->setName('Customer 2'),
+];
+$emailMessage->setTo($recipients);
+
+$emailMessage->setSubject('Special Offer - 20% Off!');
+$emailMessage->setHtmlBody('<h1>Special Offer!</h1><p>Get 20% off with code SAVE20</p>');
+
+// Add groups for analytics
+$emailMessage->setGroups(['marketing', 'promotional']);
+
+$responses = $emailApi->sendEmail($emailMessage);
+```
+
+### Adding a Sending Domain
+
+Before sending emails, you need to add and verify your sending domain:
+
+```php
+use sendpost\api\DomainApi;
+use sendpost\model\CreateDomainRequest;
+
+$domainApi = new DomainApi(null, $config);
+
+$domainRequest = new CreateDomainRequest();
+$domainRequest->setName('yourdomain.com');
 
 try {
-    $result = $apiInstance->getAllDomains($limit, $offset, $search);
-    print_r($result);
+    $domain = $domainApi->subaccountDomainPost($domainRequest);
+    
+    echo "Domain added! ID: " . $domain->getId() . "\n";
+    echo "Verification status: " . ($domain->getVerified() ? 'Verified' : 'Pending') . "\n";
+    
+    if (!$domain->getVerified()) {
+        echo "Add these DNS records to verify your domain:\n";
+        if ($domain->getDkim() !== null) {
+            echo "DKIM: " . $domain->getDkim()->getTextValue() . "\n";
+        }
+    }
 } catch (Exception $e) {
-    echo 'Exception when calling DomainApi->getAllDomains: ', $e->getMessage(), PHP_EOL;
+    echo "Error: " . $e->getMessage() . "\n";
 }
-
 ```
 
-## API Endpoints
+### Getting Email Statistics
 
-All URIs are relative to *https://api.sendpost.io/api/v1*
+Monitor your email performance:
 
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*DomainApi* | [**getAllDomains**](docs/Api/DomainApi.md#getalldomains) | **GET** /subaccount/domain | List Domains
-*DomainApi* | [**subaccountDomainDomainIdDelete**](docs/Api/DomainApi.md#subaccountdomaindomainiddelete) | **DELETE** /subaccount/domain/{domain_id} | Delete Domain
-*DomainApi* | [**subaccountDomainDomainIdGet**](docs/Api/DomainApi.md#subaccountdomaindomainidget) | **GET** /subaccount/domain/{domain_id} | Get Domain
-*DomainApi* | [**subaccountDomainPost**](docs/Api/DomainApi.md#subaccountdomainpost) | **POST** /subaccount/domain | Create Domain
-*EmailApi* | [**sendEmail**](docs/Api/EmailApi.md#sendemail) | **POST** /subaccount/email/ | Send Email
-*EmailApi* | [**sendEmailWithTemplate**](docs/Api/EmailApi.md#sendemailwithtemplate) | **POST** /subaccount/email/template | Send Email With Template
-*IPApi* | [**allocateNewIp**](docs/Api/IPApi.md#allocatenewip) | **PUT** /account/ip/allocate | Allocate IP
-*IPApi* | [**deleteIp**](docs/Api/IPApi.md#deleteip) | **DELETE** /account/ip/{ip_id} | Delete IP
-*IPApi* | [**getAllIps**](docs/Api/IPApi.md#getallips) | **GET** /account/ip/ | List IPs
-*IPApi* | [**getSpecificIp**](docs/Api/IPApi.md#getspecificip) | **GET** /account/ip/{ip_id} | Get IP
-*IPApi* | [**updateIp**](docs/Api/IPApi.md#updateip) | **PUT** /account/ip/{ip_id} | Update IP
-*IPPoolsApi* | [**createIPPool**](docs/Api/IPPoolsApi.md#createippool) | **POST** /account/ippool | Create IPPool
-*IPPoolsApi* | [**deleteIPPool**](docs/Api/IPPoolsApi.md#deleteippool) | **DELETE** /account/ippool/{ippool_id} | Delete IPPool
-*IPPoolsApi* | [**getAllIPPools**](docs/Api/IPPoolsApi.md#getallippools) | **GET** /account/ippool | List IPPools
-*IPPoolsApi* | [**getIPPoolById**](docs/Api/IPPoolsApi.md#getippoolbyid) | **GET** /account/ippool/{ippool_id} | Get IPPool
-*IPPoolsApi* | [**updateIPPool**](docs/Api/IPPoolsApi.md#updateippool) | **PUT** /account/ippool/{ippool_id} | Update IPPool
-*MessageApi* | [**getMessageById**](docs/Api/MessageApi.md#getmessagebyid) | **GET** /account/message/{message_id} | Get Message
-*StatsApi* | [**accountSubaccountStatSubaccountIdAggregateGet**](docs/Api/StatsApi.md#accountsubaccountstatsubaccountidaggregateget) | **GET** /account/subaccount/stat/{subaccount_id}/aggregate | Get Aggregate Stats
-*StatsApi* | [**accountSubaccountStatSubaccountIdGet**](docs/Api/StatsApi.md#accountsubaccountstatsubaccountidget) | **GET** /account/subaccount/stat/{subaccount_id} | List Stats
-*StatsApi* | [**getAggregateStatsByGroup**](docs/Api/StatsApi.md#getaggregatestatsbygroup) | **GET** /account/subaccount/stat/{subaccount_id}/group | Get Group Aggregate Stats
-*StatsAApi* | [**getAccountAggregateStats**](docs/Api/StatsAApi.md#getaccountaggregatestats) | **GET** /account/stat/aggregate | Get Account Aggregate Stats
-*StatsAApi* | [**getAccountAggregateStatsByGroup**](docs/Api/StatsAApi.md#getaccountaggregatestatsbygroup) | **GET** /account/stat/aggregate/group | Get Account Group Aggregate Stats
-*StatsAApi* | [**getAccountStatsByGroup**](docs/Api/StatsAApi.md#getaccountstatsbygroup) | **GET** /account/stat/group | List Account Group Stats
-*StatsAApi* | [**getAllAccountStats**](docs/Api/StatsAApi.md#getallaccountstats) | **GET** /account/stat | List Account Stats
-*SubAccountApi* | [**createSubAccount**](docs/Api/SubAccountApi.md#createsubaccount) | **POST** /account/subaccount/ | Create Sub-Account
-*SubAccountApi* | [**deleteSubAccount**](docs/Api/SubAccountApi.md#deletesubaccount) | **DELETE** /account/subaccount/{subaccount_id} | Delete Sub-Account
-*SubAccountApi* | [**getAllSubAccounts**](docs/Api/SubAccountApi.md#getallsubaccounts) | **GET** /account/subaccount/ | List Sub-Accounts
-*SubAccountApi* | [**getSubAccount**](docs/Api/SubAccountApi.md#getsubaccount) | **GET** /account/subaccount/{subaccount_id} | Get Sub-Account
-*SubAccountApi* | [**updateSubAccount**](docs/Api/SubAccountApi.md#updatesubaccount) | **PUT** /account/subaccount/{subaccount_id} | Update Sub-Account
-*SuppressionApi* | [**createSuppression**](docs/Api/SuppressionApi.md#createsuppression) | **POST** /subaccount/suppression | Create Suppressions
-*SuppressionApi* | [**deleteSuppression**](docs/Api/SuppressionApi.md#deletesuppression) | **DELETE** /subaccount/suppression | Delete Suppressions
-*SuppressionApi* | [**getSuppressionList**](docs/Api/SuppressionApi.md#getsuppressionlist) | **GET** /subaccount/suppression | List Suppressions
-*WebhookApi* | [**createWebhook**](docs/Api/WebhookApi.md#createwebhook) | **POST** /account/webhook | Create Webhook
-*WebhookApi* | [**deleteWebhook**](docs/Api/WebhookApi.md#deletewebhook) | **DELETE** /account/webhook/{webhook_id} | Delete Webhook
-*WebhookApi* | [**getAllWebhooks**](docs/Api/WebhookApi.md#getallwebhooks) | **GET** /account/webhook | List Webhooks
-*WebhookApi* | [**getWebhook**](docs/Api/WebhookApi.md#getwebhook) | **GET** /account/webhook/{webhook_id} | Get Webhook
-*WebhookApi* | [**updateWebhook**](docs/Api/WebhookApi.md#updatewebhook) | **PUT** /account/webhook/{webhook_id} | Update Webhook
+```php
+use sendpost\api\StatsApi;
 
-## Models
+$statsApi = new StatsApi(null, $config);
 
-- [AccountStats](docs/Model/AccountStats.md)
-- [AccountStatsStat](docs/Model/AccountStatsStat.md)
-- [AggregateStat](docs/Model/AggregateStat.md)
-- [AggregateStats](docs/Model/AggregateStats.md)
-- [AggregatedEmailStats](docs/Model/AggregatedEmailStats.md)
-- [Attachment](docs/Model/Attachment.md)
-- [CopyTo](docs/Model/CopyTo.md)
-- [CreateDomainRequest](docs/Model/CreateDomainRequest.md)
-- [CreateSubAccountRequest](docs/Model/CreateSubAccountRequest.md)
-- [CreateSuppressionRequest](docs/Model/CreateSuppressionRequest.md)
-- [CreateSuppressionRequestHardBounceInner](docs/Model/CreateSuppressionRequestHardBounceInner.md)
-- [CreateSuppressionRequestManualInner](docs/Model/CreateSuppressionRequestManualInner.md)
-- [CreateSuppressionRequestSpamComplaintInner](docs/Model/CreateSuppressionRequestSpamComplaintInner.md)
-- [CreateSuppressionRequestUnsubscribeInner](docs/Model/CreateSuppressionRequestUnsubscribeInner.md)
-- [CreateWebhookRequest](docs/Model/CreateWebhookRequest.md)
-- [DeleteResponse](docs/Model/DeleteResponse.md)
-- [DeleteSubAccountResponse](docs/Model/DeleteSubAccountResponse.md)
-- [DeleteSuppression200ResponseInner](docs/Model/DeleteSuppression200ResponseInner.md)
-- [DeleteSuppressionRequest](docs/Model/DeleteSuppressionRequest.md)
-- [DeleteWebhookResponse](docs/Model/DeleteWebhookResponse.md)
-- [Device](docs/Model/Device.md)
-- [Domain](docs/Model/Domain.md)
-- [DomainDkim](docs/Model/DomainDkim.md)
-- [DomainDmarc](docs/Model/DomainDmarc.md)
-- [DomainGpt](docs/Model/DomainGpt.md)
-- [DomainReturnPath](docs/Model/DomainReturnPath.md)
-- [DomainTrack](docs/Model/DomainTrack.md)
-- [EIP](docs/Model/EIP.md)
-- [EmailAddress](docs/Model/EmailAddress.md)
-- [EmailMessage](docs/Model/EmailMessage.md)
-- [EmailMessageFrom](docs/Model/EmailMessageFrom.md)
-- [EmailMessageObject](docs/Model/EmailMessageObject.md)
-- [EmailMessageReplyTo](docs/Model/EmailMessageReplyTo.md)
-- [EmailMessageToInner](docs/Model/EmailMessageToInner.md)
-- [EmailMessageToInnerBccInner](docs/Model/EmailMessageToInnerBccInner.md)
-- [EmailMessageToInnerCcInner](docs/Model/EmailMessageToInnerCcInner.md)
-- [EmailMessageWithTemplate](docs/Model/EmailMessageWithTemplate.md)
-- [EmailResponse](docs/Model/EmailResponse.md)
-- [EmailStats](docs/Model/EmailStats.md)
-- [EmailStatsStats](docs/Model/EmailStatsStats.md)
-- [Event](docs/Model/Event.md)
-- [EventMetadata](docs/Model/EventMetadata.md)
-- [GeoLocation](docs/Model/GeoLocation.md)
-- [IP](docs/Model/IP.md)
-- [IPAllocationRequest](docs/Model/IPAllocationRequest.md)
-- [IPDeletionResponse](docs/Model/IPDeletionResponse.md)
-- [IPPool](docs/Model/IPPool.md)
-- [IPPoolCreateRequest](docs/Model/IPPoolCreateRequest.md)
-- [IPPoolDeleteResponse](docs/Model/IPPoolDeleteResponse.md)
-- [IPPoolUpdateRequest](docs/Model/IPPoolUpdateRequest.md)
-- [IPUpdateRequest](docs/Model/IPUpdateRequest.md)
-- [Member](docs/Model/Member.md)
-- [Message](docs/Model/Message.md)
-- [MessageHeaderTo](docs/Model/MessageHeaderTo.md)
-- [MessageTo](docs/Model/MessageTo.md)
-- [OperatingSystem](docs/Model/OperatingSystem.md)
-- [Person](docs/Model/Person.md)
-- [Recipient](docs/Model/Recipient.md)
-- [SMTPAuth](docs/Model/SMTPAuth.md)
-- [Stat](docs/Model/Stat.md)
-- [StatStats](docs/Model/StatStats.md)
-- [SubAccount](docs/Model/SubAccount.md)
-- [Suppression](docs/Model/Suppression.md)
-- [ThirdPartySendingProvider](docs/Model/ThirdPartySendingProvider.md)
-- [UpdateSubAccount](docs/Model/UpdateSubAccount.md)
-- [UpdateWebhook](docs/Model/UpdateWebhook.md)
-- [UserAgent](docs/Model/UserAgent.md)
-- [Webhook](docs/Model/Webhook.md)
-- [WebhookObject](docs/Model/WebhookObject.md)
+// Get stats for the last 7 days
+$toDate = new \DateTime();
+$fromDate = (clone $toDate)->modify('-7 days');
 
-## Authorization
+$stats = $statsApi->accountSubaccountStatSubaccountIdGet(
+    $fromDate->format('Y-m-d'),
+    $toDate->format('Y-m-d'),
+    $subAccountId  // Your sub-account ID
+);
 
-Authentication schemes defined for the API:
-### accountAuth
+foreach ($stats as $stat) {
+    echo "Date: " . $stat->getDate() . "\n";
+    $statData = $stat->getStats();
+    echo "  Processed: " . $statData->getProcessed() . "\n";
+    echo "  Delivered: " . $statData->getDelivered() . "\n";
+    echo "  Opens: " . $statData->getOpened() . "\n";
+    echo "  Clicks: " . $statData->getClicked() . "\n";
+}
+```
 
-- **Type**: API key
-- **API key parameter name**: X-Account-ApiKey
-- **Location**: HTTP header
+## Authentication
 
+SendPost uses API keys for authentication. There are two types of API keys:
 
-### subAccountAuth
+### Sub-Account API Key (`X-SubAccount-ApiKey`)
 
-- **Type**: API key
-- **API key parameter name**: X-SubAccount-ApiKey
-- **Location**: HTTP header
+Used for most common operations:
+- Sending emails
+- Managing domains
+- Viewing statistics
+- Managing suppressions
 
+```php
+$config->setApiKey('X-SubAccount-ApiKey', 'YOUR_SUB_ACCOUNT_API_KEY');
+```
 
-## Tests
+### Account API Key (`X-Account-ApiKey`)
 
-To run the tests, use:
+Used for account-level operations:
+- Creating and managing sub-accounts
+- Managing IP addresses
+- Creating webhooks
+- Account-wide statistics
+
+```php
+$config->setApiKey('X-Account-ApiKey', 'YOUR_ACCOUNT_API_KEY');
+```
+
+**Which key do I need?**
+
+- For sending emails and basic operations: Use your **Sub-Account API Key**
+- For managing your account settings: Use your **Account API Key**
+
+You can find both keys in your SendPost dashboard under API Keys.
+
+## Error Handling
+
+Always wrap API calls in try-catch blocks:
+
+```php
+try {
+    $responses = $emailApi->sendEmail($emailMessage);
+    // Success!
+} catch (\sendpost\ApiException $e) {
+    // API-specific error
+    echo "Status Code: " . $e->getCode() . "\n";
+    echo "Error Message: " . $e->getMessage() . "\n";
+    echo "Response Body: " . $e->getResponseBody() . "\n";
+} catch (Exception $e) {
+    // Other errors
+    echo "Error: " . $e->getMessage() . "\n";
+}
+```
+
+Common error codes:
+- `401` - Invalid or missing API key
+- `403` - Resource already exists or insufficient permissions
+- `404` - Resource not found
+- `422` - Invalid request data
+- `500` - Server error
+
+## Available API Classes
+
+The SDK provides classes for different operations:
+
+- `EmailApi` - Send emails
+- `DomainApi` - Manage sending domains
+- `StatsApi` - Get email statistics
+- `SubAccountApi` - Manage sub-accounts
+- `SuppressionApi` - Manage suppression lists
+- `WebhookApi` - Manage webhooks
+- `MessageApi` - Retrieve message details
+- `IPApi` - Manage IP addresses
+- `IPPoolsApi` - Manage IP pools
+
+## Complete Example
+
+See the [example project](../example-sdk-php/) for a complete working example that demonstrates:
+- Creating sub-accounts
+- Setting up webhooks
+- Adding domains
+- Sending emails
+- Retrieving statistics
+- Managing IP pools
+
+## API Documentation
+
+For detailed API documentation, see:
+- [Full API Reference](docs/)
+- [SendPost API Documentation](https://docs.sendpost.io)
+- [Postman Collection](https://god.gw.postman.com/run-collection/33476323-e6dbd27f-c4a7-4d49-bcac-94b0611b938b)
+
+## Testing
+
+Run the test suite:
 
 ```bash
 composer install
 vendor/bin/phpunit
 ```
 
-## Author
+## Support
 
+Need help?
 
+- **Email:** hello@sendpost.io
+- **Documentation:** https://docs.sendpost.io
+- **Website:** https://sendpost.io
+- **Dashboard:** https://app.sendpost.io
 
-## About this package
+## License
 
-This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
+This SDK is open source. See the LICENSE file for details.
 
-- API version: `1.0.0`
-    - Package version: `1.0.0`
-    - Generator version: `7.13.0`
-- Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
+## Version
+
+- **SDK Version:** 1.0.0
+- **API Version:** 1.0.0
+- **PHP Version:** 8.1+

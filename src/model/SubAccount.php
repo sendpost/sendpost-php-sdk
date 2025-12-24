@@ -60,13 +60,13 @@ class SubAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'int',
         'api_key' => 'string',
         'name' => 'string',
-        'labels' => 'string[]',
+        'labels' => '\sendpost\model\Label[]',
         'smtp_auths' => '\sendpost\model\SMTPAuth[]',
         'type' => 'int',
         'is_plus' => 'bool',
         'created' => 'int',
-        'created_by' => '\sendpost\model\Member',
-        'updated_by' => '\sendpost\model\Member',
+        'created_by' => 'array<string,mixed>',
+        'updated_by' => 'array<string,mixed>',
         'blocked' => 'bool',
         'blocked_at' => 'int',
         'block_reason' => 'string',
@@ -502,7 +502,7 @@ class SubAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets labels
      *
-     * @return string[]|null
+     * @return \sendpost\model\Label[]|null
      */
     public function getLabels()
     {
@@ -512,7 +512,7 @@ class SubAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets labels
      *
-     * @param string[]|null $labels Labels associated with the sub-account
+     * @param \sendpost\model\Label[]|null $labels Labels associated with the sub-account
      *
      * @return self
      */
@@ -647,7 +647,7 @@ class SubAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets created_by
      *
-     * @return \sendpost\model\Member|null
+     * @return array<string,mixed>|null
      */
     public function getCreatedBy()
     {
@@ -657,7 +657,7 @@ class SubAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_by
      *
-     * @param \sendpost\model\Member|null $created_by Member who created the sub-account
+     * @param array<string,mixed>|null $created_by Member who created the sub-account
      *
      * @return self
      */
@@ -674,7 +674,7 @@ class SubAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated_by
      *
-     * @return \sendpost\model\Member|null
+     * @return array<string,mixed>|null
      */
     public function getUpdatedBy()
     {
@@ -684,7 +684,7 @@ class SubAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated_by
      *
-     * @param \sendpost\model\Member|null $updated_by Member who updated the sub-account
+     * @param array<string,mixed>|null $updated_by Member who updated the sub-account
      *
      * @return self
      */

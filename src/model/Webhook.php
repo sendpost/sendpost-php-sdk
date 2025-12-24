@@ -74,8 +74,8 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         'unique_open' => 'bool',
         'unique_click' => 'bool',
         'created' => 'int',
-        'created_by' => '\sendpost\model\Member',
-        'updated_by' => '\sendpost\model\Member'
+        'created_by' => 'array<string,mixed>',
+        'updated_by' => 'array<string,mixed>'
     ];
 
     /**
@@ -877,7 +877,7 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets created_by
      *
-     * @return \sendpost\model\Member|null
+     * @return array<string,mixed>|null
      */
     public function getCreatedBy()
     {
@@ -887,7 +887,7 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_by
      *
-     * @param \sendpost\model\Member|null $created_by Member who created the webhook
+     * @param array<string,mixed>|null $created_by Member who created the webhook
      *
      * @return self
      */
@@ -904,7 +904,7 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated_by
      *
-     * @return \sendpost\model\Member|null
+     * @return array<string,mixed>|null
      */
     public function getUpdatedBy()
     {
@@ -914,7 +914,7 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated_by
      *
-     * @param \sendpost\model\Member|null $updated_by Member who updated the webhook
+     * @param array<string,mixed>|null $updated_by Member who updated the webhook
      *
      * @return self
      */

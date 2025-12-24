@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **unique_open** | **bool** | Trigger webhook on unique email opens. | [optional]
 **unique_click** | **bool** | Trigger webhook on unique email clicks. | [optional]
 **created** | **int** | UNIX epoch nano timestamp when the webhook was created. | [optional]
-**created_by** | [**\sendpost\model\Member**](.md) | Member who created the webhook | [optional]
-**updated_by** | [**\sendpost\model\Member**](.md) | Member who updated the webhook | [optional]
+**created_by** | **array<string,mixed>** | Member who created the webhook | [optional]
+**updated_by** | **array<string,mixed>** | Member who updated the webhook | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
