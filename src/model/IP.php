@@ -75,11 +75,26 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
         'qq_settings' => 'string',
         'default_settings' => 'string',
         'att_settings' => 'string',
+        'office365_settings' => 'string',
+        'googleworkspace_settings' => 'string',
+        'proofpoint_settings' => 'string',
+        'mimecast_settings' => 'string',
+        'barracuda_settings' => 'string',
+        'ciscoironport_settings' => 'string',
+        'rackspace_settings' => 'string',
+        'zohobusiness_settings' => 'string',
+        'amazonworkmail_settings' => 'string',
+        'symantec_settings' => 'string',
+        'fortinet_settings' => 'string',
+        'sophos_settings' => 'string',
+        'trendmicro_settings' => 'string',
+        'checkpoint_settings' => 'string',
         'created' => 'int',
         'infra_classification' => 'string',
         'infra_monitor' => 'bool',
         'state' => 'int',
-        'auto_warmup_plan' => '\sendpost\model\AutoWarmupPlan'
+        'auto_warmup_plan' => '\sendpost\model\AutoWarmupPlan',
+        'labels' => '\sendpost\model\Label[]'
     ];
 
     /**
@@ -108,11 +123,26 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
         'qq_settings' => null,
         'default_settings' => null,
         'att_settings' => null,
+        'office365_settings' => null,
+        'googleworkspace_settings' => null,
+        'proofpoint_settings' => null,
+        'mimecast_settings' => null,
+        'barracuda_settings' => null,
+        'ciscoironport_settings' => null,
+        'rackspace_settings' => null,
+        'zohobusiness_settings' => null,
+        'amazonworkmail_settings' => null,
+        'symantec_settings' => null,
+        'fortinet_settings' => null,
+        'sophos_settings' => null,
+        'trendmicro_settings' => null,
+        'checkpoint_settings' => null,
         'created' => 'int64',
         'infra_classification' => null,
         'infra_monitor' => null,
         'state' => null,
-        'auto_warmup_plan' => null
+        'auto_warmup_plan' => null,
+        'labels' => null
     ];
 
     /**
@@ -139,11 +169,26 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
         'qq_settings' => false,
         'default_settings' => false,
         'att_settings' => false,
+        'office365_settings' => false,
+        'googleworkspace_settings' => false,
+        'proofpoint_settings' => false,
+        'mimecast_settings' => false,
+        'barracuda_settings' => false,
+        'ciscoironport_settings' => false,
+        'rackspace_settings' => false,
+        'zohobusiness_settings' => false,
+        'amazonworkmail_settings' => false,
+        'symantec_settings' => false,
+        'fortinet_settings' => false,
+        'sophos_settings' => false,
+        'trendmicro_settings' => false,
+        'checkpoint_settings' => false,
         'created' => false,
         'infra_classification' => false,
         'infra_monitor' => false,
         'state' => false,
-        'auto_warmup_plan' => false
+        'auto_warmup_plan' => false,
+        'labels' => false
     ];
 
     /**
@@ -250,11 +295,26 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
         'qq_settings' => 'qqSettings',
         'default_settings' => 'defaultSettings',
         'att_settings' => 'attSettings',
+        'office365_settings' => 'office365Settings',
+        'googleworkspace_settings' => 'googleworkspaceSettings',
+        'proofpoint_settings' => 'proofpointSettings',
+        'mimecast_settings' => 'mimecastSettings',
+        'barracuda_settings' => 'barracudaSettings',
+        'ciscoironport_settings' => 'ciscoironportSettings',
+        'rackspace_settings' => 'rackspaceSettings',
+        'zohobusiness_settings' => 'zohobusinessSettings',
+        'amazonworkmail_settings' => 'amazonworkmailSettings',
+        'symantec_settings' => 'symantecSettings',
+        'fortinet_settings' => 'fortinetSettings',
+        'sophos_settings' => 'sophosSettings',
+        'trendmicro_settings' => 'trendmicroSettings',
+        'checkpoint_settings' => 'checkpointSettings',
         'created' => 'created',
         'infra_classification' => 'infraClassification',
         'infra_monitor' => 'infraMonitor',
         'state' => 'state',
-        'auto_warmup_plan' => 'autoWarmupPlan'
+        'auto_warmup_plan' => 'autoWarmupPlan',
+        'labels' => 'labels'
     ];
 
     /**
@@ -281,11 +341,26 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
         'qq_settings' => 'setQqSettings',
         'default_settings' => 'setDefaultSettings',
         'att_settings' => 'setAttSettings',
+        'office365_settings' => 'setOffice365Settings',
+        'googleworkspace_settings' => 'setGoogleworkspaceSettings',
+        'proofpoint_settings' => 'setProofpointSettings',
+        'mimecast_settings' => 'setMimecastSettings',
+        'barracuda_settings' => 'setBarracudaSettings',
+        'ciscoironport_settings' => 'setCiscoironportSettings',
+        'rackspace_settings' => 'setRackspaceSettings',
+        'zohobusiness_settings' => 'setZohobusinessSettings',
+        'amazonworkmail_settings' => 'setAmazonworkmailSettings',
+        'symantec_settings' => 'setSymantecSettings',
+        'fortinet_settings' => 'setFortinetSettings',
+        'sophos_settings' => 'setSophosSettings',
+        'trendmicro_settings' => 'setTrendmicroSettings',
+        'checkpoint_settings' => 'setCheckpointSettings',
         'created' => 'setCreated',
         'infra_classification' => 'setInfraClassification',
         'infra_monitor' => 'setInfraMonitor',
         'state' => 'setState',
-        'auto_warmup_plan' => 'setAutoWarmupPlan'
+        'auto_warmup_plan' => 'setAutoWarmupPlan',
+        'labels' => 'setLabels'
     ];
 
     /**
@@ -312,11 +387,26 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
         'qq_settings' => 'getQqSettings',
         'default_settings' => 'getDefaultSettings',
         'att_settings' => 'getAttSettings',
+        'office365_settings' => 'getOffice365Settings',
+        'googleworkspace_settings' => 'getGoogleworkspaceSettings',
+        'proofpoint_settings' => 'getProofpointSettings',
+        'mimecast_settings' => 'getMimecastSettings',
+        'barracuda_settings' => 'getBarracudaSettings',
+        'ciscoironport_settings' => 'getCiscoironportSettings',
+        'rackspace_settings' => 'getRackspaceSettings',
+        'zohobusiness_settings' => 'getZohobusinessSettings',
+        'amazonworkmail_settings' => 'getAmazonworkmailSettings',
+        'symantec_settings' => 'getSymantecSettings',
+        'fortinet_settings' => 'getFortinetSettings',
+        'sophos_settings' => 'getSophosSettings',
+        'trendmicro_settings' => 'getTrendmicroSettings',
+        'checkpoint_settings' => 'getCheckpointSettings',
         'created' => 'getCreated',
         'infra_classification' => 'getInfraClassification',
         'infra_monitor' => 'getInfraMonitor',
         'state' => 'getState',
-        'auto_warmup_plan' => 'getAutoWarmupPlan'
+        'auto_warmup_plan' => 'getAutoWarmupPlan',
+        'labels' => 'getLabels'
     ];
 
     /**
@@ -394,11 +484,26 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('qq_settings', $data ?? [], null);
         $this->setIfExists('default_settings', $data ?? [], null);
         $this->setIfExists('att_settings', $data ?? [], null);
+        $this->setIfExists('office365_settings', $data ?? [], null);
+        $this->setIfExists('googleworkspace_settings', $data ?? [], null);
+        $this->setIfExists('proofpoint_settings', $data ?? [], null);
+        $this->setIfExists('mimecast_settings', $data ?? [], null);
+        $this->setIfExists('barracuda_settings', $data ?? [], null);
+        $this->setIfExists('ciscoironport_settings', $data ?? [], null);
+        $this->setIfExists('rackspace_settings', $data ?? [], null);
+        $this->setIfExists('zohobusiness_settings', $data ?? [], null);
+        $this->setIfExists('amazonworkmail_settings', $data ?? [], null);
+        $this->setIfExists('symantec_settings', $data ?? [], null);
+        $this->setIfExists('fortinet_settings', $data ?? [], null);
+        $this->setIfExists('sophos_settings', $data ?? [], null);
+        $this->setIfExists('trendmicro_settings', $data ?? [], null);
+        $this->setIfExists('checkpoint_settings', $data ?? [], null);
         $this->setIfExists('created', $data ?? [], null);
         $this->setIfExists('infra_classification', $data ?? [], null);
         $this->setIfExists('infra_monitor', $data ?? [], null);
         $this->setIfExists('state', $data ?? [], null);
         $this->setIfExists('auto_warmup_plan', $data ?? [], null);
+        $this->setIfExists('labels', $data ?? [], null);
     }
 
     /**
@@ -939,6 +1044,384 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets office365_settings
+     *
+     * @return string|null
+     */
+    public function getOffice365Settings()
+    {
+        return $this->container['office365_settings'];
+    }
+
+    /**
+     * Sets office365_settings
+     *
+     * @param string|null $office365_settings Configuration for Office365 delivery settings in JSON format
+     *
+     * @return self
+     */
+    public function setOffice365Settings($office365_settings)
+    {
+        if (is_null($office365_settings)) {
+            throw new \InvalidArgumentException('non-nullable office365_settings cannot be null');
+        }
+        $this->container['office365_settings'] = $office365_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets googleworkspace_settings
+     *
+     * @return string|null
+     */
+    public function getGoogleworkspaceSettings()
+    {
+        return $this->container['googleworkspace_settings'];
+    }
+
+    /**
+     * Sets googleworkspace_settings
+     *
+     * @param string|null $googleworkspace_settings Configuration for Google Workspace delivery settings in JSON format
+     *
+     * @return self
+     */
+    public function setGoogleworkspaceSettings($googleworkspace_settings)
+    {
+        if (is_null($googleworkspace_settings)) {
+            throw new \InvalidArgumentException('non-nullable googleworkspace_settings cannot be null');
+        }
+        $this->container['googleworkspace_settings'] = $googleworkspace_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets proofpoint_settings
+     *
+     * @return string|null
+     */
+    public function getProofpointSettings()
+    {
+        return $this->container['proofpoint_settings'];
+    }
+
+    /**
+     * Sets proofpoint_settings
+     *
+     * @param string|null $proofpoint_settings Configuration for Proofpoint delivery settings in JSON format
+     *
+     * @return self
+     */
+    public function setProofpointSettings($proofpoint_settings)
+    {
+        if (is_null($proofpoint_settings)) {
+            throw new \InvalidArgumentException('non-nullable proofpoint_settings cannot be null');
+        }
+        $this->container['proofpoint_settings'] = $proofpoint_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets mimecast_settings
+     *
+     * @return string|null
+     */
+    public function getMimecastSettings()
+    {
+        return $this->container['mimecast_settings'];
+    }
+
+    /**
+     * Sets mimecast_settings
+     *
+     * @param string|null $mimecast_settings Configuration for Mimecast delivery settings in JSON format
+     *
+     * @return self
+     */
+    public function setMimecastSettings($mimecast_settings)
+    {
+        if (is_null($mimecast_settings)) {
+            throw new \InvalidArgumentException('non-nullable mimecast_settings cannot be null');
+        }
+        $this->container['mimecast_settings'] = $mimecast_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets barracuda_settings
+     *
+     * @return string|null
+     */
+    public function getBarracudaSettings()
+    {
+        return $this->container['barracuda_settings'];
+    }
+
+    /**
+     * Sets barracuda_settings
+     *
+     * @param string|null $barracuda_settings Configuration for Barracuda delivery settings in JSON format
+     *
+     * @return self
+     */
+    public function setBarracudaSettings($barracuda_settings)
+    {
+        if (is_null($barracuda_settings)) {
+            throw new \InvalidArgumentException('non-nullable barracuda_settings cannot be null');
+        }
+        $this->container['barracuda_settings'] = $barracuda_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets ciscoironport_settings
+     *
+     * @return string|null
+     */
+    public function getCiscoironportSettings()
+    {
+        return $this->container['ciscoironport_settings'];
+    }
+
+    /**
+     * Sets ciscoironport_settings
+     *
+     * @param string|null $ciscoironport_settings Configuration for Cisco IronPort delivery settings in JSON format
+     *
+     * @return self
+     */
+    public function setCiscoironportSettings($ciscoironport_settings)
+    {
+        if (is_null($ciscoironport_settings)) {
+            throw new \InvalidArgumentException('non-nullable ciscoironport_settings cannot be null');
+        }
+        $this->container['ciscoironport_settings'] = $ciscoironport_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets rackspace_settings
+     *
+     * @return string|null
+     */
+    public function getRackspaceSettings()
+    {
+        return $this->container['rackspace_settings'];
+    }
+
+    /**
+     * Sets rackspace_settings
+     *
+     * @param string|null $rackspace_settings Configuration for Rackspace delivery settings in JSON format
+     *
+     * @return self
+     */
+    public function setRackspaceSettings($rackspace_settings)
+    {
+        if (is_null($rackspace_settings)) {
+            throw new \InvalidArgumentException('non-nullable rackspace_settings cannot be null');
+        }
+        $this->container['rackspace_settings'] = $rackspace_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets zohobusiness_settings
+     *
+     * @return string|null
+     */
+    public function getZohobusinessSettings()
+    {
+        return $this->container['zohobusiness_settings'];
+    }
+
+    /**
+     * Sets zohobusiness_settings
+     *
+     * @param string|null $zohobusiness_settings Configuration for Zoho Business delivery settings in JSON format
+     *
+     * @return self
+     */
+    public function setZohobusinessSettings($zohobusiness_settings)
+    {
+        if (is_null($zohobusiness_settings)) {
+            throw new \InvalidArgumentException('non-nullable zohobusiness_settings cannot be null');
+        }
+        $this->container['zohobusiness_settings'] = $zohobusiness_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets amazonworkmail_settings
+     *
+     * @return string|null
+     */
+    public function getAmazonworkmailSettings()
+    {
+        return $this->container['amazonworkmail_settings'];
+    }
+
+    /**
+     * Sets amazonworkmail_settings
+     *
+     * @param string|null $amazonworkmail_settings Configuration for Amazon WorkMail delivery settings in JSON format
+     *
+     * @return self
+     */
+    public function setAmazonworkmailSettings($amazonworkmail_settings)
+    {
+        if (is_null($amazonworkmail_settings)) {
+            throw new \InvalidArgumentException('non-nullable amazonworkmail_settings cannot be null');
+        }
+        $this->container['amazonworkmail_settings'] = $amazonworkmail_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets symantec_settings
+     *
+     * @return string|null
+     */
+    public function getSymantecSettings()
+    {
+        return $this->container['symantec_settings'];
+    }
+
+    /**
+     * Sets symantec_settings
+     *
+     * @param string|null $symantec_settings Configuration for Symantec delivery settings in JSON format
+     *
+     * @return self
+     */
+    public function setSymantecSettings($symantec_settings)
+    {
+        if (is_null($symantec_settings)) {
+            throw new \InvalidArgumentException('non-nullable symantec_settings cannot be null');
+        }
+        $this->container['symantec_settings'] = $symantec_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets fortinet_settings
+     *
+     * @return string|null
+     */
+    public function getFortinetSettings()
+    {
+        return $this->container['fortinet_settings'];
+    }
+
+    /**
+     * Sets fortinet_settings
+     *
+     * @param string|null $fortinet_settings Configuration for Fortinet delivery settings in JSON format
+     *
+     * @return self
+     */
+    public function setFortinetSettings($fortinet_settings)
+    {
+        if (is_null($fortinet_settings)) {
+            throw new \InvalidArgumentException('non-nullable fortinet_settings cannot be null');
+        }
+        $this->container['fortinet_settings'] = $fortinet_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets sophos_settings
+     *
+     * @return string|null
+     */
+    public function getSophosSettings()
+    {
+        return $this->container['sophos_settings'];
+    }
+
+    /**
+     * Sets sophos_settings
+     *
+     * @param string|null $sophos_settings Configuration for Sophos delivery settings in JSON format
+     *
+     * @return self
+     */
+    public function setSophosSettings($sophos_settings)
+    {
+        if (is_null($sophos_settings)) {
+            throw new \InvalidArgumentException('non-nullable sophos_settings cannot be null');
+        }
+        $this->container['sophos_settings'] = $sophos_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets trendmicro_settings
+     *
+     * @return string|null
+     */
+    public function getTrendmicroSettings()
+    {
+        return $this->container['trendmicro_settings'];
+    }
+
+    /**
+     * Sets trendmicro_settings
+     *
+     * @param string|null $trendmicro_settings Configuration for TrendMicro delivery settings in JSON format
+     *
+     * @return self
+     */
+    public function setTrendmicroSettings($trendmicro_settings)
+    {
+        if (is_null($trendmicro_settings)) {
+            throw new \InvalidArgumentException('non-nullable trendmicro_settings cannot be null');
+        }
+        $this->container['trendmicro_settings'] = $trendmicro_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets checkpoint_settings
+     *
+     * @return string|null
+     */
+    public function getCheckpointSettings()
+    {
+        return $this->container['checkpoint_settings'];
+    }
+
+    /**
+     * Sets checkpoint_settings
+     *
+     * @param string|null $checkpoint_settings Configuration for CheckPoint delivery settings in JSON format
+     *
+     * @return self
+     */
+    public function setCheckpointSettings($checkpoint_settings)
+    {
+        if (is_null($checkpoint_settings)) {
+            throw new \InvalidArgumentException('non-nullable checkpoint_settings cannot be null');
+        }
+        $this->container['checkpoint_settings'] = $checkpoint_settings;
+
+        return $this;
+    }
+
+    /**
      * Gets created
      *
      * @return int
@@ -1069,6 +1552,33 @@ class IP implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable auto_warmup_plan cannot be null');
         }
         $this->container['auto_warmup_plan'] = $auto_warmup_plan;
+
+        return $this;
+    }
+
+    /**
+     * Gets labels
+     *
+     * @return \sendpost\model\Label[]|null
+     */
+    public function getLabels()
+    {
+        return $this->container['labels'];
+    }
+
+    /**
+     * Sets labels
+     *
+     * @param \sendpost\model\Label[]|null $labels Labels associated with the IP
+     *
+     * @return self
+     */
+    public function setLabels($labels)
+    {
+        if (is_null($labels)) {
+            throw new \InvalidArgumentException('non-nullable labels cannot be null');
+        }
+        $this->container['labels'] = $labels;
 
         return $this;
     }

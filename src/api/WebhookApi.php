@@ -195,7 +195,7 @@ class WebhookApi
 
 
             switch($statusCode) {
-                case 201:
+                case 200:
                     return $this->handleResponseWithDataType(
                         '\sendpost\model\Webhook',
                         $request,
@@ -225,7 +225,7 @@ class WebhookApi
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 201:
+                case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\sendpost\model\Webhook',

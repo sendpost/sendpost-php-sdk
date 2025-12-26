@@ -105,7 +105,7 @@ class Message implements ModelInterface, ArrayAccess, \JsonSerializable
         'public_ip' => null,
         'local_ip' => null,
         'email_type' => null,
-        'submitted_at' => null,
+        'submitted_at' => 'int64',
         'from' => null,
         'reply_to' => null,
         'to' => null,

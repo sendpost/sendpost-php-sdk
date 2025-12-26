@@ -40,6 +40,7 @@ docs/Model/DomainDkim.md
 docs/Model/DomainDmarc.md
 docs/Model/DomainGpt.md
 docs/Model/DomainReturnPath.md
+docs/Model/DomainSpf.md
 docs/Model/DomainTrack.md
 docs/Model/EIP.md
 docs/Model/EmailAddress.md
@@ -75,7 +76,7 @@ docs/Model/Person.md
 docs/Model/Recipient.md
 docs/Model/SMTPAuth.md
 docs/Model/Stat.md
-docs/Model/StatStats.md
+docs/Model/StatStat.md
 docs/Model/SubAccount.md
 docs/Model/Suppression.md
 docs/Model/ThirdPartySendingProvider.md
@@ -127,6 +128,7 @@ src/model/DomainDkim.php
 src/model/DomainDmarc.php
 src/model/DomainGpt.php
 src/model/DomainReturnPath.php
+src/model/DomainSpf.php
 src/model/DomainTrack.php
 src/model/EIP.php
 src/model/EmailAddress.php
@@ -163,7 +165,7 @@ src/model/Person.php
 src/model/Recipient.php
 src/model/SMTPAuth.php
 src/model/Stat.php
-src/model/StatStats.php
+src/model/StatStat.php
 src/model/SubAccount.php
 src/model/Suppression.php
 src/model/ThirdPartySendingProvider.php
@@ -171,5 +173,5 @@ src/model/UpdateSubAccount.php
 src/model/UpdateWebhook.php
 src/model/UserAgent.php
 src/model/Webhook.php
-test/Model/AutoWarmupPlanTest.php
-test/Model/LabelTest.php
+test/Model/DomainSpfTest.php
+test/Model/StatStatTest.php

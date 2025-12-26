@@ -1,6 +1,6 @@
 <?php
 /**
- * Domain
+ * DomainSpf
  *
  * PHP version 8.1
  *
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \sendpost\ObjectSerializer;
 
 /**
- * Domain Class Doc Comment
+ * DomainSpf Class Doc Comment
  *
  * @category Class
+ * @description SPF record host, type and value
  * @package  sendpost
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
+class DomainSpf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Domain';
+    protected static $openAPIModelName = 'Domain_spf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,29 +58,9 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int',
-        'name' => 'string',
-        'dkim' => '\sendpost\model\DomainDkim',
-        'spf' => '\sendpost\model\DomainSpf',
-        'return_path' => '\sendpost\model\DomainReturnPath',
-        'track' => '\sendpost\model\DomainTrack',
-        'dmarc' => '\sendpost\model\DomainDmarc',
-        'dkim_config' => 'string',
-        'dkim_verified' => 'bool',
-        'spf_verified' => 'bool',
-        'mailbox_verified' => 'bool',
-        'dmarc_verified' => 'bool',
-        'return_path_verified' => 'bool',
-        'track_verified' => 'bool',
-        'verified' => 'bool',
-        'domain_registered_date' => 'string',
-        'created' => 'int',
-        'gpt_verified' => 'bool',
-        'gpt' => '\sendpost\model\DomainGpt',
-        'dmarc_failure_reason' => 'string',
-        'dkim_failure_reason' => 'string',
-        'track_failure_reason' => 'string',
-        'return_path_failure_reason' => 'string'
+        'host' => 'string',
+        'type' => 'string',
+        'text_value' => 'string'
     ];
 
     /**
@@ -90,29 +71,9 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'dkim' => null,
-        'spf' => null,
-        'return_path' => null,
-        'track' => null,
-        'dmarc' => null,
-        'dkim_config' => null,
-        'dkim_verified' => null,
-        'spf_verified' => null,
-        'mailbox_verified' => null,
-        'dmarc_verified' => null,
-        'return_path_verified' => null,
-        'track_verified' => null,
-        'verified' => null,
-        'domain_registered_date' => null,
-        'created' => 'int64',
-        'gpt_verified' => null,
-        'gpt' => null,
-        'dmarc_failure_reason' => null,
-        'dkim_failure_reason' => null,
-        'track_failure_reason' => null,
-        'return_path_failure_reason' => null
+        'host' => null,
+        'type' => null,
+        'text_value' => null
     ];
 
     /**
@@ -121,29 +82,9 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'dkim' => false,
-        'spf' => false,
-        'return_path' => false,
-        'track' => false,
-        'dmarc' => false,
-        'dkim_config' => false,
-        'dkim_verified' => false,
-        'spf_verified' => false,
-        'mailbox_verified' => false,
-        'dmarc_verified' => false,
-        'return_path_verified' => false,
-        'track_verified' => false,
-        'verified' => false,
-        'domain_registered_date' => false,
-        'created' => false,
-        'gpt_verified' => false,
-        'gpt' => false,
-        'dmarc_failure_reason' => false,
-        'dkim_failure_reason' => false,
-        'track_failure_reason' => false,
-        'return_path_failure_reason' => false
+        'host' => false,
+        'type' => false,
+        'text_value' => false
     ];
 
     /**
@@ -232,29 +173,9 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'dkim' => 'dkim',
-        'spf' => 'spf',
-        'return_path' => 'returnPath',
-        'track' => 'track',
-        'dmarc' => 'dmarc',
-        'dkim_config' => 'dkimConfig',
-        'dkim_verified' => 'dkimVerified',
-        'spf_verified' => 'spfVerified',
-        'mailbox_verified' => 'mailboxVerified',
-        'dmarc_verified' => 'dmarcVerified',
-        'return_path_verified' => 'returnPathVerified',
-        'track_verified' => 'trackVerified',
-        'verified' => 'verified',
-        'domain_registered_date' => 'domainRegisteredDate',
-        'created' => 'created',
-        'gpt_verified' => 'gptVerified',
-        'gpt' => 'gpt',
-        'dmarc_failure_reason' => 'dmarcFailureReason',
-        'dkim_failure_reason' => 'dkimFailureReason',
-        'track_failure_reason' => 'trackFailureReason',
-        'return_path_failure_reason' => 'returnPathFailureReason'
+        'host' => 'host',
+        'type' => 'type',
+        'text_value' => 'textValue'
     ];
 
     /**
@@ -263,29 +184,9 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'dkim' => 'setDkim',
-        'spf' => 'setSpf',
-        'return_path' => 'setReturnPath',
-        'track' => 'setTrack',
-        'dmarc' => 'setDmarc',
-        'dkim_config' => 'setDkimConfig',
-        'dkim_verified' => 'setDkimVerified',
-        'spf_verified' => 'setSpfVerified',
-        'mailbox_verified' => 'setMailboxVerified',
-        'dmarc_verified' => 'setDmarcVerified',
-        'return_path_verified' => 'setReturnPathVerified',
-        'track_verified' => 'setTrackVerified',
-        'verified' => 'setVerified',
-        'domain_registered_date' => 'setDomainRegisteredDate',
-        'created' => 'setCreated',
-        'gpt_verified' => 'setGptVerified',
-        'gpt' => 'setGpt',
-        'dmarc_failure_reason' => 'setDmarcFailureReason',
-        'dkim_failure_reason' => 'setDkimFailureReason',
-        'track_failure_reason' => 'setTrackFailureReason',
-        'return_path_failure_reason' => 'setReturnPathFailureReason'
+        'host' => 'setHost',
+        'type' => 'setType',
+        'text_value' => 'setTextValue'
     ];
 
     /**
@@ -294,29 +195,9 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'dkim' => 'getDkim',
-        'spf' => 'getSpf',
-        'return_path' => 'getReturnPath',
-        'track' => 'getTrack',
-        'dmarc' => 'getDmarc',
-        'dkim_config' => 'getDkimConfig',
-        'dkim_verified' => 'getDkimVerified',
-        'spf_verified' => 'getSpfVerified',
-        'mailbox_verified' => 'getMailboxVerified',
-        'dmarc_verified' => 'getDmarcVerified',
-        'return_path_verified' => 'getReturnPathVerified',
-        'track_verified' => 'getTrackVerified',
-        'verified' => 'getVerified',
-        'domain_registered_date' => 'getDomainRegisteredDate',
-        'created' => 'getCreated',
-        'gpt_verified' => 'getGptVerified',
-        'gpt' => 'getGpt',
-        'dmarc_failure_reason' => 'getDmarcFailureReason',
-        'dkim_failure_reason' => 'getDkimFailureReason',
-        'track_failure_reason' => 'getTrackFailureReason',
-        'return_path_failure_reason' => 'getReturnPathFailureReason'
+        'host' => 'getHost',
+        'type' => 'getType',
+        'text_value' => 'getTextValue'
     ];
 
     /**
@@ -376,29 +257,9 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('dkim', $data ?? [], null);
-        $this->setIfExists('spf', $data ?? [], null);
-        $this->setIfExists('return_path', $data ?? [], null);
-        $this->setIfExists('track', $data ?? [], null);
-        $this->setIfExists('dmarc', $data ?? [], null);
-        $this->setIfExists('dkim_config', $data ?? [], null);
-        $this->setIfExists('dkim_verified', $data ?? [], null);
-        $this->setIfExists('spf_verified', $data ?? [], null);
-        $this->setIfExists('mailbox_verified', $data ?? [], null);
-        $this->setIfExists('dmarc_verified', $data ?? [], null);
-        $this->setIfExists('return_path_verified', $data ?? [], null);
-        $this->setIfExists('track_verified', $data ?? [], null);
-        $this->setIfExists('verified', $data ?? [], null);
-        $this->setIfExists('domain_registered_date', $data ?? [], null);
-        $this->setIfExists('created', $data ?? [], null);
-        $this->setIfExists('gpt_verified', $data ?? [], null);
-        $this->setIfExists('gpt', $data ?? [], null);
-        $this->setIfExists('dmarc_failure_reason', $data ?? [], null);
-        $this->setIfExists('dkim_failure_reason', $data ?? [], null);
-        $this->setIfExists('track_failure_reason', $data ?? [], null);
-        $this->setIfExists('return_path_failure_reason', $data ?? [], null);
+        $this->setIfExists('host', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('text_value', $data ?? [], null);
     }
 
     /**
@@ -444,622 +305,82 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
-     *
-     * @return int|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int|null $id Unique ID for the domain.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
+     * Gets host
      *
      * @return string|null
      */
-    public function getName()
+    public function getHost()
     {
-        return $this->container['name'];
+        return $this->container['host'];
     }
 
     /**
-     * Sets name
+     * Sets host
      *
-     * @param string|null $name Name of the domain.
+     * @param string|null $host host
      *
      * @return self
      */
-    public function setName($name)
+    public function setHost($host)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($host)) {
+            throw new \InvalidArgumentException('non-nullable host cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['host'] = $host;
 
         return $this;
     }
 
     /**
-     * Gets dkim
-     *
-     * @return \sendpost\model\DomainDkim|null
-     */
-    public function getDkim()
-    {
-        return $this->container['dkim'];
-    }
-
-    /**
-     * Sets dkim
-     *
-     * @param \sendpost\model\DomainDkim|null $dkim dkim
-     *
-     * @return self
-     */
-    public function setDkim($dkim)
-    {
-        if (is_null($dkim)) {
-            throw new \InvalidArgumentException('non-nullable dkim cannot be null');
-        }
-        $this->container['dkim'] = $dkim;
-
-        return $this;
-    }
-
-    /**
-     * Gets spf
-     *
-     * @return \sendpost\model\DomainSpf|null
-     */
-    public function getSpf()
-    {
-        return $this->container['spf'];
-    }
-
-    /**
-     * Sets spf
-     *
-     * @param \sendpost\model\DomainSpf|null $spf spf
-     *
-     * @return self
-     */
-    public function setSpf($spf)
-    {
-        if (is_null($spf)) {
-            throw new \InvalidArgumentException('non-nullable spf cannot be null');
-        }
-        $this->container['spf'] = $spf;
-
-        return $this;
-    }
-
-    /**
-     * Gets return_path
-     *
-     * @return \sendpost\model\DomainReturnPath|null
-     */
-    public function getReturnPath()
-    {
-        return $this->container['return_path'];
-    }
-
-    /**
-     * Sets return_path
-     *
-     * @param \sendpost\model\DomainReturnPath|null $return_path return_path
-     *
-     * @return self
-     */
-    public function setReturnPath($return_path)
-    {
-        if (is_null($return_path)) {
-            throw new \InvalidArgumentException('non-nullable return_path cannot be null');
-        }
-        $this->container['return_path'] = $return_path;
-
-        return $this;
-    }
-
-    /**
-     * Gets track
-     *
-     * @return \sendpost\model\DomainTrack|null
-     */
-    public function getTrack()
-    {
-        return $this->container['track'];
-    }
-
-    /**
-     * Sets track
-     *
-     * @param \sendpost\model\DomainTrack|null $track track
-     *
-     * @return self
-     */
-    public function setTrack($track)
-    {
-        if (is_null($track)) {
-            throw new \InvalidArgumentException('non-nullable track cannot be null');
-        }
-        $this->container['track'] = $track;
-
-        return $this;
-    }
-
-    /**
-     * Gets dmarc
-     *
-     * @return \sendpost\model\DomainDmarc|null
-     */
-    public function getDmarc()
-    {
-        return $this->container['dmarc'];
-    }
-
-    /**
-     * Sets dmarc
-     *
-     * @param \sendpost\model\DomainDmarc|null $dmarc dmarc
-     *
-     * @return self
-     */
-    public function setDmarc($dmarc)
-    {
-        if (is_null($dmarc)) {
-            throw new \InvalidArgumentException('non-nullable dmarc cannot be null');
-        }
-        $this->container['dmarc'] = $dmarc;
-
-        return $this;
-    }
-
-    /**
-     * Gets dkim_config
+     * Gets type
      *
      * @return string|null
      */
-    public function getDkimConfig()
+    public function getType()
     {
-        return $this->container['dkim_config'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets dkim_config
+     * Sets type
      *
-     * @param string|null $dkim_config DKIM configuration
+     * @param string|null $type type
      *
      * @return self
      */
-    public function setDkimConfig($dkim_config)
+    public function setType($type)
     {
-        if (is_null($dkim_config)) {
-            throw new \InvalidArgumentException('non-nullable dkim_config cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['dkim_config'] = $dkim_config;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets dkim_verified
-     *
-     * @return bool|null
-     */
-    public function getDkimVerified()
-    {
-        return $this->container['dkim_verified'];
-    }
-
-    /**
-     * Sets dkim_verified
-     *
-     * @param bool|null $dkim_verified Status of DKIM verification ( true or false )
-     *
-     * @return self
-     */
-    public function setDkimVerified($dkim_verified)
-    {
-        if (is_null($dkim_verified)) {
-            throw new \InvalidArgumentException('non-nullable dkim_verified cannot be null');
-        }
-        $this->container['dkim_verified'] = $dkim_verified;
-
-        return $this;
-    }
-
-    /**
-     * Gets spf_verified
-     *
-     * @return bool|null
-     */
-    public function getSpfVerified()
-    {
-        return $this->container['spf_verified'];
-    }
-
-    /**
-     * Sets spf_verified
-     *
-     * @param bool|null $spf_verified Status of SPF verification ( true or false )
-     *
-     * @return self
-     */
-    public function setSpfVerified($spf_verified)
-    {
-        if (is_null($spf_verified)) {
-            throw new \InvalidArgumentException('non-nullable spf_verified cannot be null');
-        }
-        $this->container['spf_verified'] = $spf_verified;
-
-        return $this;
-    }
-
-    /**
-     * Gets mailbox_verified
-     *
-     * @return bool|null
-     */
-    public function getMailboxVerified()
-    {
-        return $this->container['mailbox_verified'];
-    }
-
-    /**
-     * Sets mailbox_verified
-     *
-     * @param bool|null $mailbox_verified Status of Mailbox verification ( true or false )
-     *
-     * @return self
-     */
-    public function setMailboxVerified($mailbox_verified)
-    {
-        if (is_null($mailbox_verified)) {
-            throw new \InvalidArgumentException('non-nullable mailbox_verified cannot be null');
-        }
-        $this->container['mailbox_verified'] = $mailbox_verified;
-
-        return $this;
-    }
-
-    /**
-     * Gets dmarc_verified
-     *
-     * @return bool|null
-     */
-    public function getDmarcVerified()
-    {
-        return $this->container['dmarc_verified'];
-    }
-
-    /**
-     * Sets dmarc_verified
-     *
-     * @param bool|null $dmarc_verified Status of DMARC verification ( true or false)
-     *
-     * @return self
-     */
-    public function setDmarcVerified($dmarc_verified)
-    {
-        if (is_null($dmarc_verified)) {
-            throw new \InvalidArgumentException('non-nullable dmarc_verified cannot be null');
-        }
-        $this->container['dmarc_verified'] = $dmarc_verified;
-
-        return $this;
-    }
-
-    /**
-     * Gets return_path_verified
-     *
-     * @return bool|null
-     */
-    public function getReturnPathVerified()
-    {
-        return $this->container['return_path_verified'];
-    }
-
-    /**
-     * Sets return_path_verified
-     *
-     * @param bool|null $return_path_verified Status of ReturnPath verification ( true or false )
-     *
-     * @return self
-     */
-    public function setReturnPathVerified($return_path_verified)
-    {
-        if (is_null($return_path_verified)) {
-            throw new \InvalidArgumentException('non-nullable return_path_verified cannot be null');
-        }
-        $this->container['return_path_verified'] = $return_path_verified;
-
-        return $this;
-    }
-
-    /**
-     * Gets track_verified
-     *
-     * @return bool|null
-     */
-    public function getTrackVerified()
-    {
-        return $this->container['track_verified'];
-    }
-
-    /**
-     * Sets track_verified
-     *
-     * @param bool|null $track_verified Status of Track verification ( true or false )
-     *
-     * @return self
-     */
-    public function setTrackVerified($track_verified)
-    {
-        if (is_null($track_verified)) {
-            throw new \InvalidArgumentException('non-nullable track_verified cannot be null');
-        }
-        $this->container['track_verified'] = $track_verified;
-
-        return $this;
-    }
-
-    /**
-     * Gets verified
-     *
-     * @return bool|null
-     */
-    public function getVerified()
-    {
-        return $this->container['verified'];
-    }
-
-    /**
-     * Sets verified
-     *
-     * @param bool|null $verified Overall verification status of the domain
-     *
-     * @return self
-     */
-    public function setVerified($verified)
-    {
-        if (is_null($verified)) {
-            throw new \InvalidArgumentException('non-nullable verified cannot be null');
-        }
-        $this->container['verified'] = $verified;
-
-        return $this;
-    }
-
-    /**
-     * Gets domain_registered_date
+     * Gets text_value
      *
      * @return string|null
      */
-    public function getDomainRegisteredDate()
+    public function getTextValue()
     {
-        return $this->container['domain_registered_date'];
+        return $this->container['text_value'];
     }
 
     /**
-     * Sets domain_registered_date
+     * Sets text_value
      *
-     * @param string|null $domain_registered_date Date when the domain was registered
+     * @param string|null $text_value text_value
      *
      * @return self
      */
-    public function setDomainRegisteredDate($domain_registered_date)
+    public function setTextValue($text_value)
     {
-        if (is_null($domain_registered_date)) {
-            throw new \InvalidArgumentException('non-nullable domain_registered_date cannot be null');
+        if (is_null($text_value)) {
+            throw new \InvalidArgumentException('non-nullable text_value cannot be null');
         }
-        $this->container['domain_registered_date'] = $domain_registered_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets created
-     *
-     * @return int|null
-     */
-    public function getCreated()
-    {
-        return $this->container['created'];
-    }
-
-    /**
-     * Sets created
-     *
-     * @param int|null $created UNIX epoch timestamp in nanoseconds.
-     *
-     * @return self
-     */
-    public function setCreated($created)
-    {
-        if (is_null($created)) {
-            throw new \InvalidArgumentException('non-nullable created cannot be null');
-        }
-        $this->container['created'] = $created;
-
-        return $this;
-    }
-
-    /**
-     * Gets gpt_verified
-     *
-     * @return bool|null
-     */
-    public function getGptVerified()
-    {
-        return $this->container['gpt_verified'];
-    }
-
-    /**
-     * Sets gpt_verified
-     *
-     * @param bool|null $gpt_verified Status of GPT verification ( true or false )
-     *
-     * @return self
-     */
-    public function setGptVerified($gpt_verified)
-    {
-        if (is_null($gpt_verified)) {
-            throw new \InvalidArgumentException('non-nullable gpt_verified cannot be null');
-        }
-        $this->container['gpt_verified'] = $gpt_verified;
-
-        return $this;
-    }
-
-    /**
-     * Gets gpt
-     *
-     * @return \sendpost\model\DomainGpt|null
-     */
-    public function getGpt()
-    {
-        return $this->container['gpt'];
-    }
-
-    /**
-     * Sets gpt
-     *
-     * @param \sendpost\model\DomainGpt|null $gpt gpt
-     *
-     * @return self
-     */
-    public function setGpt($gpt)
-    {
-        if (is_null($gpt)) {
-            throw new \InvalidArgumentException('non-nullable gpt cannot be null');
-        }
-        $this->container['gpt'] = $gpt;
-
-        return $this;
-    }
-
-    /**
-     * Gets dmarc_failure_reason
-     *
-     * @return string|null
-     */
-    public function getDmarcFailureReason()
-    {
-        return $this->container['dmarc_failure_reason'];
-    }
-
-    /**
-     * Sets dmarc_failure_reason
-     *
-     * @param string|null $dmarc_failure_reason Reason for DMARC verification failure
-     *
-     * @return self
-     */
-    public function setDmarcFailureReason($dmarc_failure_reason)
-    {
-        if (is_null($dmarc_failure_reason)) {
-            throw new \InvalidArgumentException('non-nullable dmarc_failure_reason cannot be null');
-        }
-        $this->container['dmarc_failure_reason'] = $dmarc_failure_reason;
-
-        return $this;
-    }
-
-    /**
-     * Gets dkim_failure_reason
-     *
-     * @return string|null
-     */
-    public function getDkimFailureReason()
-    {
-        return $this->container['dkim_failure_reason'];
-    }
-
-    /**
-     * Sets dkim_failure_reason
-     *
-     * @param string|null $dkim_failure_reason Reason for DKIM verification failure
-     *
-     * @return self
-     */
-    public function setDkimFailureReason($dkim_failure_reason)
-    {
-        if (is_null($dkim_failure_reason)) {
-            throw new \InvalidArgumentException('non-nullable dkim_failure_reason cannot be null');
-        }
-        $this->container['dkim_failure_reason'] = $dkim_failure_reason;
-
-        return $this;
-    }
-
-    /**
-     * Gets track_failure_reason
-     *
-     * @return string|null
-     */
-    public function getTrackFailureReason()
-    {
-        return $this->container['track_failure_reason'];
-    }
-
-    /**
-     * Sets track_failure_reason
-     *
-     * @param string|null $track_failure_reason Reason for Track verification failure
-     *
-     * @return self
-     */
-    public function setTrackFailureReason($track_failure_reason)
-    {
-        if (is_null($track_failure_reason)) {
-            throw new \InvalidArgumentException('non-nullable track_failure_reason cannot be null');
-        }
-        $this->container['track_failure_reason'] = $track_failure_reason;
-
-        return $this;
-    }
-
-    /**
-     * Gets return_path_failure_reason
-     *
-     * @return string|null
-     */
-    public function getReturnPathFailureReason()
-    {
-        return $this->container['return_path_failure_reason'];
-    }
-
-    /**
-     * Sets return_path_failure_reason
-     *
-     * @param string|null $return_path_failure_reason Reason for ReturnPath verification failure
-     *
-     * @return self
-     */
-    public function setReturnPathFailureReason($return_path_failure_reason)
-    {
-        if (is_null($return_path_failure_reason)) {
-            throw new \InvalidArgumentException('non-nullable return_path_failure_reason cannot be null');
-        }
-        $this->container['return_path_failure_reason'] = $return_path_failure_reason;
+        $this->container['text_value'] = $text_value;
 
         return $this;
     }

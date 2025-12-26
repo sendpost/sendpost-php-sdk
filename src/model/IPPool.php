@@ -59,9 +59,11 @@ class IPPool implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'int',
         'name' => 'string',
+        'type' => 'int',
         'created' => 'int',
         'ips' => '\sendpost\model\IP[]',
         'third_party_sending_providers' => '\sendpost\model\ThirdPartySendingProvider[]',
+        'to_account_ip_pools' => '\sendpost\model\IPPool[]',
         'routing_strategy' => 'int',
         'routing_meta_data' => 'string',
         'auto_warmup_enabled' => 'bool',
@@ -82,9 +84,11 @@ class IPPool implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'id' => null,
         'name' => null,
+        'type' => null,
         'created' => 'int64',
         'ips' => null,
         'third_party_sending_providers' => null,
+        'to_account_ip_pools' => null,
         'routing_strategy' => null,
         'routing_meta_data' => null,
         'auto_warmup_enabled' => null,
@@ -103,9 +107,11 @@ class IPPool implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'id' => false,
         'name' => false,
+        'type' => false,
         'created' => false,
         'ips' => false,
         'third_party_sending_providers' => false,
+        'to_account_ip_pools' => false,
         'routing_strategy' => false,
         'routing_meta_data' => false,
         'auto_warmup_enabled' => false,
@@ -204,9 +210,11 @@ class IPPool implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
+        'type' => 'type',
         'created' => 'created',
         'ips' => 'ips',
         'third_party_sending_providers' => 'thirdPartySendingProviders',
+        'to_account_ip_pools' => 'toAccountIPPools',
         'routing_strategy' => 'routingStrategy',
         'routing_meta_data' => 'routingMetaData',
         'auto_warmup_enabled' => 'autoWarmupEnabled',
@@ -225,9 +233,11 @@ class IPPool implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
+        'type' => 'setType',
         'created' => 'setCreated',
         'ips' => 'setIps',
         'third_party_sending_providers' => 'setThirdPartySendingProviders',
+        'to_account_ip_pools' => 'setToAccountIpPools',
         'routing_strategy' => 'setRoutingStrategy',
         'routing_meta_data' => 'setRoutingMetaData',
         'auto_warmup_enabled' => 'setAutoWarmupEnabled',
@@ -246,9 +256,11 @@ class IPPool implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
+        'type' => 'getType',
         'created' => 'getCreated',
         'ips' => 'getIps',
         'third_party_sending_providers' => 'getThirdPartySendingProviders',
+        'to_account_ip_pools' => 'getToAccountIpPools',
         'routing_strategy' => 'getRoutingStrategy',
         'routing_meta_data' => 'getRoutingMetaData',
         'auto_warmup_enabled' => 'getAutoWarmupEnabled',
@@ -318,9 +330,11 @@ class IPPool implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('created', $data ?? [], null);
         $this->setIfExists('ips', $data ?? [], null);
         $this->setIfExists('third_party_sending_providers', $data ?? [], null);
+        $this->setIfExists('to_account_ip_pools', $data ?? [], null);
         $this->setIfExists('routing_strategy', $data ?? [], null);
         $this->setIfExists('routing_meta_data', $data ?? [], null);
         $this->setIfExists('auto_warmup_enabled', $data ?? [], null);
@@ -428,6 +442,33 @@ class IPPool implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets type
+     *
+     * @return int|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param int|null $type Type of IP pool (0 = Shared, 1 = Dedicated)
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
      * Gets created
      *
      * @return int|null
@@ -504,6 +545,33 @@ class IPPool implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable third_party_sending_providers cannot be null');
         }
         $this->container['third_party_sending_providers'] = $third_party_sending_providers;
+
+        return $this;
+    }
+
+    /**
+     * Gets to_account_ip_pools
+     *
+     * @return \sendpost\model\IPPool[]|null
+     */
+    public function getToAccountIpPools()
+    {
+        return $this->container['to_account_ip_pools'];
+    }
+
+    /**
+     * Sets to_account_ip_pools
+     *
+     * @param \sendpost\model\IPPool[]|null $to_account_ip_pools Related account IP pools
+     *
+     * @return self
+     */
+    public function setToAccountIpPools($to_account_ip_pools)
+    {
+        if (is_null($to_account_ip_pools)) {
+            throw new \InvalidArgumentException('non-nullable to_account_ip_pools cannot be null');
+        }
+        $this->container['to_account_ip_pools'] = $to_account_ip_pools;
 
         return $this;
     }

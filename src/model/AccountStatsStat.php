@@ -67,7 +67,7 @@ class AccountStatsStat implements ModelInterface, ArrayAccess, \JsonSerializable
         'opened' => 'int',
         'clicked' => 'int',
         'unsubscribed' => 'int',
-        'spams' => 'int'
+        'spam' => 'int'
     ];
 
     /**
@@ -88,7 +88,7 @@ class AccountStatsStat implements ModelInterface, ArrayAccess, \JsonSerializable
         'opened' => null,
         'clicked' => null,
         'unsubscribed' => null,
-        'spams' => null
+        'spam' => null
     ];
 
     /**
@@ -107,7 +107,7 @@ class AccountStatsStat implements ModelInterface, ArrayAccess, \JsonSerializable
         'opened' => false,
         'clicked' => false,
         'unsubscribed' => false,
-        'spams' => false
+        'spam' => false
     ];
 
     /**
@@ -206,7 +206,7 @@ class AccountStatsStat implements ModelInterface, ArrayAccess, \JsonSerializable
         'opened' => 'opened',
         'clicked' => 'clicked',
         'unsubscribed' => 'unsubscribed',
-        'spams' => 'spams'
+        'spam' => 'spam'
     ];
 
     /**
@@ -225,7 +225,7 @@ class AccountStatsStat implements ModelInterface, ArrayAccess, \JsonSerializable
         'opened' => 'setOpened',
         'clicked' => 'setClicked',
         'unsubscribed' => 'setUnsubscribed',
-        'spams' => 'setSpams'
+        'spam' => 'setSpam'
     ];
 
     /**
@@ -244,7 +244,7 @@ class AccountStatsStat implements ModelInterface, ArrayAccess, \JsonSerializable
         'opened' => 'getOpened',
         'clicked' => 'getClicked',
         'unsubscribed' => 'getUnsubscribed',
-        'spams' => 'getSpams'
+        'spam' => 'getSpam'
     ];
 
     /**
@@ -314,7 +314,7 @@ class AccountStatsStat implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('opened', $data ?? [], null);
         $this->setIfExists('clicked', $data ?? [], null);
         $this->setIfExists('unsubscribed', $data ?? [], null);
-        $this->setIfExists('spams', $data ?? [], null);
+        $this->setIfExists('spam', $data ?? [], null);
     }
 
     /**
@@ -630,28 +630,28 @@ class AccountStatsStat implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets spams
+     * Gets spam
      *
      * @return int|null
      */
-    public function getSpams()
+    public function getSpam()
     {
-        return $this->container['spams'];
+        return $this->container['spam'];
     }
 
     /**
-     * Sets spams
+     * Sets spam
      *
-     * @param int|null $spams spams
+     * @param int|null $spam Number of spam complaints
      *
      * @return self
      */
-    public function setSpams($spams)
+    public function setSpam($spam)
     {
-        if (is_null($spams)) {
-            throw new \InvalidArgumentException('non-nullable spams cannot be null');
+        if (is_null($spam)) {
+            throw new \InvalidArgumentException('non-nullable spam cannot be null');
         }
-        $this->container['spams'] = $spams;
+        $this->container['spam'] = $spam;
 
         return $this;
     }

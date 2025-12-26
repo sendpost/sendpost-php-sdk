@@ -62,7 +62,10 @@ class IPPoolCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'tpsps' => 'int[]',
         'routing_strategy' => 'int',
         'routing_meta_data' => 'string',
-        'overflow_pool' => 'bool'
+        'overflow_pool' => 'bool',
+        'warmup_interval' => 'int',
+        'overflow_strategy' => 'int',
+        'overflow_pool_name' => 'string'
     ];
 
     /**
@@ -78,7 +81,10 @@ class IPPoolCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'tpsps' => null,
         'routing_strategy' => null,
         'routing_meta_data' => null,
-        'overflow_pool' => null
+        'overflow_pool' => null,
+        'warmup_interval' => null,
+        'overflow_strategy' => null,
+        'overflow_pool_name' => null
     ];
 
     /**
@@ -92,7 +98,10 @@ class IPPoolCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'tpsps' => false,
         'routing_strategy' => false,
         'routing_meta_data' => false,
-        'overflow_pool' => false
+        'overflow_pool' => false,
+        'warmup_interval' => false,
+        'overflow_strategy' => false,
+        'overflow_pool_name' => false
     ];
 
     /**
@@ -186,7 +195,10 @@ class IPPoolCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'tpsps' => 'tpsps',
         'routing_strategy' => 'routingStrategy',
         'routing_meta_data' => 'routingMetaData',
-        'overflow_pool' => 'overflowPool'
+        'overflow_pool' => 'overflowPool',
+        'warmup_interval' => 'warmupInterval',
+        'overflow_strategy' => 'overflowStrategy',
+        'overflow_pool_name' => 'overflowPoolName'
     ];
 
     /**
@@ -200,7 +212,10 @@ class IPPoolCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'tpsps' => 'setTpsps',
         'routing_strategy' => 'setRoutingStrategy',
         'routing_meta_data' => 'setRoutingMetaData',
-        'overflow_pool' => 'setOverflowPool'
+        'overflow_pool' => 'setOverflowPool',
+        'warmup_interval' => 'setWarmupInterval',
+        'overflow_strategy' => 'setOverflowStrategy',
+        'overflow_pool_name' => 'setOverflowPoolName'
     ];
 
     /**
@@ -214,7 +229,10 @@ class IPPoolCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'tpsps' => 'getTpsps',
         'routing_strategy' => 'getRoutingStrategy',
         'routing_meta_data' => 'getRoutingMetaData',
-        'overflow_pool' => 'getOverflowPool'
+        'overflow_pool' => 'getOverflowPool',
+        'warmup_interval' => 'getWarmupInterval',
+        'overflow_strategy' => 'getOverflowStrategy',
+        'overflow_pool_name' => 'getOverflowPoolName'
     ];
 
     /**
@@ -280,6 +298,9 @@ class IPPoolCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('routing_strategy', $data ?? [], null);
         $this->setIfExists('routing_meta_data', $data ?? [], null);
         $this->setIfExists('overflow_pool', $data ?? [], null);
+        $this->setIfExists('warmup_interval', $data ?? [], null);
+        $this->setIfExists('overflow_strategy', $data ?? [], null);
+        $this->setIfExists('overflow_pool_name', $data ?? [], null);
     }
 
     /**
@@ -482,6 +503,87 @@ class IPPoolCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable overflow_pool cannot be null');
         }
         $this->container['overflow_pool'] = $overflow_pool;
+
+        return $this;
+    }
+
+    /**
+     * Gets warmup_interval
+     *
+     * @return int|null
+     */
+    public function getWarmupInterval()
+    {
+        return $this->container['warmup_interval'];
+    }
+
+    /**
+     * Sets warmup_interval
+     *
+     * @param int|null $warmup_interval Warmup interval in hours. Must be greater than 0.
+     *
+     * @return self
+     */
+    public function setWarmupInterval($warmup_interval)
+    {
+        if (is_null($warmup_interval)) {
+            throw new \InvalidArgumentException('non-nullable warmup_interval cannot be null');
+        }
+        $this->container['warmup_interval'] = $warmup_interval;
+
+        return $this;
+    }
+
+    /**
+     * Gets overflow_strategy
+     *
+     * @return int|null
+     */
+    public function getOverflowStrategy()
+    {
+        return $this->container['overflow_strategy'];
+    }
+
+    /**
+     * Sets overflow_strategy
+     *
+     * @param int|null $overflow_strategy Overflow strategy (0 = None, 1 = Use overflow pool)
+     *
+     * @return self
+     */
+    public function setOverflowStrategy($overflow_strategy)
+    {
+        if (is_null($overflow_strategy)) {
+            throw new \InvalidArgumentException('non-nullable overflow_strategy cannot be null');
+        }
+        $this->container['overflow_strategy'] = $overflow_strategy;
+
+        return $this;
+    }
+
+    /**
+     * Gets overflow_pool_name
+     *
+     * @return string|null
+     */
+    public function getOverflowPoolName()
+    {
+        return $this->container['overflow_pool_name'];
+    }
+
+    /**
+     * Sets overflow_pool_name
+     *
+     * @param string|null $overflow_pool_name Name of the overflow pool (required if overflowStrategy is 1)
+     *
+     * @return self
+     */
+    public function setOverflowPoolName($overflow_pool_name)
+    {
+        if (is_null($overflow_pool_name)) {
+            throw new \InvalidArgumentException('non-nullable overflow_pool_name cannot be null');
+        }
+        $this->container['overflow_pool_name'] = $overflow_pool_name;
 
         return $this;
     }
